@@ -1,0 +1,25 @@
+{
+  "$schema": "./content.schema.json",
+  "schemaVersion": "1.0",
+  "kind": "catalog",
+  "classes": [
+    {
+      "id": "klasa-4",
+      "grade": 4,
+      "title": "Klasa IV",
+      "subjects": [
+        {
+          "id": "historia",
+          "title": "Historia",
+          "topics": [
+            {
+              "id": "detektywi-przeszlosci",
+              "title": "Detektywi przeszłości",
+              "path": "klasa-4/historia/detektywi-przeszlosci/topic.json"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,890 @@
+{
+  "$schema": "../../../content.schema.json",
+  "schemaVersion": "1.0",
+  "kind": "topic",
+  "id": "detektywi-przeszlosci",
+  "grade": 4,
+  "subjectId": "historia",
+  "language": "pl-PL",
+  "title": "Detektywi przeszłości",
+  "summary": "Podstawy poznawania przeszłości: źródła, rodzina i porządek czasu.",
+  "lessons": [
+    {
+      "id": "praca-historyka",
+      "title": "Skąd wiemy, co wydarzyło się dawniej?",
+      "goals": [
+        "Wyjaśniam pracę historyka.",
+        "Odróżniam postać historyczną od fikcyjnej."
+      ],
+      "paragraphs": [
+        "Historia może oznaczać to, co zdarzyło się w przeszłości, opowieść o tych wydarzeniach albo naukę, która je bada. Historyk szuka śladów życia ludzi, zadaje pytania i porównuje informacje. Nie każda opowieść jest dowodem: część opisuje prawdziwe wydarzenia, a część została wymyślona.",
+        "Postać historyczna naprawdę żyła. Bohater fikcyjny powstał w wyobraźni autora lub w opowieściach. Sama ilustracja nie wystarcza, aby rozstrzygnąć, do której grupy należy postać."
+      ]
+    },
+    {
+      "id": "zrodla-historyczne",
+      "title": "Ślady, które zostawiają ludzie",
+      "goals": [
+        "Rozpoznaję podstawowe rodzaje źródeł.",
+        "Oddzielam informację od domysłu."
+      ],
+      "paragraphs": [
+        "Źródło historyczne to ślad przeszłości, z którego możemy uzyskać informacje. Stary list mówi coś innego niż kubek, a wspomnienie świadka może uzupełnić wiadomości z fotografii.",
+        "Na potrzeby tego działu stosujemy podział: - materialne pisane: przedmioty z zapisaną treścią, np. list lub zeszyt; - materialne niepisane: np. narzędzie, naczynie lub budowla; - niematerialne: np. przekazywana ustnie opowieść, obyczaj lub tradycja.",
+        "Niektóre obiekty mają więcej niż jedną cechę. Moneta jest przedmiotem i może zawierać napis. W zadaniach ocenianych wybieramy jednoznaczne przykłady albo wyraźnie wskazujemy, o jaką cechę pytamy.",
+        "Archeolog bada materialne pozostałości działalności ludzi, często odkrywane podczas wykopalisk. Ważne jest nie tylko samo znalezisko, ale też miejsce i warstwa, w której je znaleziono. Nie każde stare znalezisko pochodzi z czasów przed wynalezieniem pisma."
+      ]
+    },
+    {
+      "id": "historia-rodziny",
+      "title": "Rodzina też ma swoją historię",
+      "goals": [
+        "Odczytuję proste relacje rodzinne."
+      ],
+      "paragraphs": [
+        "Historię rodziny poznajemy dzięki rozmowom, zdjęciom, dokumentom i pamiątkom. Tradycja to zwyczaj przekazywany dalej, np. wspólne przygotowywanie określonej potrawy. Jedna rodzina może mieć inne tradycje niż druga.",
+        "Drzewo genealogiczne pokazuje powiązania między osobami. Zanim je odczytasz, sprawdź podpisy i linie. Przodkowie nie muszą znajdować się zawsze na dole — zależy to od sposobu narysowania drzewa."
+      ]
+    },
+    {
+      "id": "chronologia",
+      "title": "Porządkujemy czas",
+      "goals": [
+        "Porządkuję daty z obu er.",
+        "Wiem, że nie ma roku zerowego."
+      ],
+      "paragraphs": [
+        "Chronologia pomaga układać wydarzenia od wcześniejszych do późniejszych. Rok to podstawowa jednostka zapisu dat. Wiek ma sto lat, a tysiąclecie — tysiąc lat.",
+        "W szkolnym zapisie używamy dwóch er: przed naszą erą (p.n.e.) i naszej ery (n.e.). Nie ma między nimi roku zerowego: po roku 1 p.n.e. następuje rok 1 n.e.",
+        "W naszej erze większy numer roku oznacza późniejszą datę. Przed naszą erą jest odwrotnie: rok 600 p.n.e. był wcześniej niż 200 p.n.e."
+      ]
+    },
+    {
+      "id": "epoki",
+      "title": "Wielkie rozdziały dziejów",
+      "goals": [
+        "Wymieniam epoki i rozumiem umowność ich granic."
+      ],
+      "paragraphs": [
+        "Aby łatwiej opowiadać o przeszłości, dzielimy ją na duże okresy. W uproszczonym szkolnym podziale spotkasz: prehistorię, starożytność, średniowiecze, nowożytność i współczesność.",
+        "Prehistoria obejmuje czasy sprzed pojawienia się pisma. Pismo powstawało i upowszechniało się w różnych miejscach w różnym czasie. Historycy umownie wyznaczają również granice późniejszych epok. Zmiany w życiu ludzi nie zachodziły wszędzie jednego dnia.",
+        "W tym dziale przyjmujemy konwencję widoczną w materiale źródłowym: 476 jako umowną granicę starożytności i średniowiecza, 1492 jako umowną granicę średniowiecza i nowożytności, 1918 jako umowną granicę nowożytności i współczesności. Nie przedstawiamy tego jako jedynego podziału stosowanego przez historyków."
+      ]
+    },
+    {
+      "id": "wieki-i-liczby-rzymskie",
+      "title": "Rzymski szyfr i adresy wieków",
+      "goals": [
+        "Odczytuję liczby rzymskie.",
+        "Ustalam wiek daty i jego granice."
+      ],
+      "paragraphs": [
+        "Wiek często zapisujemy liczbą rzymską. Podstawowe znaki to: I = 1, V = 5, X = 10, L = 50, C = 100, D = 500, M = 1000. Przykłady: VIII = 8, IX = 9, XIV = 14, XIX = 19. Mniejszy znak przed większym może oznaczać odejmowanie, ale nie każda taka kombinacja jest poprawna. Uczymy się prawidłowych zapisów, np. IV i IX.",
+        "Pierwszy wiek naszej ery obejmuje lata 1–100, drugi 101–200. Dlatego rok kończący się na 00 zamyka wiek, a nie otwiera następny.",
+        "Przykłady: - 1240 rok → XIII wiek; - 1700 rok → XVII wiek; - 1701 rok → XVIII wiek; - 250 rok p.n.e. → III wiek p.n.e.",
+        "W III wieku p.n.e. lata biegną od 300 p.n.e. do 201 p.n.e. Chronologiczny początek to większy numer roku."
+      ]
+    },
+    {
+      "id": "uplyw-lat",
+      "title": "Ile lat minęło?",
+      "goals": [
+        "Obliczam odstęp między oznaczeniami lat."
+      ],
+      "paragraphs": [
+        "Gdy obie daty należą do tej samej ery, obliczamy różnicę numerów lat. Gdy przechodzimy z p.n.e. do n.e., dodajemy numery lat i odejmujemy jeden, bo nie ma roku zerowego.",
+        "Przykłady rachunkowe — nie są to daty wymaganych wydarzeń: - od 1848 do 1912 roku: 64 lata; - od 84 p.n.e. do 27 p.n.e.: 57 lat; - od 9 p.n.e. do 14 n.e.: 22 lata.",
+        "W tych ćwiczeniach obliczamy odstęp między oznaczeniami lat. Nie wyznaczamy dokładnego wieku osoby ani liczby pełnych lat między konkretnymi dniami, ponieważ nie podajemy miesięcy i dni."
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "id": "odkryj-zrodla",
+      "type": "discovery",
+      "title": "Co kryje się na strychu?",
+      "instruction": "Odkryj wszystkie trzy ślady przeszłości.",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Każdy rodzaj źródła może dostarczać innych informacji.",
+      "items": [
+        {
+          "id": "list",
+          "text": "Odręcznie zapisany list",
+          "icon": "letter",
+          "explanation": "To przedmiot zawierający zapisaną treść."
+        },
+        {
+          "id": "garnek",
+          "text": "Gliniany garnek bez napisów",
+          "icon": "pot",
+          "explanation": "To materialny przedmiot bez zapisu."
+        },
+        {
+          "id": "opowiesc",
+          "text": "Przekazywana ustnie opowieść",
+          "icon": "story",
+          "explanation": "Sama ustna opowieść jest źródłem niematerialnym; nie chodzi o nośnik nagrania."
+        }
+      ]
+    },
+    {
+      "id": "posortuj-zrodla",
+      "type": "sorting",
+      "title": "Każdy trop ma swoją szufladkę",
+      "instruction": "Przyporządkuj znaleziska do rodzajów źródeł.",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "O rozpoznaniu źródła decydują jego cechy, a nie to, czy wygląda ciekawie.",
+      "categories": [
+        {
+          "id": "pisane",
+          "text": "Materialne pisane"
+        },
+        {
+          "id": "niepisane",
+          "text": "Materialne niepisane"
+        },
+        {
+          "id": "niematerialne",
+          "text": "Niematerialne"
+        }
+      ],
+      "items": [
+        {
+          "id": "list",
+          "text": "Odręcznie zapisany list",
+          "icon": "letter",
+          "explanation": "To przedmiot zawierający zapisaną treść.",
+          "categoryId": "pisane"
+        },
+        {
+          "id": "garnek",
+          "text": "Gliniany garnek bez napisów",
+          "icon": "pot",
+          "explanation": "To materialny przedmiot bez zapisu.",
+          "categoryId": "niepisane"
+        },
+        {
+          "id": "opowiesc",
+          "text": "Przekazywana ustnie opowieść",
+          "icon": "story",
+          "explanation": "Sama ustna opowieść jest źródłem niematerialnym; nie chodzi o nośnik nagrania.",
+          "categoryId": "niematerialne"
+        }
+      ],
+      "hint": "Czy to przedmiot? Czy zawiera zapis?"
+    },
+    {
+      "id": "rzymskie-pary",
+      "type": "matching",
+      "title": "Znajdź zaginione pary",
+      "instruction": "Wybierz kartę z dowolnej kolumny i jej parę z drugiej.",
+      "lessonIds": [
+        "wieki-i-liczby-rzymskie"
+      ],
+      "explanation": "XIV = 14, IX = 9, XIX = 19.",
+      "pairs": [
+        {
+          "id": "xiv",
+          "left": "XIV",
+          "right": "14"
+        },
+        {
+          "id": "ix",
+          "left": "IX",
+          "right": "9"
+        },
+        {
+          "id": "xix",
+          "left": "XIX",
+          "right": "19"
+        }
+      ],
+      "hint": "X to 10. IV to 4, a IX to 9."
+    },
+    {
+      "id": "napraw-czas",
+      "type": "ordering",
+      "title": "Napraw kolejność lat",
+      "instruction": "Ustaw lata od najwcześniejszego do najpóźniejszego.",
+      "lessonIds": [
+        "chronologia"
+      ],
+      "explanation": "Po 1 p.n.e. następuje 1 n.e. — bez roku zerowego.",
+      "items": [
+        {
+          "id": "ce-20",
+          "text": "20 n.e."
+        },
+        {
+          "id": "bce-80",
+          "text": "80 p.n.e."
+        },
+        {
+          "id": "ce-1",
+          "text": "1 n.e."
+        },
+        {
+          "id": "bce-1",
+          "text": "1 p.n.e."
+        }
+      ],
+      "correctOrder": [
+        "bce-80",
+        "bce-1",
+        "ce-1",
+        "ce-20"
+      ],
+      "hint": "Przed naszą erą większy numer roku oznacza wcześniejszą datę."
+    },
+    {
+      "id": "fiszki-historyka",
+      "type": "flashcards",
+      "title": "Tropy historyka",
+      "instruction": "Pomyśl nad odpowiedzią, potem odwróć kartę.",
+      "lessonIds": [
+        "praca-historyka"
+      ],
+      "explanation": "Ciekawa opowieść nie zastępuje dowodów.",
+      "cards": [
+        {
+          "id": "badacz",
+          "front": "Co robi historyk?",
+          "back": "Bada przeszłość ludzi, porównując informacje ze źródeł."
+        },
+        {
+          "id": "dowod",
+          "front": "Czy każda opowieść opisuje prawdziwe wydarzenia?",
+          "back": "Nie. Trzeba sprawdzić, na jakich informacjach się opiera."
+        }
+      ]
+    },
+    {
+      "id": "rodzinne-pary",
+      "type": "matching",
+      "title": "Rodzinne połączenia",
+      "instruction": "Fikcyjna rodzina: Ewa jest mamą Olka, Helena mamą Ewy, a Paweł bratem Ewy. Połącz osoby i relacje.",
+      "lessonIds": [
+        "historia-rodziny"
+      ],
+      "explanation": "Relacje ustalamy na podstawie opisanych powiązań, nie położenia osoby na rysunku.",
+      "pairs": [
+        {
+          "id": "helena",
+          "left": "Helena jest dla Olka…",
+          "right": "babcią"
+        },
+        {
+          "id": "pawel",
+          "left": "Paweł jest dla Olka…",
+          "right": "wujkiem"
+        },
+        {
+          "id": "ewa",
+          "left": "Ewa jest dla Heleny…",
+          "right": "córką"
+        }
+      ]
+    },
+    {
+      "id": "regal-epok",
+      "type": "ordering",
+      "title": "Uporządkuj rozdziały dziejów",
+      "instruction": "Ustaw okresy od najwcześniejszego.",
+      "lessonIds": [
+        "epoki"
+      ],
+      "explanation": "Granice epok są umowne, a przemiany życia ludzi były stopniowe.",
+      "items": [
+        {
+          "id": "item-1",
+          "text": "Nowożytność"
+        },
+        {
+          "id": "item-2",
+          "text": "Prehistoria"
+        },
+        {
+          "id": "item-3",
+          "text": "Współczesność"
+        },
+        {
+          "id": "item-4",
+          "text": "Średniowiecze"
+        },
+        {
+          "id": "item-5",
+          "text": "Starożytność"
+        }
+      ],
+      "correctOrder": [
+        "item-2",
+        "item-5",
+        "item-4",
+        "item-1",
+        "item-3"
+      ]
+    },
+    {
+      "id": "napraw-obliczenie",
+      "type": "number-answer",
+      "title": "Ile lat dzieli granicę er?",
+      "instruction": "Podaj odstęp od 1 p.n.e. do 1 n.e. w latach.",
+      "lessonIds": [
+        "uplyw-lat"
+      ],
+      "explanation": "Nie ma roku zerowego: odstęp między tymi oznaczeniami wynosi jeden rok.",
+      "answer": 1,
+      "tolerance": 0,
+      "unit": "lata"
+    },
+    {
+      "id": "wybierz-zrodla-pisane",
+      "type": "multiple-choice",
+      "title": "Zapisane ślady",
+      "instruction": "Wybierz wszystkie źródła materialne pisane.",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "List i dziennik zawierają zapisaną treść; garnek bez napisów nie.",
+      "options": [
+        {
+          "id": "item-1",
+          "text": "Odręczny list"
+        },
+        {
+          "id": "item-2",
+          "text": "Garnek bez napisów"
+        },
+        {
+          "id": "item-3",
+          "text": "Zapisany dziennik"
+        }
+      ],
+      "correctOptionIds": [
+        "item-1",
+        "item-3"
+      ]
+    },
+    {
+      "id": "test-a-1",
+      "type": "single-choice",
+      "title": "Który opis najlepiej pasuje do pracy historyka?",
+      "instruction": "Który opis najlepiej pasuje do pracy historyka?",
+      "lessonIds": [
+        "praca-historyka"
+      ],
+      "explanation": "Historyk bada przeszłość na podstawie źródeł.",
+      "options": [
+        {
+          "id": "item-1",
+          "text": "Tworzy wyłącznie opowieści fantastyczne."
+        },
+        {
+          "id": "item-2",
+          "text": "Bada przeszłość ludzi, korzystając ze źródeł."
+        },
+        {
+          "id": "item-3",
+          "text": "Przewiduje pogodę na przyszły rok."
+        }
+      ],
+      "correctOptionId": "item-2"
+    },
+    {
+      "id": "test-a-2",
+      "type": "single-choice",
+      "title": "Którą postać można nazwać historyczną?",
+      "instruction": "Którą postać można nazwać historyczną?",
+      "lessonIds": [
+        "praca-historyka"
+      ],
+      "explanation": "O historyczności decyduje rzeczywiste życie, nie popularność bohatera.",
+      "options": [
+        {
+          "id": "item-1",
+          "text": "Wymyślonego przez ucznia czarodzieja."
+        },
+        {
+          "id": "item-2",
+          "text": "Bohatera fikcyjnej planety."
+        },
+        {
+          "id": "item-3",
+          "text": "Osobę, której rzeczywiste życie potwierdzają wiarygodne źródła."
+        }
+      ],
+      "correctOptionId": "item-3"
+    },
+    {
+      "id": "test-a-3",
+      "type": "single-choice",
+      "title": "Jakim źródłem jest ręcznie zapisany dziennik podróży?",
+      "instruction": "Jakim źródłem jest ręcznie zapisany dziennik podróży?",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Dziennik jest materialnym przedmiotem zawierającym zapis.",
+      "options": [
+        {
+          "id": "item-1",
+          "text": "Materialnym pisanym."
+        },
+        {
+          "id": "item-2",
+          "text": "Materialnym niepisanym."
+        },
+        {
+          "id": "item-3",
+          "text": "Niematerialnym."
+        }
+      ],
+      "correctOptionId": "item-1"
+    },
+    {
+      "id": "test-a-4",
+      "type": "single-choice",
+      "title": "Jakim źródłem jest stary guzik bez napisów?",
+      "instruction": "Jakim źródłem jest stary guzik bez napisów?",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Pytanie dotyczy materialnego przedmiotu bez zapisanej treści.",
+      "options": [
+        {
+          "id": "item-1",
+          "text": "Niematerialnym."
+        },
+        {
+          "id": "item-2",
+          "text": "Materialnym pisanym."
+        },
+        {
+          "id": "item-3",
+          "text": "Materialnym niepisanym."
+        }
+      ],
+      "correctOptionId": "item-3"
+    },
+    {
+      "id": "test-a-5",
+      "type": "single-choice",
+      "title": "Czy sama przekazywana ustnie opowieść o dawnym zwyczaju może być źródłem niematerialnym?",
+      "instruction": "Czy sama przekazywana ustnie opowieść o dawnym zwyczaju może być źródłem niematerialnym?",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Ustne przekazy mogą dostarczać wiedzy o przeszłości; warto porównywać je z innymi źródłami.",
+      "options": [
+        {
+          "id": "item-1",
+          "text": "Tak."
+        },
+        {
+          "id": "item-2",
+          "text": "Nie, źródło zawsze musi być przedmiotem."
+        }
+      ],
+      "correctOptionId": "item-1"
+    },
+    {
+      "id": "test-a-8",
+      "type": "single-choice",
+      "title": "Który rok następuje bezpośrednio po 1 p.n.e.?",
+      "instruction": "Który rok następuje bezpośrednio po 1 p.n.e.?",
+      "lessonIds": [
+        "chronologia"
+      ],
+      "explanation": "W tym sposobie zapisu nie ma roku zerowego.",
+      "options": [
+        {
+          "id": "item-1",
+          "text": "Rok 0."
+        },
+        {
+          "id": "item-2",
+          "text": "Rok 1 n.e."
+        },
+        {
+          "id": "item-3",
+          "text": "Rok 2 n.e."
+        }
+      ],
+      "correctOptionId": "item-2"
+    },
+    {
+      "id": "test-a-10",
+      "type": "single-choice",
+      "title": "Jak odczytasz XIX?",
+      "instruction": "Jak odczytasz XIX?",
+      "lessonIds": [
+        "wieki-i-liczby-rzymskie"
+      ],
+      "explanation": "XIX to X + IX, czyli 19.",
+      "options": [
+        {
+          "id": "item-1",
+          "text": "14"
+        },
+        {
+          "id": "item-2",
+          "text": "19"
+        },
+        {
+          "id": "item-3",
+          "text": "21"
+        }
+      ],
+      "correctOptionId": "item-2"
+    },
+    {
+      "id": "test-a-11",
+      "type": "single-choice",
+      "title": "W którym wieku był rok 1240?",
+      "instruction": "W którym wieku był rok 1240?",
+      "lessonIds": [
+        "wieki-i-liczby-rzymskie"
+      ],
+      "explanation": "XIII wiek naszej ery obejmuje lata 1201–1300.",
+      "options": [
+        {
+          "id": "item-1",
+          "text": "XII"
+        },
+        {
+          "id": "item-2",
+          "text": "XIII"
+        },
+        {
+          "id": "item-3",
+          "text": "XIV"
+        }
+      ],
+      "correctOptionId": "item-2"
+    },
+    {
+      "id": "test-a-12",
+      "type": "single-choice",
+      "title": "Które dwa lata należą do tego samego wieku naszej ery?",
+      "instruction": "Które dwa lata należą do tego samego wieku naszej ery?",
+      "lessonIds": [
+        "wieki-i-liczby-rzymskie"
+      ],
+      "explanation": "XVIII wiek naszej ery obejmuje lata 1701–1800.",
+      "options": [
+        {
+          "id": "item-1",
+          "text": "1700 i 1701"
+        },
+        {
+          "id": "item-2",
+          "text": "1701 i 1800"
+        },
+        {
+          "id": "item-3",
+          "text": "1800 i 1801"
+        }
+      ],
+      "correctOptionId": "item-2"
+    },
+    {
+      "id": "test-a-15",
+      "type": "single-choice",
+      "title": "Do którego wieku należy rok 250 p.n.e.?",
+      "instruction": "Do którego wieku należy rok 250 p.n.e.?",
+      "lessonIds": [
+        "wieki-i-liczby-rzymskie"
+      ],
+      "explanation": "III wiek p.n.e. obejmuje lata od 300 do 201 p.n.e.",
+      "options": [
+        {
+          "id": "item-1",
+          "text": "II p.n.e."
+        },
+        {
+          "id": "item-2",
+          "text": "III p.n.e."
+        },
+        {
+          "id": "item-3",
+          "text": "IV p.n.e."
+        }
+      ],
+      "correctOptionId": "item-2"
+    },
+    {
+      "id": "test-a-16",
+      "type": "single-choice",
+      "title": "Która informacja najlepiej opisuje granice epok?",
+      "instruction": "Która informacja najlepiej opisuje granice epok?",
+      "lessonIds": [
+        "epoki"
+      ],
+      "explanation": "Granice epok są konwencją pomagającą uporządkować naukę.",
+      "options": [
+        {
+          "id": "item-1",
+          "text": "Wszędzie zmiany następowały dokładnie tego samego dnia."
+        },
+        {
+          "id": "item-2",
+          "text": "Są umownym sposobem porządkowania dziejów, a przemiany były stopniowe."
+        },
+        {
+          "id": "item-3",
+          "text": "Epoki nie mają związku z porządkowaniem przeszłości."
+        }
+      ],
+      "correctOptionId": "item-2"
+    },
+    {
+      "id": "test-a-6",
+      "type": "short-answer",
+      "title": "Rodzinne relacje",
+      "instruction": "Fikcyjna rodzina: Marta jest mamą Adama, Zofia mamą Marty. Kim Zofia jest dla Adama?",
+      "lessonIds": [
+        "historia-rodziny"
+      ],
+      "explanation": "Mama rodzica jest babcią dziecka.",
+      "acceptedAnswers": [
+        "babcia",
+        "babcią",
+        "jego babcia",
+        "jego babcią"
+      ],
+      "normalization": "trim-collapse-casefold"
+    },
+    {
+      "id": "test-a-7",
+      "type": "ordering",
+      "title": "Kolejność dat",
+      "instruction": "Ułóż daty od najwcześniejszej.",
+      "lessonIds": [
+        "chronologia"
+      ],
+      "explanation": "W p.n.e. większy numer oznacza wcześniejszą datę.",
+      "items": [
+        {
+          "id": "item-1",
+          "text": "120 n.e."
+        },
+        {
+          "id": "item-2",
+          "text": "40 p.n.e."
+        },
+        {
+          "id": "item-3",
+          "text": "10 n.e."
+        },
+        {
+          "id": "item-4",
+          "text": "160 p.n.e."
+        }
+      ],
+      "correctOrder": [
+        "item-4",
+        "item-2",
+        "item-3",
+        "item-1"
+      ]
+    },
+    {
+      "id": "test-a-9",
+      "type": "ordering",
+      "title": "Kolejność epok",
+      "instruction": "Ułóż okresy od najwcześniejszego.",
+      "lessonIds": [
+        "epoki"
+      ],
+      "explanation": "Prehistoria poprzedza starożytność; dalej są średniowiecze, nowożytność i współczesność.",
+      "items": [
+        {
+          "id": "item-1",
+          "text": "Nowożytność"
+        },
+        {
+          "id": "item-2",
+          "text": "Prehistoria"
+        },
+        {
+          "id": "item-3",
+          "text": "Współczesność"
+        },
+        {
+          "id": "item-4",
+          "text": "Średniowiecze"
+        },
+        {
+          "id": "item-5",
+          "text": "Starożytność"
+        }
+      ],
+      "correctOrder": [
+        "item-2",
+        "item-5",
+        "item-4",
+        "item-1",
+        "item-3"
+      ]
+    },
+    {
+      "id": "test-a-13",
+      "type": "number-answer",
+      "title": "Upływ lat",
+      "instruction": "Ile lat upłynęło od 84 p.n.e. do 27 p.n.e.?",
+      "lessonIds": [
+        "uplyw-lat"
+      ],
+      "explanation": "Obie daty należą do p.n.e.; obliczamy różnicę numerów lat.",
+      "answer": 57,
+      "tolerance": 0,
+      "unit": "lata"
+    },
+    {
+      "id": "test-a-14",
+      "type": "number-answer",
+      "title": "Upływ lat",
+      "instruction": "Ile lat upłynęło od 9 p.n.e. do 14 n.e.?",
+      "lessonIds": [
+        "uplyw-lat"
+      ],
+      "explanation": "Przechodzimy przez granicę er, więc dodajemy numery lat i odejmujemy jeden.",
+      "answer": 22,
+      "tolerance": 0,
+      "unit": "lata"
+    }
+  ],
+  "learningPath": [
+    "fiszki-historyka",
+    "odkryj-zrodla",
+    "posortuj-zrodla",
+    "wybierz-zrodla-pisane",
+    "rodzinne-pary",
+    "napraw-czas",
+    "regal-epok",
+    "rzymskie-pary",
+    "napraw-obliczenie"
+  ],
+  "mindMap": {
+    "id": "przeszlosc",
+    "title": "Jak poznajemy przeszłość?",
+    "text": "Porównujemy ślady i porządkujemy informacje.",
+    "children": [
+      {
+        "id": "badacz",
+        "title": "Badacz",
+        "text": "Historyk zadaje pytania i porównuje źródła.",
+        "children": []
+      },
+      {
+        "id": "slady",
+        "title": "Ślady",
+        "text": "Źródła pisane, niepisane i niematerialne dostarczają informacji.",
+        "children": []
+      },
+      {
+        "id": "rodzina",
+        "title": "Rodzina",
+        "text": "Pamiątki i wspomnienia pomagają poznać historię rodziny.",
+        "children": []
+      },
+      {
+        "id": "czas",
+        "title": "Czas",
+        "text": "Chronologia porządkuje wydarzenia; nie ma roku zerowego.",
+        "children": []
+      },
+      {
+        "id": "okresy",
+        "title": "Epoki",
+        "text": "Umowne granice pomagają opowiadać o wielkich okresach.",
+        "children": []
+      },
+      {
+        "id": "liczenie",
+        "title": "Liczenie",
+        "text": "Liczby rzymskie, wieki i obliczanie upływu lat.",
+        "children": []
+      }
+    ]
+  },
+  "tests": [
+    {
+      "id": "test-dzialu-a",
+      "title": "Test działu — wersja A",
+      "questions": [
+        {
+          "taskId": "test-a-1",
+          "points": 1
+        },
+        {
+          "taskId": "test-a-2",
+          "points": 1
+        },
+        {
+          "taskId": "test-a-3",
+          "points": 1
+        },
+        {
+          "taskId": "test-a-4",
+          "points": 1
+        },
+        {
+          "taskId": "test-a-5",
+          "points": 1
+        },
+        {
+          "taskId": "test-a-6",
+          "points": 1
+        },
+        {
+          "taskId": "test-a-7",
+          "points": 1
+        },
+        {
+          "taskId": "test-a-8",
+          "points": 1
+        },
+        {
+          "taskId": "test-a-9",
+          "points": 1
+        },
+        {
+          "taskId": "test-a-10",
+          "points": 1
+        },
+        {
+          "taskId": "test-a-11",
+          "points": 1
+        },
+        {
+          "taskId": "test-a-12",
+          "points": 1
+        },
+        {
+          "taskId": "test-a-13",
+          "points": 1
+        },
+        {
+          "taskId": "test-a-14",
+          "points": 1
+        },
+        {
+          "taskId": "test-a-15",
+          "points": 1
+        },
+        {
+          "taskId": "test-a-16",
+          "points": 1
+        }
+      ],
+      "feedback": "after-submit",
+      "scoring": "all-or-nothing",
+      "shuffleQuestions": false,
+      "timeLimitSeconds": null
+    }
+  ]
+}

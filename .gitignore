@@ -1,0 +1,43 @@
+# Prywatne źródła zakresu nauki (zdjęcia, skany, archiwa)
+/materiały/
+
+# Python: pliki generowane, środowiska i cache narzędzi
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Narzędzia lokalne i wygenerowana paczka publikacyjna
+/local-server/
+/dist/
+/.kumilo-build-*/
+/node_modules/
+
+# Wyniki testów i diagnostyka (nie kod testów)
+/coverage/
+/.nyc_output/
+/playwright-report/
+/test-results/
+*.log
+
+# Lokalne ustawienia środowiska; wzory bez sekretów można wersjonować
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Ustawienia edytorów i pliki robocze, również wewnątrz data/
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Metadane systemowe
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini

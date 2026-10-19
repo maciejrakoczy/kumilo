@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#39306e">
+  <meta name="description" content="Kumilo — nauka przez odkrywanie, zabawę i spokojne sprawdzanie wiedzy.">
+  <title>Kumilo — odkrywaj z sową</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/owl.svg">
+  <link rel="stylesheet" href="./assets/styles.css">
+  <script type="module" src="./assets/app.mjs"></script>
+</head>
+<body>
+  <a class="skip-link" href="#app">Przejdź do nauki</a>
+  <div class="wrap">
+    <header class="header">
+      <button class="brand" id="brand" aria-label="Kumilo — wróć na start"><img src="./assets/owl.svg" alt="" width="58" height="50"><span class="wordmark">kumi<span>lo</span></span></button>
+      <button class="text-button" id="privacy-button">Dane na urządzeniu</button>
+    </header>
+    <p class="storage-status" id="storage-status" role="status"></p>
+    <main id="app" tabindex="-1"><p class="loading" role="status">Sowa otwiera bibliotekę…</p></main>
+    <noscript><p class="notice">Do interaktywnych zadań potrzebny jest włączony JavaScript.</p></noscript>
+    <footer class="note">Ucz się po swojemu. Bez reklam, kont i publicznych rankingów.</footer>
+  </div>
+  <dialog id="picker" aria-labelledby="picker-title">
+    <div class="dialog-head"><h2 id="picker-title">Co odkrywamy?</h2><button class="close-dialog" data-close="picker" aria-label="Zamknij wybór materiału">×</button></div>
+    <form id="picker-form"><label>Klasa<select id="grade-select" required></select></label><label>Przedmiot<select id="subject-select" required></select></label><label>Temat<select id="topic-select" required></select></label><button class="primary" type="submit">Wybieram ten temat →</button></form>
+  </dialog>
+  <dialog id="privacy" aria-labelledby="privacy-title">
+    <div class="dialog-head"><h2 id="privacy-title">Twoje dane</h2><button class="close-dialog" data-close="privacy" aria-label="Zamknij informacje o danych">×</button></div>
+    <p>Postęp nauki i ostatni wynik zostają tylko w tej przeglądarce. Imienia nie zapisujemy. Na wspólnym urządzeniu inni użytkownicy tego profilu mogą zobaczyć zapisany postęp.</p>
+    <p>Wyniki testu nie są zabezpieczonym świadectwem. Wyczyszczenie danych przeglądarki usuwa zapis. Test rozpoczęty w tej karcie nie przetrwa odświeżenia.</p>
+    <button class="secondary danger" id="clear-progress">Usuń zapisane dane Kumilo</button><p id="clear-message" role="status"></p>
+  </dialog>
+</body>
+</html>
