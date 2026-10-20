@@ -20,10 +20,32 @@ Powyższe polecenie udostępnia wyłącznie `dist/`. Jeśli na stanowisku masz p
 1. Wybierz klasę, przedmiot i temat przyciskiem „Zmień”. Dostępne pozycje pochodzą wyłącznie z `data/catalog.json`.
 2. Uruchom wyprawę. Przycisk „Kontynuuj” prowadzi do pierwszej nieukończonej aktywności.
 3. Rozwiązuj zadania. Błąd nie odbiera żyć ani punktów z nauki; można próbować dalej.
-4. Przy potrzebie rozwiń objaśnienie lekcji pod zadaniem. W sekcji „Lekcje i mapa myśli” dostępny jest cały zakres.
+4. Przy potrzebie użyj przycisku „Podpowiedź” w stopce karty i rozwiń objaśnienie lekcji. W sekcji „Lekcje i mapa myśli” dostępny jest cały zakres.
 5. Po ukończeniu aktywności przejdź do kolejnej. Przejście całej ścieżki kończy się podsumowaniem z sową.
 
 Aktywności: odkrywanie kart, fiszki, pytania jedno- i wielokrotnego wyboru, pary w obu kierunkach, sortowanie do kategorii, układanie kolejności oraz odpowiedzi tekstowe i liczbowe. W pierwszej ścieżce nauki jest dziewięć aktywności; pełny dział obejmuje siedem lekcji.
+
+Po odkryciu karty jej objaśnienie pojawia się wewnątrz tej karty zamiast napisu zachęcającego do odkrycia. Treść pozostaje widoczna po odkryciu kolejnych kart; nie pojawia się dodatkowy dymek pod planszą. Ponowne kliknięcie nie zwiększa postępu ani nie przyznaje kolejnej nagrody.
+
+Ekrany nauki i testu korzystają ze wspólnej karty: kontekst i numer zadania w nagłówku strony, tytuł aktywności i punktowy postęp nad kartą, polecenie oraz instrukcja w karcie, a pod odpowiedziami stała stopka z postępem bieżącego zadania i główną akcją. W nauce podpowiedź jest rozwijana na żądanie; pytania wymagające zatwierdzenia mają w stopce „Sprawdź”, a po sukcesie „Dalej”. Test nie pokazuje podpowiedzi merytorycznych i pozwala pominąć pytanie oraz do niego wrócić.
+
+Pary pokazują dopasowanie krzywą linią oraz takim samym numerem na obu kartach. W nauce zielone połączenie oznacza zaakceptowaną parę. W teście fioletowa linia przedstawia wybór ucznia, niezależnie od poprawności; lista wybranych połączeń nadal pozwala je odczytać i rozłączyć. Linie są dekoracyjnym SVG, nie zastępują treści dostępnej dla czytnika ekranu. Ich geometria aktualizuje się po zmianie rozmiaru kart, a obserwatory są sprzątane przy opuszczaniu zadania.
+
+Widok karty jest w `assets/activity-view.mjs`, a jego style w `assets/activity.css`, oddzielnie od pozostałych ekranów. `mountTask` przyjmuje `controls: false` i `onStateChange`, dzięki czemu wspólna stopka może obsłużyć stan, licznik i zatwierdzenie każdego typu bez powielania przycisków w rendererze. Zwracane `check()` zatwierdza tylko odpowiednie typy w nauce; nie ocenia odpowiedzi w teście. `getState()` udostępnia postęp i gotowość do sprawdzenia, bez sugerowania poprawności niezatwierdzonych odpowiedzi testowych.
+
+Bank „Detektywów przeszłości” zawiera 77 zadań do nauki i osobne 84 zadania testowe. Pojedyncza wyprawa wybiera dziewięć aktywności, a test 16 pytań. Rozkład tematów i ograniczenia opisuje [bank zadań](question-bank.md).
+
+Każdy etap wyprawy ma własną pulę wariantów w `learningVariants`. Nowe przejście losuje inne przykłady: najpierw niewidziane w danym etapie, a po wyczerpaniu puli rozpoczyna kolejny obieg bez natychmiastowego powtórzenia ostatniego wariantu. Kontynuacja nie losuje ponownie rozpoczętej aktywności. Zapisane są identyfikatory wariantów i historia ich wyświetlania, nie częściowe odpowiedzi. Gwiazdki nadal dotyczą dziewięciu stałych etapów: nowy wariant nie daje dodatkowej gwiazdki za już ukończony etap.
+
+### Gwiazdki i odznaki
+
+Każda pierwszy raz ukończona aktywność wyprawy daje jedną gwiazdkę. Na starcie i w podsumowaniu widać zebrane gwiazdki oraz trzy odznaki: „Pierwszy krok” za pierwszą aktywność, „Na tropie” za co najmniej połowę ścieżki i „Odkrywca” za całość. Nagrody oznaczają ukończenie aktywności, nie potwierdzają opanowania całego działu. Powtórzenie tego samego zadania nie zwiększa liczby gwiazdek.
+
+Odkrywane karty i fiszki reagują animacją, a ukończenie aktywności wyświetla krótką animację gwiazdek. Efekty nie blokują dalszego działania. Nagrody wynikają z istniejącego zapisu postępu: pozostają po odświeżeniu, a usunięcie danych Kumilo usuwa je razem z postępem. Przy niedostępnej pamięci przeglądarki nie są trwałe.
+
+Animacje respektują systemowe ustawienie ograniczenia ruchu (`prefers-reduced-motion`); przy nim nagrody pozostają widoczne, ale bez ruchu i cząsteczek. W teście nie ma nagród ani efektów sygnalizujących poprawność przed zatwierdzeniem. Test bez limitu nie wyświetla żadnego tekstu o czasie.
+
+Przy błędnej odpowiedzi w nauce sówka ma smutne oczy i opuszczone skrzydełka, krótko wzdycha i uroni łezkę. Obok pozostaje wskazówka i zachęta do kolejnej próby, bez odbierania nagród. Reakcja znika przy zmianie odpowiedzi; po poprawnym rozwiązaniu wracają efekty sukcesu. Dotyczy to pytań wyboru, par, sortowania, kolejności i odpowiedzi wpisywanych. W teście smutna sówka pojawia się dopiero w podsumowaniu zawierającym błędy. Przy ograniczeniu ruchu zostaje nieruchoma ilustracja.
 
 Kolejność można zmieniać przeciąganiem karty myszą, uchwytem przy dotyku albo przyciskami strzałek. Escape i przerwanie ruchu anulują przeciąganie. Strzałki są alternatywą dla klawiatury i osób, którym przeciąganie sprawia trudność.
 
@@ -31,6 +53,8 @@ Kolejność można zmieniać przeciąganiem karty myszą, uchwytem przy dotyku a
 
 - Imię lub pseudonim jest tylko w pamięci bieżącej karty.
 - Test korzysta z definicji w JSON: liczby pytań, punktów i ewentualnego limitu czasu.
+- Przy `draw` aplikacja wybiera podzbiór banku według kwot tematów. Każde podejście obejmuje cały wskazany zakres i nie zawiera powtórzonych pytań. Najpierw wybierane są pytania spoza ostatniego zatwierdzonego testu; jeśli pula jest za mała, brakujące miejsca uzupełniają wcześniejsze pytania. W bieżącym banku pojemność pozwala uniknąć wszystkich pytań z bezpośrednio poprzedniego podejścia. Nie oznacza to, że pytanie nigdy nie wróci w dalszych testach.
+- Wstęp pokazuje liczbę losowanych pytań i punktów, nie długość całego banku. Nawigacja wstecz nie losuje pytań od nowa. Ocena, objaśnienia i zapis wyniku dotyczą tylko wylosowanego zestawu.
 - Możesz wracać do pytań i pomijać je do późniejszego uzupełnienia.
 - Przed zatwierdzeniem lista pytań pokazuje brakujące odpowiedzi.
 - Poprawne odpowiedzi i wyjaśnienia są ujawniane dopiero w podsumowaniu, nie podczas testu.
@@ -43,7 +67,7 @@ To narzędzie edukacyjne, nie zabezpieczony system egzaminacyjny: klucz odpowied
 
 ## Postęp i prywatność
 
-Kumilo używa własnego wpisu w localStorage. Zapisuje ukończone aktywności, otwierane lekcje i ostatni wynik tematu. Otworzenie lekcji nie oznacza automatycznie jej opanowania. Nie zapisuje imienia ani nie wysyła wyników do serwera.
+Kumilo używa własnego wpisu w localStorage. Zapisuje ukończone etapy, otwierane lekcje, wylosowane warianty nauki wraz z historią ich wyświetlania i ostatni wynik tematu. Otworzenie lekcji nie oznacza automatycznie jej opanowania. Nie zapisuje imienia ani nie wysyła wyników do serwera. Wcześniejsze gwiazdki zachowują ważność po dodaniu nowych wariantów.
 
 Zapis dotyczy profilu przeglądarki, nie rozpoznaje osoby. Na wspólnym urządzeniu należy użyć „Dane na urządzeniu” → „Usuń zapisane dane Kumilo”. Usuwany jest tylko zapis Kumilo, nie inne dane przeglądarki.
 
@@ -56,6 +80,8 @@ Wyłączenie pamięci przeglądarki nie powinno blokować nauki; pojawia się in
 - `assets/tasks.mjs` — wspólne mechanizmy dziewięciu typów zadań;
 - `assets/reorder.mjs` — przeciąganie i porządkowanie;
 - `assets/core.mjs` — sprawdzanie modelu, pobieranie danych, ocenianie, zapis;
+- `assets/rewards.mjs` — gwiazdki, odznaki i krótkie efekty sukcesu;
+- `assets/selection.mjs` — losowanie wariantów nauki i testów z zachowaniem pokrycia tematów;
 - `assets/owl.svg` — jeden wspólny logotyp i maskotka;
 - `data/` — jedyne źródło treści edukacyjnych i kluczy odpowiedzi.
 

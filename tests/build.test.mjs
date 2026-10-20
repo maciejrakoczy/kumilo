@@ -25,8 +25,22 @@ async function filesIn(directory, prefix = '') {
 }
 test('release copies only static app, data and Pages marker without changing bytes', () => fixture(async root => {
   const {outDir} = await buildSite(root);
-  assert.deepEqual(await filesIn(outDir), ['.nojekyll','assets/app.mjs','assets/owl.svg','data/catalog.json','data/klasa-4/historia/temat/topic.json','index.html']);
-  assert.equal(await readFile(path.join(outDir,'assets/app.mjs'),'utf8'), 'export const ready = true;');
+  assert.deepEqual(await filesIn(outDir), ['.nojekyll','assets/app.js','assets/owl.svg','data/catalog.json','data/klasa-4/historia/temat/topic.json','index.html']);
+  assert.equal(await readFile(path.join(outDir,'assets/app.js'),'utf8'), 'export const ready = true;');
+}));
+test('release uses .js modules and rewrites HTML and module imports without changing sources', () => fixture(async root => {
+  const html = '<script type="module" src="./assets/app.mjs"></script>';
+  const module = "import {ready} from './core.mjs';\nexport {ready};\n";
+  await writeFile(path.join(root,'index.html'), html);
+  await writeFile(path.join(root,'assets/app.mjs'), module);
+  await writeFile(path.join(root,'assets/core.mjs'), 'export const ready = true;');
+  const {outDir, files} = await buildSite(root);
+  assert(files.includes(path.join('assets','app.js')));
+  assert(!(await filesIn(outDir)).some(name => name.endsWith('.mjs')));
+  assert.equal(await readFile(path.join(outDir,'index.html'),'utf8'), html.replace('app.mjs','app.js'));
+  assert.equal(await readFile(path.join(outDir,'assets/app.js'),'utf8'), module.replace('core.mjs','core.js'));
+  assert.equal(await readFile(path.join(root,'assets/app.mjs'),'utf8'), module);
+  assert.equal(await readFile(path.join(root,'index.html'),'utf8'), html);
 }));
 test('editor metadata inside data is neither read nor published', () => fixture(async root => {
   await mkdir(path.join(root,'data/klasa-4/historia/temat/.idea'));

@@ -6,6 +6,7 @@ Wyłącznie zawartość katalogu `dist/` wygenerowanego przez `npm run build`. S
 
 ```text
 dist/
+
 ├── .nojekyll
 ├── index.html
 ├── assets/
@@ -34,13 +35,21 @@ Przenieś zawartość `dist/` na hosting statyczny, zachowując ścieżki i wiel
 Hosting powinien:
 - obsługiwać HTTPS;
 - udostępniać `index.html` jako stronę katalogu;
-- zwracać poprawne typy MIME dla `.mjs` (`text/javascript` albo `application/javascript`), CSS, SVG i JSON;
+- zwracać poprawne typy MIME dla `.js` (`text/javascript` albo `application/javascript`), CSS, SVG i JSON;
 - zwracać 404 dla brakujących plików, a nie przekierowywać żądań JSON na HTML;
 - nie wymagać przepisywania tras jak w routerze SPA — Kumilo nie używa takich tras.
 
 Nie wgrywaj całego repozytorium. Samo ignorowanie pliku przez Git nie zabezpiecza przed jego udostępnieniem na źle skonfigurowanym serwerze HTTP.
 
 Plik `.nojekyll` ułatwia publikowanie bez przetwarzania przez Jekyll. Nie jest konfiguracją wdrożenia GitHub Pages. Workflow CI jedynie buduje i przechowuje artefakt — docelowy hosting i ewentualny workflow wdrożeniowy trzeba wybrać przed faktyczną publikacją.
+
+### Apache / OVH: ekran „Sowa otwiera bibliotekę…”
+
+Na kumilo.pl stwierdzono brak nagłówka `Content-Type` dla `.mjs`: HTTP 200 nie wystarcza, a przeglądarka odrzuca takie moduły. Próba ustawienia typu przez `.htaccess` nie przyniosła potwierdzonej zmiany na serwerze.
+
+Paczka nie zależy już od konfiguracji tego rozszerzenia: build zapisuje źródłowe moduły `.mjs` jako `.js`, poprawia lokalne importy i odwołanie w `index.html`. Źródła pozostają bez zmian. Nie publikuje konfiguracji `.htaccess` i nie wymaga jej nadpisywania.
+
+Wgraj nowy `dist/index.html` i zawartość `dist/assets/` do `/www/`, zachowując istniejącą konfigurację hostingu. Stare `.mjs` nie są już używane przez nowy HTML. Sprawdź `curl -I https://kumilo.pl/assets/app.js`: oczekiwany typ to `text/javascript` albo `application/javascript` (opcjonalnie z kodowaniem). Odśwież stronę z pominięciem pamięci podręcznej. Nie wyłączaj zabezpieczeń MIME przeglądarki.
 
 ## Kontrola po wgraniu
 

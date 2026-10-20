@@ -1,0 +1,165 @@
+/* Shared learning/assessment workspace, based on the approved task-card mockup. */
+.work-session{background:#f0edfc}
+.work-session .wrap{width:min(1340px,calc(100% - 80px))}
+.work-session .header{display:grid;grid-template-columns:auto 1fr auto auto;gap:20px;padding:24px 0 28px}
+.work-session .brand{font-size:34px;gap:6px}
+.work-session .brand .wordmark>span{color:inherit}
+.work-session .brand img{width:56px;height:50px}
+.session-context{justify-self:center;color:var(--ink);font-size:17px;text-align:center}
+.session-count{font-size:16px;white-space:nowrap;color:var(--ink)}
+.work-session #privacy-button{width:44px;height:44px;min-height:44px;padding:0;font-size:0;text-decoration:none;border:1px solid #dcd6ef;border-radius:50%;background:#ffffff80}
+.work-session #privacy-button::after{content:'⋯';font-size:24px;line-height:1}
+.work-session .note{display:none}
+.work-session .work-activity{width:100%;max-width:none;margin:0 0 30px;animation:none!important}
+.session-heading{display:flex;align-items:center;gap:48px;margin:10px 16px 28px}
+.session-heading h2{flex:1;min-width:0;font-size:clamp(23px,2.4vw,31px);line-height:1.25;font-weight:800;letter-spacing:-.6px}
+.journey-track{display:flex;align-items:center;justify-content:space-between;position:relative;gap:8px;width:44%;flex:none;isolation:isolate;padding:4px 0}
+.journey-track::before{content:'';position:absolute;left:0;right:0;top:50%;height:3px;background:linear-gradient(to right,var(--purple) 0%,var(--purple) var(--journey-progress),#d9d2ee var(--journey-progress),#d9d2ee 100%);z-index:-1}
+.journey-dot{display:block;width:17px;height:17px;border-radius:50%;background:#d9d2ee;flex:none}
+.journey-dot.past{background:var(--purple)}
+.journey-dot.current{width:25px;height:25px;background:#f0edfc;border:4px solid var(--purple);box-shadow:0 0 0 3px #f0edfc}
+.work-activity .question-card{display:flex;flex-direction:column;padding:38px 42px 28px;border:0;border-radius:25px;background:white;box-shadow:0 12px 48px #6550bc08;min-height:540px}
+.question-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,270px);gap:24px;align-items:start;margin-bottom:32px}
+.work-activity .question-top h1{font-size:clamp(28px,3.3vw,45px);line-height:1.15;letter-spacing:-1.25px;font-weight:850;color:#20164c}
+.question-instruction{font-size:19px;line-height:1.55;margin-top:14px;max-width:76ch;color:#4c466c}
+.task-tip{display:flex;align-items:center;gap:12px;background:#f5f1fd;padding:16px 18px;border-radius:16px;font-size:14px;line-height:1.5;color:#4d3f83}
+.task-tip svg,.hint-button svg{width:22px;height:27px;flex:none}
+.question-meta{display:flex;justify-content:space-between;gap:16px;color:var(--muted);font-size:13px;margin:-14px 0 20px}
+.work-activity #task-area{min-width:0;margin-bottom:24px}
+.task-controls{display:grid;grid-template-columns:minmax(190px,1fr) minmax(160px,1fr) minmax(190px,1fr);align-items:start;gap:20px;border-top:1px solid #ece8f6;padding-top:24px;margin-top:30px}
+.work-activity .question-card>.task-controls{margin-top:auto}
+.task-secondary{display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap}
+.work-activity .task-secondary>.secondary,.work-activity #task-area .footer-actions>.secondary{border-radius:14px;min-height:50px}
+.work-activity .hint-button{display:flex;align-items:center;justify-content:center;gap:12px;min-height:58px;padding:12px 20px;border:1.5px solid var(--purple);border-radius:15px;background:white;color:#382574;font-weight:700;font-size:16px;box-shadow:none}
+.hint-button[aria-expanded="true"]{background:#f4efff}
+.work-activity .task-secondary>.learning-loot{font-size:12px;display:flex;gap:4px;align-items:center;min-height:58px;margin:0;padding:0 5px;color:#947435}
+.task-progress{align-self:center;justify-self:center;text-align:center;font-size:16px;color:#4c466c;line-height:1.5}
+.task-progress strong{color:#241b4c;font-weight:800}
+.task-primary-group{justify-self:end;display:grid;gap:7px;text-align:center;min-width:195px}
+.work-activity .task-primary-group .primary{min-height:58px;border-radius:15px;font-size:18px;font-weight:750;padding:13px 25px;box-shadow:none;width:100%}
+.work-activity .task-primary-group .primary:disabled{background:#eee9fb;color:#a39ab8;opacity:1;box-shadow:none;border-color:transparent}
+.task-primary-group small{color:#8b849e;font-size:12px;line-height:1.5}
+.task-hint-panel{padding:20px 24px;border-radius:17px;background:#f8f5ff;border:1px solid #e5dcf7;margin:0 0 24px;font-size:16px;color:#51476e}
+.task-hint-panel>.lesson-notes{background:white;margin:16px 0 0;border-color:#e8e0f4}
+.work-activity .feedback{margin:24px 0 0;font-size:17px;border-radius:16px}
+.work-activity .reward-toast{margin:0 0 24px}
+.work-activity .reward-toast strong{font-size:17px}
+.work-activity .question-illustration{width:88px;height:88px;margin:0 auto 20px}
+.work-activity .options{display:grid;grid-template-columns:1fr;gap:14px}
+.work-activity .option{display:flex;align-items:center;padding:20px 24px;min-height:78px;gap:18px;border:2px solid #e3ddf0;border-radius:16px;background:#f7f4fd;text-align:left;font-size:19px;line-height:1.45;box-shadow:none}
+.work-activity .option.selected{border-color:var(--purple);background:#eee8ff;color:#32225f}
+.work-activity .option .letter{min-width:30px;height:30px;flex:none;display:grid;place-items:center;border-radius:8px;background:white;color:var(--purple);border:1px solid #dcd2f1;font-size:18px}
+.work-activity .option .task-icon{width:58px;height:58px}
+.work-activity .objects{gap:18px}
+.work-activity .object{border:2px solid #e5deef;background:#f5f1fc;border-radius:18px;padding:24px 20px;font-size:18px;box-shadow:none}
+.work-activity .object.opened{background:#eaf8f0;border-color:#49b58f}
+.work-activity .object .discovery-content{display:block;font-size:15px;line-height:1.65;font-weight:400;color:#4c466c;overflow-wrap:anywhere}
+.work-activity .object img.task-icon{width:110px;height:110px;margin-bottom:14px}
+.work-activity .flashcard{background:#f7f3ff;border:2px solid #e5dbf6;border-radius:20px;min-height:280px;max-width:840px;margin:auto;padding:30px}
+.work-activity .flashcard strong{font-size:25px;max-width:30ch;line-height:1.4}
+.work-activity .sort-items{gap:14px}
+.work-activity .sort-row{padding:20px 24px;border:2px solid #e5dfef;border-radius:16px;background:#f9f7fe;gap:20px;align-items:center}
+.work-activity .sort-row>span{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,36%);align-items:center;gap:24px;flex:1}
+.work-activity .sort-row b{font-size:18px;line-height:1.45}
+.work-activity .sort-row select{margin:0;min-height:50px;background:white;border-radius:11px}
+.work-activity .timeline{gap:13px;margin-top:18px}
+.work-activity .time-card{background:#f7f4fd;border:2px solid #e4dcf2;border-radius:16px;padding:16px 20px;gap:18px;min-height:88px;box-shadow:none}
+.work-activity .time-card b{font-size:19px;line-height:1.4}
+.work-activity .drag-handle{background:#ece5fb;color:#69529c}
+.work-activity .move button{background:white;border:1px solid #ded4ee;min-width:44px;height:44px;border-radius:10px}
+.work-activity .field{font-size:17px;margin:20px auto;max-width:680px;width:100%}
+.work-activity .field input{background:#faf8ff;border:2px solid #cfc1e5;border-radius:16px;padding:18px 22px;min-height:70px;font-size:25px;margin-top:12px}
+.work-activity .pair-grid{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(40px,10vw,145px);align-items:stretch;isolation:isolate}
+.work-activity .pair-column{display:grid;grid-template-rows:auto;grid-auto-rows:1fr;gap:16px;position:relative;z-index:2;min-width:0}
+.work-activity .pair-column>p{font-size:15px;letter-spacing:.5px;color:#625678;font-weight:750;min-height:27px;margin:0 0 1px;text-align:left;text-transform:uppercase}
+.work-activity .pair{position:relative;display:flex;align-items:center;justify-content:flex-start;gap:16px;text-align:left;min-height:108px;width:100%;padding:22px 34px 22px 20px;border:2px solid #e3dfeb;border-radius:16px;background:#f3effc;color:#23194c;font-size:19px;font-weight:650;line-height:1.4;box-shadow:none;opacity:1}
+.work-activity .pair[data-side="right"]{background:#fff}
+.work-activity .pair .task-icon{width:62px;height:62px}
+.work-activity .pair.picked{background:#eee7ff;border-color:#8d70cc;box-shadow:0 0 0 3px #eee7ff}
+.work-activity .pair.matched{background:#e8faf2;border-color:#39b78c;color:#1b473b;animation:none}
+.work-activity .pair.linked{background:#f0eaff;border-color:#9b83d1;color:#32205f}
+.work-activity .pair-number,.work-activity .pair-badge{position:absolute;right:8px;top:8px;display:grid;place-items:center;width:25px;height:25px;border-radius:50%;background:#228563;color:white;font-size:14px;font-weight:800;line-height:1}
+.work-activity [data-mode="test"] .pair-number,.work-activity [data-mode="test"] .pair-badge{background:var(--purple)}
+.work-activity .pair-lines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:visible}
+.work-activity .pair-lines path{fill:none;stroke:#31ad83;stroke-width:3;stroke-linecap:round}
+.work-activity .pair-lines circle{fill:#31ad83}
+.work-activity [data-mode="test"] .pair-lines path{stroke:#8c6ac5}
+.work-activity [data-mode="test"] .pair-lines circle{fill:#8c6ac5}
+.work-activity .pair-connections{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:16px 0 0;padding:0}
+.work-activity .pair-connections li{font-size:12px;padding:5px 10px;background:#f4f0fc;border-radius:10px;line-height:1.5}
+.work-activity .pair-connections .text-button{font-size:12px;min-height:36px;padding:3px 8px}
+.work-activity .tiny-count{font-size:13px;color:#7e738f}
+.work-activity #task-area:has(.timeline)>.small:first-child{display:none}
+@media(hover:hover){.work-activity .pair:hover:not(:disabled){transform:none;border-color:#b19bd5}.work-activity .pair.matched:hover{border-color:#39b78c}}
+@media(max-width:1050px){
+  .work-session .wrap{width:calc(100% - 48px)}
+  .question-top{grid-template-columns:1fr}
+  .task-tip{max-width:none;justify-self:start;padding:12px 16px;font-size:13px}
+  .question-top{gap:18px;margin-bottom:26px}
+  .work-activity .question-card{padding:30px}
+  .session-heading{gap:25px;margin-left:4px;margin-right:4px}
+  .task-controls{grid-template-columns:minmax(150px,1fr) 1fr minmax(170px,1fr);gap:12px}
+  .task-primary-group{min-width:170px}
+  .work-activity .pair{font-size:17px;padding:20px 28px 20px 16px;gap:10px}
+  .work-activity .pair .task-icon{width:50px;height:50px}
+}
+@media(max-width:650px){
+  .work-session .wrap{width:calc(100% - 28px)}
+  .work-session .header{grid-template-columns:1fr auto auto;gap:10px;padding:16px 0 14px}
+  .work-session .brand{font-size:27px;gap:1px}
+  .work-session .brand img{width:44px;height:40px}
+  .session-context{grid-row:2;grid-column:1/-1;justify-self:start;font-size:12px;text-align:left;color:#76698d}
+  .session-count{font-size:12px}
+  .work-session #privacy-button{width:44px;height:44px;min-height:44px}
+  .session-heading{display:flex;flex-direction:column;gap:17px;align-items:stretch;margin:10px 3px 21px}
+  .session-heading h2{font-size:23px;letter-spacing:-.4px}
+  .journey-track{width:100%;gap:4px}
+  .journey-dot{width:12px;height:12px}
+  .journey-dot.current{width:20px;height:20px;border-width:3px}
+  .work-activity .question-card{padding:24px 17px 20px;border-radius:20px;min-height:0}
+  .work-activity .question-top h1{font-size:29px;letter-spacing:-.8px;line-height:1.16}
+  .question-instruction{font-size:16px;line-height:1.55;margin-top:13px}
+  .task-tip{font-size:12px;padding:12px 13px;border-radius:12px;gap:9px}
+  .task-tip svg{width:18px;height:22px}
+  .task-controls{grid-template-columns:1fr 1fr;gap:15px 12px;padding-top:20px;margin-top:24px}
+  .task-progress{grid-column:1/-1;grid-row:1;font-size:14px}
+  .work-activity .hint-button{min-height:50px;padding:10px 13px;font-size:14px;gap:7px;width:100%}
+  .hint-button svg{width:17px;height:22px}
+  .task-primary-group{min-width:0;width:100%}
+  .work-activity .task-primary-group .primary{font-size:15px;min-height:50px;padding:11px 14px}
+  .task-primary-group small{font-size:11px}
+  .task-secondary{gap:7px}
+  .work-activity .task-secondary>.learning-loot{min-height:0;font-size:11px}
+  .work-activity .option{min-height:68px;font-size:16px;padding:16px;gap:12px;border-radius:14px}
+  .work-activity .option .task-icon{width:44px;height:44px}
+  .work-activity .objects{grid-template-columns:1fr;gap:12px}
+  .work-activity .object{display:grid;grid-template-columns:65px 1fr;text-align:left;column-gap:15px;padding:16px;min-height:110px}
+  .work-activity .object img.task-icon{width:65px;height:65px;grid-row:1/3;margin:0}
+  .work-activity .object small{grid-column:2;font-size:12px}
+  .work-activity .object .check{position:absolute;right:10px;top:10px}
+  .work-activity .flashcard{min-height:270px;padding:24px 18px}
+  .work-activity .flashcard strong{font-size:22px}
+  .work-activity .sort-row{padding:16px 14px;gap:10px}
+  .work-activity .sort-row>span{display:block}
+  .work-activity .sort-row select{margin-top:12px;font-size:14px;width:100%}
+  .work-activity .sort-row b{font-size:15px}
+  .work-activity .time-card{gap:8px;padding:12px 9px}
+  .work-activity .time-card b{font-size:15px}
+  .work-activity .move{flex-direction:row;gap:5px}
+  .work-activity .time-label b{overflow-wrap:anywhere}
+  .work-activity .time-label{flex-direction:row;gap:8px;align-items:center}
+  .work-activity .time-label .task-icon{width:35px;height:35px}
+  .work-activity .field input{font-size:22px;min-height:60px;padding:14px 16px}
+  .work-activity .pair-grid{column-gap:29px}
+  .work-activity .pair-column{gap:11px}
+  .work-activity .pair-column>p{font-size:10px;line-height:1.4;min-height:29px;letter-spacing:.2px}
+  .work-activity .pair{flex-direction:column;align-items:flex-start;justify-content:center;gap:9px;font-size:14px;min-height:112px;padding:23px 10px 15px;border-radius:12px;overflow-wrap:anywhere}
+  .work-activity .pair .task-icon{width:38px;height:38px}
+  .work-activity .pair .task-icon+span{font-size:14px}
+  .work-activity .pair-number,.work-activity .pair-badge{width:20px;height:20px;font-size:11px;top:5px;right:5px}
+  .work-activity .pair-lines path{stroke-width:2}
+  .work-activity .feedback{font-size:15px}
+  .task-hint-panel{padding:17px;font-size:14px}
+}
+@media print{.session-context,.session-count,.session-heading,.task-controls,.task-tip{display:none!important}}
+@media(max-width:360px){.work-activity .move{flex-direction:column}}

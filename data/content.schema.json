@@ -321,6 +321,10 @@
                         "back": {
                           "type": "string",
                           "minLength": 1
+                        },
+                        "icon": {
+                          "type": "string",
+                          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
                         }
                       },
                       "required": [
@@ -352,6 +356,10 @@
                   },
                   "type": {
                     "const": "single-choice"
+                  },
+                  "icon": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
                   },
                   "title": {
                     "type": "string",
@@ -514,6 +522,14 @@
                   "type": {
                     "const": "matching"
                   },
+                  "leftLabel": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "rightLabel": {
+                    "type": "string",
+                    "minLength": 1
+                  },
                   "title": {
                     "type": "string",
                     "minLength": 1
@@ -556,6 +572,10 @@
                         "right": {
                           "type": "string",
                           "minLength": 1
+                        },
+                        "leftIcon": {
+                          "type": "string",
+                          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
                         }
                       },
                       "required": [
@@ -781,6 +801,10 @@
                   "type": {
                     "const": "short-answer"
                   },
+                  "icon": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                  },
                   "title": {
                     "type": "string",
                     "minLength": 1
@@ -903,6 +927,21 @@
           "minItems": 1,
           "uniqueItems": true
         },
+        "learningVariants": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "additionalProperties": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+            }
+          }
+        },
         "mindMap": {
           "$ref": "#/$defs/mindNode"
         },
@@ -941,6 +980,25 @@
                   ]
                 },
                 "minItems": 1
+              },
+              "draw": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "lessonId": {
+                      "type": "string",
+                      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                    },
+                    "count": {
+                      "type": "integer",
+                      "minimum": 1
+                    }
+                  },
+                  "required": ["lessonId", "count"]
+                }
               },
               "feedback": {
                 "const": "after-submit"

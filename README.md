@@ -29,6 +29,8 @@ Wspólna sowa to logo i przewodniczka całego systemu. Towarzyszy uczniowi od wy
 
 Ukończone aktywności zostają w pamięci przeglądarki. Przycisk „Kontynuuj” prowadzi do pierwszej nieukończonej aktywności, nie do częściowo rozwiązanej odpowiedzi.
 
+Za ukończone aktywności uczeń zbiera gwiazdki i trzy odznaki wyprawy. Karty i fiszki reagują na odkrywanie, a sukces ma krótką animację. Powtórki nie nabijają kolejnych gwiazdek; nagrody oznaczają ukończenie aktywności, nie ocenę opanowania materiału. Ustawienie ograniczenia ruchu wyłącza animacje, zachowując czytelne nagrody.
+
 ### Dziewięć sposobów na odkrywanie
 
 | Aktywność | Co robi uczeń |
@@ -45,7 +47,7 @@ Ukończone aktywności zostają w pamięci przeglądarki. Przycisk „Kontynuuj�
 
 ### Dostępny materiał
 
-Wersja **0.1.0** zawiera dział **„Detektywi przeszłości”** dla klasy IV z historii: siedem lekcji, dziewięć aktywności na ścieżce nauki i test z 16 pytaniami. Zakres obejmuje podstawy poznawania przeszłości, źródła historyczne, rodzinę i porządek czasu.
+Wersja **0.1.0** zawiera dział **„Detektywi przeszłości”** dla klasy IV z historii: siedem lekcji i bank 161 zadań — 77 do nauki oraz 84 do testów. Wyprawa ma dziewięć etapów z losowanymi wariantami. Każdy test losuje 16 pytań z zachowaniem pokrycia wszystkich siedmiu lekcji i omija pytania z poprzedniego zatwierdzonego podejścia. Zakres obejmuje podstawy poznawania przeszłości, źródła historyczne, rodzinę i porządek czasu. Szczegóły: [bank i zasady losowania](docs/question-bank.md).
 
 System obsługuje kolejne klasy, przedmioty i tematy przez wspólny format JSON. Nowe treści nie wymagają tworzenia osobnego interfejsu dla każdego działu.
 
@@ -132,9 +134,9 @@ Pełny opis pól i typów zadań znajduje się w [dokumentacji formatu danych](d
 
 ## Testy i publikacja
 
-`npm test` uruchamia testy JavaScript, testy Python i walidację rzeczywistych danych. Scenariusze w `tests/browser-checks.mjs` oraz `tests/review-regressions.mjs` wymagają osobnego uruchomienia w przeglądarce i nie są częścią tego polecenia ani obecnego CI. Obsługę dotyku trzeba też sprawdzić na fizycznym telefonie.
+`npm test` uruchamia testy JavaScript, testy Python i walidację rzeczywistych danych. Scenariusze w `tests/browser-checks.mjs`, `tests/review-regressions.mjs`, `tests/rewards-browser.mjs` i `tests/mistakes-browser.mjs` wymagają osobnego uruchomienia w przeglądarce i nie są częścią tego polecenia ani obecnego CI. Obsługę dotyku trzeba też sprawdzić na fizycznym telefonie.
 
-`npm run build` przygotowuje `dist/` z aplikacją, zasobami, danymi i plikiem `.nojekyll`. **Publikuj wyłącznie zawartość `dist/`, nigdy cały katalog roboczy.** Hosting musi obsługiwać HTTP(S) i poprawne typy MIME, w tym dla `.mjs`. Strona może działać w katalogu głównym lub podkatalogu, np. `/kumilo/`.
+`npm run build` przygotowuje `dist/` z aplikacją, zasobami, danymi i plikiem `.nojekyll`. Moduły źródłowe `.mjs` zapisuje jako `.js`, aktualizując odwołania w HTML i importach, aby paczka nie wymagała specjalnej konfiguracji `.mjs` na hostingu. **Publikuj wyłącznie zawartość `dist/`, nigdy cały katalog roboczy.** Hosting musi obsługiwać HTTP(S) i poprawne typy MIME dla JavaScript, CSS, SVG i JSON. Strona może działać w katalogu głównym lub podkatalogu, np. `/kumilo/`.
 
 Workflow [check.yml](.github/workflows/check.yml) uruchamia testy i buduje artefakt `kumilo-static` po pushu do `main`, przy pull requeście lub ręcznie. Nie wdraża strony i nie tworzy wydania.
 

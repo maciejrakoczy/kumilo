@@ -69,16 +69,18 @@ Treść nie określa, czy wynik pokazać natychmiast. O tym decyduje tryb aplika
 | type | Pola charakterystyczne | Zasada |
 |---|---|---|
 | `discovery` | `items`: id, text, explanation, opcjonalne icon | Odkrywanie kart, bez automatycznej oceny testowej. |
-| `flashcards` | `cards`: id, front, back | Fiszki, bez automatycznej oceny testowej. |
+| `flashcards` | `cards`: id, front, back, opcjonalne icon | Fiszki, bez automatycznej oceny testowej. |
 | `single-choice` | `options`, `correctOptionId` | Dokładnie jedna wskazana opcja. |
 | `multiple-choice` | `options`, `correctOptionIds` | Zbiór zaznaczeń musi odpowiadać zbiorowi poprawnych ID. |
-| `matching` | `pairs`: id, left, right | Połączone strony należą do tej samej pary. |
+| `matching` | `pairs`: id, left, right, opcjonalne leftIcon; opcjonalne `leftLabel`, `rightLabel` | Połączone strony należą do tej samej pary. Etykiety określają nagłówki kolumn, bez zmiany klucza odpowiedzi. |
 | `sorting` | `categories`, `items` z categoryId i explanation | Każdy element trafia do jednej wskazanej kategorii. |
 | `ordering` | `items`, `correctOrder` | Poprawna odpowiedź to kolejność ID elementów. |
 | `short-answer` | `acceptedAnswers`, `normalization` | Jedna z jawnie dopuszczonych odpowiedzi. |
 | `number-answer` | `answer`, `tolerance`, `unit` | Wartość liczbowa w jednostce podanej obok pola. |
 
-Zwykłe `items` i `options` zawierają `id`, `text` i ewentualnie `icon`. `icon` jest symbolicznym identyfikatorem, np. `letter`, a nie ścieżką do pliku albo kodem SVG. Brak znanej ikonki nie może uniemożliwiać rozwiązania zadania — opis tekstowy jest zawsze dostępny. Obsługa obrazków lub dźwięku wymaga późniejszego, jawnego rozszerzenia kontraktu.
+Zwykłe `items` i `options` zawierają `id`, `text` i ewentualnie `icon`. `icon` jest symbolicznym identyfikatorem, np. `letter`, a nie ścieżką do pliku albo kodem SVG. Fiszki mogą mieć `cards[].icon`; w parach `pairs[].leftIcon` ilustruje tylko lewą stronę, bez wizualnego wskazywania pary po prawej. Zadania `single-choice` i `short-answer` dopuszczają również `icon` na poziomie zadania (ilustracja przed odpowiedziami).
+
+Zamknięty katalog `assets/illustrations.mjs` mapuje identyfikatory na lokalne SVG w `assets/illustrations/`. Brak znanej ikonki nie może uniemożliwiać rozwiązania zadania — opis tekstowy jest zawsze dostępny. Grafiki są dekoracyjne i nie zależą od poprawności odpowiedzi. Dowolne ścieżki obrazów, zewnętrzne adresy lub dźwięk wymagałyby osobnego rozszerzenia kontraktu.
 
 ### Przykład: pary
 
@@ -114,6 +116,8 @@ Dla liczb warunek to różnica bezwzględna nie większa niż `tolerance`. Zero 
 
 `learningPath` to uporządkowana lista ID zadań. Przykładowo po odkrywaniu źródeł następuje ich sortowanie. W przyszłości można zbudować kilka ścieżek, ale wersja 1.0 nie definiuje warunkowych rozgałęzień ani algorytmu adaptacyjnego.
 
+Opcjonalne `learningVariants` mapuje ID kotwicy z `learningPath` na niepustą listę unikalnych ID **nowych alternatyw**, np. `{"rzymskie-pary": ["rzymskie-pary-inne"]}`. Wszystkie zadania muszą istnieć w `tasks`. Nie wpisujemy do listy samej kotwicy ani żadnego innego zadania z `learningPath`: renderer dodaje kotwicę do puli automatycznie. Wariant może należeć tylko do jednej kotwicy i musi mieć ten sam zbiór `lessonIds` co ona (kolejność nie ma znaczenia). Losowanie zmienia ćwiczenie, ale postęp i gwiazdki pozostają przypisane do stabilnej kotwicy — nie tworzymy nowych kroków ścieżki. Bez tego pola ścieżka działa jak dotąd.
+
 ### Mapa myśli
 
 `mindMap` jest drzewem. Każdy węzeł ma `id`, `title`, `text`, `children[]`. Liść ma pustą listę dzieci. Układ, kolory i rozwijanie gałęzi są odpowiedzialnością interfejsu.
@@ -123,6 +127,10 @@ Dla liczb warunek to różnica bezwzględna nie większa niż `tolerance`. Zero 
 Definicja testu ma `id`, `title`, `questions[]`, `feedback`, `scoring`, `shuffleQuestions`, `timeLimitSeconds`.
 
 Każde pytanie wskazuje `taskId` i dodatnią całkowitą liczbę `points`. Nie kopiujemy zadania do testu. Można ponownie używać zadań w różnych testach; zalecamy odrębne przykłady naukowe i sprawdzające, aby ograniczyć odtwarzanie zapamiętanych odpowiedzi.
+
+`questions` jest bankiem wszystkich dopuszczonych kandydatów, a nie deklaracją liczby pytań wyświetlanych uczniowi. Opcjonalne `draw` określa kwoty losowania bez powtórzeń, np. `[{"lessonId": "wieki-i-liczby-rzymskie", "count": 2}]`. Lista musi być niepusta, `lessonId` musi wskazywać istniejącą lekcję i nie może się powtarzać, a `count` jest dodatnią liczbą całkowitą. Obiekty grup zawierają wyłącznie te dwa pola.
+
+Przy `draw` każdy kandydat z `questions` musi przez swoje `lessonIds` należeć do **dokładnie jednej** wskazanej grupy: odrzucamy zarówno niepokryte pytania, jak i nakładanie się grup. Dodatkowe lekcje niewymienione w `draw` są dozwolone. Każda grupa musi mieć co najmniej `count` kandydatów; wszyscy kandydaci w tej samej grupie muszą mieć jednakowe `points` (różne grupy mogą mieć różną punktację). Dzięki temu maksymalny wynik jest znany przed losowaniem: suma `count × points` po grupach, a liczba pokazywanych pytań to suma kwot. Nie zmieniamy struktury wpisów `questions`: nadal są to tylko `{taskId, points}`. Bez `draw` test obejmuje cały bank, zgodnie z dotychczasowym zachowaniem; `shuffleQuestions` nadal steruje kolejnością, nie kwotami.
 
 - `feedback`: w wersji 1.0 wyłącznie `after-submit`;
 - `scoring`: `all-or-nothing` — komplet poprawnej odpowiedzi daje całą pulę punktów, brak punktów częściowych;
@@ -147,6 +155,8 @@ JSON Schema Draft 2020-12 sprawdza pola, typy, wymagane wartości, wersję kontr
 - istnienie poprawnych opcji i kategorii;
 - kompletność kolejności;
 - brak zadań nieocenianych w testach;
+- poprawność kotwic i wariantów nauki oraz zgodność ich zbiorów lekcji;
+- unikalność grup losowania, pełne i rozłączne pokrycie banku, dostępność kwot i jednolitą punktację w grupach;
 - zgodność katalogu z paczkami i folderami;
 - brak tematów pominiętych w katalogu;
 - brak ścieżek wychodzących poza `data/`;

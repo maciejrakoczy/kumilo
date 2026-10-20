@@ -1,4 +1,4 @@
-import {copyFile, lstat, mkdir, mkdtemp, readdir, rename, rm, writeFile} from 'node:fs/promises';
+import {copyFile, lstat, mkdir, mkdtemp, readFile, readdir, rename, rm, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 
@@ -27,21 +27,27 @@ export async function buildSite(root = projectRoot) {
   const files = [];
   for (const name of ['index.html', 'assets', 'data']) await collect(root, name, files);
   if (!files.includes(path.join('data','catalog.json'))) throw new Error('Brak data/catalog.json.');
+  const publishedFiles = files.map(name => name.replace(/\.mjs$/, '.js'));
+  if (new Set(publishedFiles).size !== publishedFiles.length) throw new Error('Kolizja nazw modułów .mjs i .js w paczce publikacyjnej.');
   const outDir = path.join(root, 'dist');
   const output = await lstat(outDir).catch(error => { if (error.code !== 'ENOENT') throw error; return null; });
   if (output && (!output.isDirectory() || output.isSymbolicLink())) throw new Error('dist musi być zwykłym katalogiem, nie plikiem ani dowiązaniem.');
   const staging = await mkdtemp(path.join(root, '.kumilo-build-'));
   try {
     for (const name of files) {
-      const destination = path.join(staging, name);
+      const destination = path.join(staging, name.replace(/\.mjs$/, '.js'));
       await mkdir(path.dirname(destination), {recursive:true});
-      await copyFile(path.join(root, name), destination);
+      if (name === 'index.html' || name.endsWith('.mjs')) {
+        const source = await readFile(path.join(root, name), 'utf8');
+        await writeFile(destination, source.replace(/(\.\.?\/[^'"\s<>]+)\.mjs(?=['"])/g, '$1.js'));
+      } else await copyFile(path.join(root, name), destination);
     }
     await writeFile(path.join(staging, '.nojekyll'), '');
+
     await rm(outDir, {recursive:true, force:true});
     await rename(staging, outDir);
   } finally { await rm(staging, {recursive:true, force:true}); }
-  return {outDir, files:[...files, '.nojekyll']};
+  return {outDir, files:[...publishedFiles, '.nojekyll']};
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {

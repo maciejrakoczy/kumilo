@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { validateCatalog, validateTopic, catalogEntries, evaluateTask, gradeTest, createProgressStore, fetchJson } from '../assets/core.mjs';
+import {drawTest} from '../assets/selection.mjs';
 
 const catalog = JSON.parse(await readFile(new URL('../data/catalog.json', import.meta.url)));
 const topic = JSON.parse(await readFile(new URL('../data/klasa-4/historia/detektywi-przeszlosci/topic.json', import.meta.url)));
@@ -157,9 +158,9 @@ test('every task type rejects missing type-specific required fields', () => {
 
 test('complete real test scores 100 percent and stale full results are discarded', () => {
   const answers = Object.fromEntries(topic.tasks.map(t => [t.id,
-    t.type === 'single-choice' ? t.correctOptionId : t.type === 'ordering' ? t.correctOrder : t.type === 'short-answer' ? t.acceptedAnswers[0] : String(t.answer),
+    t.type === 'single-choice' ? t.correctOptionId : t.type === 'multiple-choice' ? t.correctOptionIds : t.type === 'matching' ? Object.fromEntries(t.pairs.map(p => [p.id, p.id])) : t.type === 'sorting' ? Object.fromEntries(t.items.map(i => [i.id, i.categoryId])) : t.type === 'ordering' ? t.correctOrder : t.type === 'short-answer' ? t.acceptedAnswers[0] : String(t.answer),
   ]));
-  const result = gradeTest(topic, topic.tests[0], answers);
+  const result = gradeTest(topic, drawTest(topic, topic.tests[0]), answers);
   assert.equal(result.percent, 100); assert.equal(result.points, result.maxPoints);
   const store = createProgressStore(memoryStorage());
   store.write('x', { ...defaultProgress(), lastResult: result });

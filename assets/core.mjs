@@ -85,7 +85,11 @@ export function validateTopic(doc) {
         answers.forEach(ref => check(task.options.some(option => option.id === ref), p, `nieznana opcja ${ref}`));
         break;
       }
-      case 'matching': rows(task.pairs, `${p}.pairs`, ['left', 'right'], 2); break;
+      case 'matching':
+        rows(task.pairs, `${p}.pairs`, ['left', 'right'], 2);
+        if (own(task, 'leftLabel')) text(task.leftLabel, `${p}.leftLabel`);
+        if (own(task, 'rightLabel')) text(task.rightLabel, `${p}.rightLabel`);
+        break;
       case 'sorting':
         rows(task.categories, `${p}.categories`, ['text'], 2);
         rows(task.items, `${p}.items`, ['text', 'explanation'], 2);
@@ -110,6 +114,20 @@ export function validateTopic(doc) {
   const tasks = new Map(doc.tasks.map(task => [task.id, task]));
   ids(doc.learningPath, 'learningPath');
   doc.learningPath.forEach(ref => check(tasks.has(ref), 'learningPath', `nieznane zadanie ${ref}`));
+  if (own(doc, 'learningVariants')) {
+    record(doc.learningVariants, 'learningVariants');
+    const assigned = new Set();
+    for (const [anchor, variants] of Object.entries(doc.learningVariants)) {
+      check(doc.learningPath.includes(anchor), 'learningVariants', `nieznany etap ${anchor}`);
+      ids(variants, `learningVariants.${anchor}`);
+      for (const ref of variants) {
+        check(tasks.has(ref) && !doc.learningPath.includes(ref) && !assigned.has(ref), anchor, `niepoprawny lub powtórzony wariant ${ref}`);
+        const lessonIds = tasks.get(anchor).lessonIds, candidate = tasks.get(ref).lessonIds;
+        check(candidate.length === lessonIds.length && candidate.every(id => lessonIds.includes(id)), ref, 'wariant dotyczy innych lekcji');
+        assigned.add(ref);
+      }
+    }
+  }
   const nodeIds = [], visited = new Set();
   function visit(node) {
     record(node, 'mindMap'); check(!visited.has(node), 'mindMap', 'mapa nie jest drzewem'); visited.add(node);
@@ -126,6 +144,20 @@ export function validateTopic(doc) {
       check(scoreable.has(tasks.get(question.taskId).type), test.id, 'zadanie nie podlega ocenie');
     });
     unique(test.questions.map(question => question.taskId), `${test.id}.questions`);
+    if (own(test, 'draw')) {
+      list(test.draw, `${test.id}.draw`);
+      test.draw.forEach(group => {
+        record(group, `${test.id}.draw`); id(group.lessonId, `${test.id}.draw.lessonId`); positive(group.count, `${test.id}.draw.count`);
+        check(lessons.has(group.lessonId), test.id, `nieznana lekcja ${group.lessonId}`);
+      });
+      unique(test.draw.map(group => group.lessonId), `${test.id}.draw`);
+      for (const question of test.questions) check(test.draw.filter(group => tasks.get(question.taskId).lessonIds.includes(group.lessonId)).length === 1, test.id, 'pytanie musi należeć do jednej puli losowania');
+      for (const group of test.draw) {
+        const pool = test.questions.filter(question => tasks.get(question.taskId).lessonIds.includes(group.lessonId));
+        check(pool.length >= group.count, test.id, `za mała pula ${group.lessonId}`);
+        check(pool.every(question => question.points === pool[0].points), test.id, 'punktacja w puli musi być jednakowa');
+      }
+    }
     check(test.feedback === 'after-submit', test.id, 'nieobsługiwany tryb informacji zwrotnej');
     check(test.scoring === 'all-or-nothing', test.id, 'nieobsługiwany sposób oceniania');
     check(typeof test.shuffleQuestions === 'boolean', test.id, 'shuffleQuestions musi być wartością logiczną');
@@ -167,6 +199,18 @@ export function gradeTest(topic, test, answers = {}) {
 }
 
 const emptyProgress = () => ({ completedTaskIds: [], readLessonIds: [], lastTaskId: null, lastResult: null });
+function practiceProgress(value, topic) {
+  if (!object(value)) return {};
+  const selected = [], seen = [];
+  for (const anchor of topic.learningPath) {
+    const variants = topic.learningVariants && own(topic.learningVariants, anchor) ? topic.learningVariants[anchor] : [];
+    const allowed = new Set([anchor, ...variants]);
+    if (object(value.selected) && own(value.selected, anchor) && allowed.has(value.selected[anchor])) selected.push([anchor, value.selected[anchor]]);
+    const history = object(value.seen) && own(value.seen, anchor) ? value.seen[anchor] : null;
+    if (Array.isArray(history)) seen.push([anchor, [...new Set(history.filter(id => allowed.has(id)))]]);
+  }
+  return {practice: {selected: Object.fromEntries(selected), seen: Object.fromEntries(seen)}};
+}
 function validResult(result, topic) {
   if (!object(result) || !Array.isArray(result.results) || !result.results.length) return false;
   const tasks = new Map(topic.tasks.map(task => [task.id, task]));
@@ -200,6 +244,7 @@ export function createProgressStore(storage, key = 'kumilo.progress.v1') {
         completedTaskIds: sanitize(value.completedTaskIds, tasks), readLessonIds: sanitize(value.readLessonIds, lessons),
         lastTaskId: tasks.has(value.lastTaskId) ? value.lastTaskId : null,
         lastResult: validResult(value.lastResult, topic) ? structuredClone(value.lastResult) : null,
+        ...practiceProgress(value.practice, topic),
       };
     },
     write(topicKey, progress) {

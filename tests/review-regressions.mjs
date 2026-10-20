@@ -10,7 +10,8 @@ const wait = async predicate => {
 export async function checkRegression(name) {
   try {
     const topic = await fetch('./data/klasa-4/historia/detektywi-przeszlosci/topic.json').then(r => r.json());
-    const {mountTask} = await import(new URL('./assets/tasks.mjs?review-regressions=2', document.baseURI));
+    const extension = document.querySelector('script[type="module"]').getAttribute('src').endsWith('.js') ? '.js' : '.mjs';
+    const {mountTask} = await import(new URL(`./assets/tasks${extension}`, document.baseURI));
     if (name === 'flashcard-accessibility') {
       const host = document.createElement('section'); document.body.append(host);
       const task = topic.tasks.find(t => t.type === 'flashcards');
@@ -43,8 +44,10 @@ export async function checkRegression(name) {
       } finally { mounted.destroy();host.remove(); }
     }
     if (name === 'review-without-related-activity') {
-      const {validateTopic} = await import(new URL('./assets/core.mjs', document.baseURI));
+      const {validateTopic} = await import(new URL(`./assets/core${extension}`, document.baseURI));
       const fixture = structuredClone(topic);
+      delete fixture.learningVariants;
+      fixture.tests.forEach(test => { delete test.draw; });
       const failedTask = topic.tasks.find(t => t.id === topic.tests[0].questions[0].taskId);
       fixture.learningPath = [topic.learningPath.find(id => !topic.tasks.find(t => t.id === id).lessonIds.some(lesson => failedTask.lessonIds.includes(lesson)))];
       fixture.tests[0].questions = [fixture.tests[0].questions[0]];

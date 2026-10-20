@@ -1,6 +1,9 @@
 import {fetchJson, validateCatalog, validateTopic, catalogEntries, createProgressStore, gradeTest} from './core.mjs';
 import {mountTask} from './tasks.mjs';
-import {escapeHtml as h, button, owl, shuffled} from './ui.mjs';
+import {escapeHtml as h, button, owl, sadOwl} from './ui.mjs';
+import {learningRewards, rewardShelf, celebrate} from './rewards.mjs';
+import {drawTest, drawLearning, testSummary} from './selection.mjs';
+import {activityScreen} from './activity-view.mjs';
 
 const app = document.getElementById('app');
 const catalogUrl = new URL('./data/catalog.json', document.baseURI);
@@ -10,15 +13,20 @@ const store = createProgressStore(storage);
 let catalog, entries = [], selected, topic, progress;
 let view = 'loading', requestId = 0, taskView = null, queue = [], position = 0, reviewing = false;
 let exam = null, student = '', report = null, timer = null, retry = null, reviewLessonIds = [];
+let stopCelebration = () => {};
 const taskById = id => topic.tasks.find(task => task.id === id);
-const currentTask = () => taskById(view === 'exam' ? exam.questions[position].taskId : queue[position]);
+const currentTask = () => {
+  if (view === 'exam') return taskById(exam.questions[position].taskId);
+  const anchor = queue[position], selected = progress.practice?.selected || {};
+  return taskById(Object.hasOwn(selected, anchor) ? selected[anchor] : anchor);
+};
 
 function storageStatus() {
   document.getElementById('storage-status').textContent = store.available
     ? '' : 'Zapis w przeglądarce jest niedostępny. Możesz się uczyć, ale postęp może zniknąć po zamknięciu karty.';
 }
 function save() { store.write(selected.path, progress); storageStatus(); }
-function destroyTask() { taskView?.destroy(); taskView = null; }
+function destroyTask() { taskView?.destroy(); taskView = null; stopCelebration(); stopCelebration = () => {}; }
 function go(next) {
   destroyTask(); view = next; render();
   const heading = app.querySelector('h1,h2');
@@ -47,6 +55,15 @@ function lessonDetails(task) {
 }
 function render() {
   destroyTask();
+  const session = view === 'learn' || view === 'exam';
+  document.body.classList.toggle('work-session', session);
+  const context = document.getElementById('session-context'), count = document.getElementById('session-count');
+  context.hidden = count.hidden = !session;
+  if (session) {
+    const task = currentTask();
+    context.textContent = `${selected.subjectTitle} · ${topic.lessons.find(lesson => lesson.id === task.lessonIds[0]).title}`;
+    count.textContent = `${view === 'learn' ? 'Zadanie' : 'Pytanie'} ${position + 1} z ${view === 'learn' ? queue.length : exam.questions.length}`;
+  }
   if (view === 'home') renderHome();
   if (view === 'lessons' || view === 'review-lessons') renderLessons();
   if (view === 'learn') renderLearn();
@@ -61,6 +78,7 @@ function renderHome() {
   const count = progress.completedTaskIds.filter(id => topic.learningPath.includes(id)).length;
   const inProgress = count > 0 && count < topic.learningPath.length;
   app.innerHTML = `${contextual()}<section class="hero"><div class="hero-copy"><p class="eyebrow">TWOJA WYPRAWA Z KUMILO</p><h1>${h(topic.title)}</h1><p>${h(topic.summary)}</p></div>${owl('mascot', 'Sowa Kumilo — Twoja towarzyszka odkryć')}</section><div class="choice-grid"><button class="choice learn" data-action="learn"><span class="choice-icon" aria-hidden="true">✦</span><span><b>${inProgress ? 'Kontynuuj wyprawę' : count === topic.learningPath.length ? 'Wyprawa ukończona!' : 'Ucz się przez zabawę'}</b><small>${count ? `${count} z ${topic.learningPath.length} aktywności ukończonych` : 'Odkrywaj, łącz tropy i próbuj.'}</small></span><span class="arrow" aria-hidden="true">→</span></button><button class="choice" data-action="test-intro"><span class="choice-icon" aria-hidden="true">✓</span><span><b>Sprawdź się</b><small>Pełny test z wybranego tematu</small></span><span class="arrow" aria-hidden="true">→</span></button></div><div class="home-links">${button('Lekcje i mapa myśli', 'lessons', 'text-button')}${progress.lastResult ? button('Ostatni wynik', 'last-result', 'text-button') : ''}${count ? button('Przejdź wyprawę od początku', 'replay', 'text-button') : ''}</div>`;
+  app.insertAdjacentHTML('beforeend', rewardShelf(topic.learningPath, progress.completedTaskIds, topic.tasks));
 }
 function mapNode(node) {
   return `<details class="map-node"><summary>${h(node.title)}</summary><p>${h(node.text)}</p>${node.children.map(mapNode).join('')}</details>`;
@@ -79,33 +97,72 @@ function beginLearning(forceStart = false, reviewIds = null) {
   position = forceStart || reviewing ? 0 : queue.findIndex(id => !progress.completedTaskIds.includes(id));
   if (!queue.length) { go('lessons'); return; }
   if (position < 0) { go('finish'); return; }
+  const practice = progress.practice || {selected: {}, seen: {}};
+  const missing = queue.filter(anchor => forceStart || reviewing || !Object.hasOwn(practice.selected, anchor));
+  const drawn = drawLearning(topic, missing, practice.seen);
+  progress.practice = {selected: {...practice.selected, ...drawn.selected}, seen: practice.seen};
   progress.lastTaskId = queue[position]; save(); go('learn');
 }
 function renderLearn() {
   const task = currentTask();
-  app.innerHTML = frame(`${header(reviewing ? 'POWTÓRKA TWOICH TROPÓW' : 'NAUKA PRZEZ ZABAWĘ', task.title, task.instruction)}<div class="stage">${task.hint ? `<div class="guide">${owl('mini-owl')}<span>${h(task.hint)}</span></div>` : ''}<div id="task-area" data-task-id="${task.id}"></div><div class="footer-actions">${button(position === queue.length - 1 ? 'Zakończ wyprawę →' : 'Następna przygoda →', 'next-learn', 'primary', true)}</div></div>${lessonDetails(task)}`, reviewing ? 'Powtórka' : 'Aktywność', position + 1, queue.length);
-  taskView = mountTask(document.getElementById('task-area'), task, {onComplete: () => {
-    if (!progress.completedTaskIds.includes(task.id)) progress.completedTaskIds.push(task.id);
+  const anchor = queue[position];
+  const history = Object.hasOwn(progress.practice.seen, anchor) ? progress.practice.seen[anchor] : [];
+  if (history.at(-1) !== task.id) {
+    progress.practice.seen[anchor] = [...(history.includes(task.id) ? [] : history), task.id];
     save();
-    app.querySelector('[data-action="next-learn"]').disabled = false;
+  }
+  const before = learningRewards(topic.learningPath, progress.completedTaskIds);
+  app.innerHTML = activityScreen({task, index: position + 1, total: queue.length, reviewing, notes: lessonDetails(task), stars: `${before.stars} / ${before.total}`});
+  taskView = mountTask(document.getElementById('task-area'), task, {controls: false, onStateChange: state => updateTaskFooter(task, state), onComplete: () => {
+    const anchor = queue[position];
+    if (!progress.completedTaskIds.includes(anchor)) progress.completedTaskIds.push(anchor);
+    save();
+    const after = learningRewards(topic.learningPath, progress.completedTaskIds);
+    const badge = after.badges.filter(item => item.earned && !before.badges.find(previous => previous.id === item.id)?.earned).at(-1);
+    const earnedStar = after.stars > before.stars;
+    document.getElementById('learn-stars').textContent = `${after.stars} / ${after.total}`;
+    const reward = document.getElementById('reward-area');
+    reward.hidden = false;
+    reward.innerHTML = `${owl('mini-owl')}<div><strong>${earnedStar ? '+1 gwiazdka!' : 'Trop odświeżony!'}</strong>${badge ? `<span>Nowa odznaka: ${h(badge.title)}</span>` : ''}</div><span class="reward-token" aria-hidden="true">${badge ? badge.icon : '★'}</span>`;
+    stopCelebration = celebrate(reward);
+    const next = app.querySelector('.task-primary-group .primary');
+    next.disabled = false; next.classList.add('ready-next'); next.focus({preventScroll: true});
   }});
+}
+function updateTaskFooter(task, state) {
+  const status = document.getElementById('task-progress');
+  const text = state.progressText;
+  if (status.textContent !== text) status.innerHTML = text.split(/(\d+)/).map(part => /^\d+$/.test(part) ? `<strong>${part}</strong>` : h(part)).join('');
+  if (view !== 'learn') return;
+  const primary = app.querySelector('.task-primary-group .primary');
+  const checking = state.checkable && !state.solved;
+  primary.dataset.action = checking ? 'check-task' : 'next-learn';
+  primary.toggleAttribute('data-check', checking);
+  primary.disabled = checking ? !state.canCheck : !state.solved;
+  primary.textContent = checking ? 'Sprawdź' : position === queue.length - 1 ? 'Zakończ wyprawę →' : 'Dalej →';
+  const guidance = {matching: 'Połącz wszystkie pary', discovery: 'Odkryj wszystkie karty', flashcards: 'Odwróć wszystkie fiszki'};
+  document.getElementById('task-next-help').textContent = state.solved ? 'Możesz przejść dalej' : checking ? state.canCheck ? 'Sprawdź odpowiedź, aby przejść dalej' : 'Uzupełnij odpowiedź' : guidance[task.type] || 'Wybierz poprawną odpowiedź';
 }
 function renderFinish() {
   app.innerHTML = frame(`<div class="stage"><div class="celebrate">${owl('award-owl')}<p class="eyebrow">${reviewing ? 'POWTÓRKA ZA TOBĄ' : 'WYPRAWA UKOŃCZONA'}</p><h1>${reviewing ? 'Tropy odświeżone!' : 'Odkrywca na medal!'}</h1><p>${reviewing ? 'Wróciłeś do tematów, które wymagały powtórki.' : 'Wszystkie aktywności tej wyprawy masz już za sobą.'}</p></div><div class="footer-actions">${button('Sprawdź się →', 'test-intro')}${button('Na start', 'home', 'secondary')}</div><details class="mindmap"><summary>Zobacz, jak łączą się Twoje odkrycia</summary>${mapNode(topic.mindMap)}</details></div>`, 'Aktywności', queue.length || topic.learningPath.length, queue.length || topic.learningPath.length);
+  app.querySelector('.celebrate').insertAdjacentHTML('afterend', rewardShelf(topic.learningPath, progress.completedTaskIds, topic.tasks));
+  stopCelebration = celebrate(app.querySelector('.celebrate'));
 }
 function renderTestIntro() {
-  app.innerHTML = frame(`${header('TO PRÓBA, NIE WYŚCIG', 'Zobacz, co już potrafisz.', 'Wyjaśnienia poznasz po zatwierdzeniu całego testu.')}<form class="stage test-intro" id="test-form"><label>Wybierz test<select id="exam-select">${topic.tests.map(test => `<option value="${test.id}">${h(test.title)} · ${test.questions.length} pytań</option>`).join('')}</select></label><label class="field">Jak się do Ciebie zwracać?<input id="student-name" name="student" placeholder="Imię lub pseudonim" required maxlength="30" autocomplete="off"></label><p class="small" id="exam-description"></p><p class="small">Punktacja: cała poprawna odpowiedź daje pełną pulę punktów. Częściowych punktów nie przyznajemy. Możesz wracać do pytań.</p><p class="small">Imienia nie zapisujemy. Niezatwierdzony test nie przetrwa odświeżenia.</p><div class="footer-actions"><button class="primary" type="submit">Zaczynam →</button></div></form>`, 'Test', 0, 1);
+  app.innerHTML = frame(`${header('TO PRÓBA, NIE WYŚCIG', 'Zobacz, co już potrafisz.', 'Wyjaśnienia poznasz po zatwierdzeniu całego testu.')}<form class="stage test-intro" id="test-form"><label>Wybierz test<select id="exam-select">${topic.tests.map(test => `<option value="${test.id}">${h(test.title)} · ${testSummary(topic, test).count} pytań</option>`).join('')}</select></label><label class="field">Jak się do Ciebie zwracać?<input id="student-name" name="student" placeholder="Imię lub pseudonim" required maxlength="30" autocomplete="off"></label><p class="small" id="exam-description"></p><p class="small">Punktacja: cała poprawna odpowiedź daje pełną pulę punktów. Częściowych punktów nie przyznajemy. Możesz wracać do pytań.</p><p class="small">Imienia nie zapisujemy. Niezatwierdzony test nie przetrwa odświeżenia.</p><div class="footer-actions"><button class="primary" type="submit">Zaczynam →</button></div></form>`, 'Test', 0, 1);
   updateExamDescription();
 }
 function updateExamDescription() {
   const test = topic.tests.find(item => item.id === document.getElementById('exam-select').value);
-  document.getElementById('exam-description').textContent = `${test.questions.length} pytań · ${test.questions.reduce((sum, q) => sum + q.points, 0)} pkt · ${test.timeLimitSeconds == null ? 'Bez limitu czasu' : `Limit: ${test.timeLimitSeconds} sekund`}`;
+  const summary = testSummary(topic, test);
+  document.getElementById('exam-description').textContent = `${summary.count} pytań · ${summary.maxPoints} pkt${test.draw ? ` · Losowane z ${summary.bankSize} zadań` : ''}${test.timeLimitSeconds == null ? '' : ` · Limit: ${test.timeLimitSeconds} sekund`}`;
 }
 function beginExam(testId, name) {
-  const definition = topic.tests.find(test => test.id === testId);
+  const template = topic.tests.find(test => test.id === testId);
   student = name.trim();
   if (!student) return;
-  exam = {definition, questions: definition.shuffleQuestions ? shuffled(definition.questions) : [...definition.questions], answers: {}, deadline: definition.timeLimitSeconds == null ? null : Date.now() + definition.timeLimitSeconds * 1000};
+  const definition = drawTest(topic, template, progress.lastResult?.results.map(row => row.taskId) || []);
+  exam = {definition, questions: definition.questions, answers: {}, presentations: new Map(), deadline: definition.timeLimitSeconds == null ? null : Date.now() + definition.timeLimitSeconds * 1000};
   position = 0; go('exam');
   if (exam.deadline) timer = setInterval(() => {
     if (!exam) { stopTimer(); return; }
@@ -121,8 +178,9 @@ function rememberAnswer() {
 function renderExam() {
   const task = currentTask();
   const question = exam.questions[position];
-  app.innerHTML = frame(`${header('SPRAWDŹ SIĘ', task.title, task.instruction)}<div class="stage"><div class="test-meta"><span>${question.points} pkt za poprawną odpowiedź</span><span id="time-left">${exam.deadline ? `Limit: ${exam.definition.timeLimitSeconds} s` : 'Bez stopera'}</span></div><div id="task-area" data-task-id="${task.id}"></div><div class="footer-actions">${button('← Wstecz', 'exam-back', 'secondary', position === 0)}${button(position === exam.questions.length - 1 ? 'Przejrzyj odpowiedzi →' : 'Dalej →', 'exam-next')}</div><p class="small">Nie wiesz? Możesz przejść dalej i wrócić przed zatwierdzeniem.</p></div>`, 'Pytanie', position + 1, exam.questions.length);
-  taskView = mountTask(document.getElementById('task-area'), task, {mode: 'test', answer: exam.answers[task.id], onAnswer: answer => { exam.answers[task.id] = answer; }});
+  if (!exam.presentations.has(task.id)) exam.presentations.set(task.id, {});
+  app.innerHTML = activityScreen({task, index: position + 1, total: exam.questions.length, mode: 'test', points: question.points, deadline: exam.deadline});
+  taskView = mountTask(document.getElementById('task-area'), task, {mode: 'test', controls: false, answer: exam.answers[task.id], presentation: exam.presentations.get(task.id), onStateChange: state => updateTaskFooter(task, state), onAnswer: answer => { exam.answers[task.id] = answer; }});
 }
 function completeAnswer(task, answer) {
   if (answer == null) return false;
@@ -143,6 +201,7 @@ function finishExam() {
   report.testId = exam.definition.id;
   progress.lastResult = report;
   save(); exam = null; go('result');
+  if (report.percent === 100) stopCelebration = celebrate(app.querySelector('.celebrate'));
 }
 function answerLabel(task, answer) {
   if (answer == null || answer === '' || Array.isArray(answer) && !answer.length) return 'Brak odpowiedzi';
@@ -159,6 +218,7 @@ function renderResult() {
     const task = taskById(result.taskId);
     return `<article class="review"><h2>${result.correct ? '✓' : '↻'} ${h(task.title)}</h2><p>${result.points} / ${result.maxPoints} pkt</p>${report.answers ? `<p>Twoja odpowiedź: ${h(answerLabel(task, report.answers[task.id]))}</p>` : ''}<p>${h(task.explanation)}</p>${!result.correct ? `<p class="small">Do powtórki: ${task.lessonIds.map(id => h(topic.lessons.find(l => l.id === id).title)).join(', ')}</p>` : ''}</article>`;
   }).join('')}</div><div class="footer-actions">${button('Na start', 'home', 'secondary')}</div></div>`, 'Wynik', 1, 1);
+  if (mistakes.length) app.querySelector('.award-owl').outerHTML = sadOwl('result-owl');
 }
 async function loadTopic(entry) {
   const token = ++requestId;
@@ -211,6 +271,11 @@ app.addEventListener('click', event => {
   if (action === 'replay') beginLearning(true);
   if (action === 'lessons') go('lessons');
   if (action === 'test-intro') { student = ''; go('test-intro'); }
+  if (action === 'check-task') taskView.check();
+  if (action === 'toggle-hint') {
+    const panel = document.getElementById('task-hint-panel');
+    panel.hidden = !panel.hidden; target.setAttribute('aria-expanded', String(!panel.hidden));
+  }
   if (action === 'next-learn') { position++; if (position < queue.length) { progress.lastTaskId = queue[position]; save(); go('learn'); } else { progress.lastTaskId = null; save(); go('finish'); } }
   if (action === 'exam-back') { rememberAnswer(); position--; go('exam'); }
   if (action === 'exam-next') { rememberAnswer(); if (position < exam.questions.length - 1) { position++; go('exam'); } else go('exam-review'); }

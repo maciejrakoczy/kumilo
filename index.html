@@ -8,6 +8,7 @@
   <title>Kumilo — odkrywaj z sową</title>
   <link rel="icon" type="image/svg+xml" href="./assets/owl.svg">
   <link rel="stylesheet" href="./assets/styles.css">
+  <link rel="stylesheet" href="./assets/activity.css">
   <script type="module" src="./assets/app.mjs"></script>
 </head>
 <body>
@@ -15,7 +16,9 @@
   <div class="wrap">
     <header class="header">
       <button class="brand" id="brand" aria-label="Kumilo — wróć na start"><img src="./assets/owl.svg" alt="" width="58" height="50"><span class="wordmark">kumi<span>lo</span></span></button>
-      <button class="text-button" id="privacy-button">Dane na urządzeniu</button>
+      <p class="session-context" id="session-context" hidden></p>
+      <p class="session-count" id="session-count" hidden></p>
+      <button class="text-button" id="privacy-button" aria-label="Dane na urządzeniu" title="Dane na urządzeniu">Dane na urządzeniu</button>
     </header>
     <p class="storage-status" id="storage-status" role="status"></p>
     <main id="app" tabindex="-1"><p class="loading" role="status">Sowa otwiera bibliotekę…</p></main>

@@ -99,6 +99,25 @@ def validate_topic(topic, schema):
     for task_id in topic['learningPath']:
         if task_id not in tasks:
             errors.append(f'learningPath: nieznane zadanie {task_id}')
+    anchors = set(topic['learningPath'])
+    assigned_variants = set()
+    for anchor_id, variant_ids in topic.get('learningVariants', {}).items():
+        label = f'learningVariants.{anchor_id}'
+        if anchor_id not in anchors:
+            errors.append(f'{label}: kotwica nie należy do learningPath')
+        anchor = tasks.get(anchor_id)
+        for variant_id in variant_ids:
+            variant = tasks.get(variant_id)
+            if variant is None:
+                errors.append(f'{label}: nieznane zadanie {variant_id}')
+            if variant_id in anchors:
+                errors.append(f'{label}: wariant {variant_id} jest kotwicą learningPath')
+            if variant_id in assigned_variants:
+                errors.append(f'{label}: powtórzony wariant {variant_id}')
+            assigned_variants.add(variant_id)
+            if anchor is not None and variant is not None:
+                if set(anchor['lessonIds']) != set(variant['lessonIds']):
+                    errors.append(f'{label}: wariant {variant_id} ma inne lessonIds niż kotwica')
     graded = {'single-choice', 'multiple-choice', 'matching', 'sorting', 'ordering',
               'short-answer', 'number-answer'}
     for test in topic['tests']:
@@ -109,6 +128,29 @@ def validate_topic(topic, schema):
                 errors.append(f'{test["id"]}: nieznane zadanie {question["taskId"]}')
             elif task['type'] not in graded:
                 errors.append(f'{test["id"]}: typ {task["type"]} nie jest zadaniem ocenianym')
+        if 'draw' in test:
+            label = f'{test["id"]}.draw'
+            draw_lessons = [group['lessonId'] for group in test['draw']]
+            duplicates(draw_lessons, label, errors)
+            groups = {lesson_id: [] for lesson_id in draw_lessons}
+            for lesson_id in groups:
+                if lesson_id not in lessons:
+                    errors.append(f'{label}: nieznana lekcja {lesson_id}')
+            for question in test['questions']:
+                task = tasks.get(question['taskId'])
+                if task is None:
+                    continue  # The missing reference was reported above.
+                matching = set(task['lessonIds']) & groups.keys()
+                if len(matching) != 1:
+                    errors.append(f'{label}: zadanie {task["id"]} musi należeć do dokładnie jednej grupy')
+                    continue
+                groups[next(iter(matching))].append(question)
+            for group in test['draw']:
+                candidates = groups[group['lessonId']]
+                if len(candidates) < group['count']:
+                    errors.append(f'{label}.{group["lessonId"]}: za mało kandydatów na count={group["count"]}')
+                if len({q['points'] for q in candidates}) > 1:
+                    errors.append(f'{label}.{group["lessonId"]}: points muszą być jednakowe w grupie')
     nodes = []
 
     def visit(node):

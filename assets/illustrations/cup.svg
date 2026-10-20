@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <title>Kubek bez napisów</title>
+  <circle cx="64" cy="62" r="54" fill="#eef3f1"/>
+  <ellipse cx="63" cy="110" rx="34" ry="5" fill="#d8dfd9"/>
+  <path d="M88 49c33-7 32 43-2 42" fill="none" stroke="#9b8064" stroke-width="14"/>
+  <path d="M88 49c33-7 32 43-2 42" fill="none" stroke="#f1e5d0" stroke-width="8"/>
+  <path d="M27 42h67l-7 48c-2 11-11 17-26 17S35 101 33 90Z" fill="#efe1c8" stroke="#9b8064" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M34 49h12l3 47c-7-2-10-5-11-11Z" fill="#fff9ed"/>
+  <ellipse cx="61" cy="42" rx="33" ry="9" fill="#d4c0a2" stroke="#9b8064" stroke-width="3"/>
+  <ellipse cx="61" cy="40" rx="25" ry="4" fill="#faf2e1"/>
+</svg>
