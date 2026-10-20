@@ -47,7 +47,7 @@ Za ukończone aktywności uczeń zbiera gwiazdki i trzy odznaki wyprawy. Karty i
 
 ### Dostępny materiał
 
-Wersja **0.1.0** zawiera dział **„Detektywi przeszłości”** dla klasy IV z historii: siedem lekcji i bank 161 zadań — 77 do nauki oraz 84 do testów. Wyprawa ma dziewięć etapów z losowanymi wariantami. Każdy test losuje 16 pytań z zachowaniem pokrycia wszystkich siedmiu lekcji i omija pytania z poprzedniego zatwierdzonego podejścia. Zakres obejmuje podstawy poznawania przeszłości, źródła historyczne, rodzinę i porządek czasu. Szczegóły: [bank i zasady losowania](docs/question-bank.md).
+Wersja **0.1.0** zawiera dział **„Detektywi przeszłości”** dla klasy IV z historii: siedem lekcji i bank 260 aktywności — 127 do nauki oraz 133 do testów. Wśród nich są 42 pytania wielokrotnego wyboru ze zmienną liczbą poprawnych odpowiedzi, a także pary, sortowanie, kolejność i odpowiedzi wpisywane. Wyprawa ma dziewięć etapów z losowanymi wariantami. Każdy test losuje 16 pytań z zachowaniem pokrycia wszystkich siedmiu lekcji i omija pytania z poprzedniego zatwierdzonego podejścia. Zakres obejmuje podstawy poznawania przeszłości, źródła historyczne, rodzinę i porządek czasu. Szczegóły: [bank i zasady losowania](docs/question-bank.md).
 
 System obsługuje kolejne klasy, przedmioty i tematy przez wspólny format JSON. Nowe treści nie wymagają tworzenia osobnego interfejsu dla każdego działu.
 

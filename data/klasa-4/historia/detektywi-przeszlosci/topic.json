@@ -4052,6 +4052,3328 @@
         }
       ],
       "correctOptionId": "b"
+    },
+    {
+      "id": "u-historyk-01",
+      "type": "multiple-choice",
+      "title": "Trzy znaczenia jednego słowa",
+      "instruction": "W którym zdaniu słowo «historia» oznacza naukę? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "praca-historyka"
+      ],
+      "explanation": "Porównywanie dawnych dokumentów jest pracą naukową. Pozostałe zdania mówią o przeszłości ulicy i o opowieści.",
+      "hint": "Sprawdź, czy zdanie opisuje badanie przeszłości.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Historia naszej ulicy zaczęła się dawno temu."
+        },
+        {
+          "id": "b",
+          "text": "Badaczka zajmuje się historią i porównuje dawne dokumenty."
+        },
+        {
+          "id": "c",
+          "text": "Opowiem ci zabawną historię."
+        }
+      ],
+      "correctOptionIds": [
+        "b"
+      ]
+    },
+    {
+      "id": "u-historyk-02",
+      "type": "multiple-choice",
+      "title": "Puste miejsce w opisie",
+      "instruction": "Wymyślony przykład: na uszkodzonej liście zniknęła nazwa miejscowości. Co jest rzetelnym zapisem wyniku? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "praca-historyka"
+      ],
+      "explanation": "Nieodczytanego fragmentu nie zastępuje się dowolną nazwą. Brak informacji też trzeba uczciwie zaznaczyć.",
+      "hint": "Nie myl braku wiadomości z dowodem na wybraną wersję.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Miejscowości nie udało się odczytać."
+        },
+        {
+          "id": "b",
+          "text": "To na pewno stolica, bo była ważna."
+        },
+        {
+          "id": "c",
+          "text": "To miejscowość, którą lubi badacz."
+        },
+        {
+          "id": "d",
+          "text": "Należy wpisać pierwszą nazwę z mapy."
+        }
+      ],
+      "correctOptionIds": [
+        "a"
+      ]
+    },
+    {
+      "id": "u-historyk-03",
+      "type": "multiple-choice",
+      "title": "Dwa ślady jednego wydarzenia",
+      "instruction": "Wymyślony przykład: list mówi o remoncie mostu, a rachunek wymienia zakup desek. Co warto sprawdzić przed połączeniem obu informacji? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "praca-historyka"
+      ],
+      "explanation": "Zbieżność miejsca i czasu pomaga ustalić, czy źródła opisują to samo wydarzenie. Kolor i wielkość kartek tego nie rozstrzygają.",
+      "hint": "Szukaj związku z wydarzeniem, a nie podobieństwa wyglądu kartek.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Czy dokumenty dotyczą tego samego miejsca."
+        },
+        {
+          "id": "b",
+          "text": "Czy papier ma taki sam kolor."
+        },
+        {
+          "id": "c",
+          "text": "Czy daty pasują do czasu tego remontu."
+        },
+        {
+          "id": "d",
+          "text": "Czy obie kartki mają ten sam rozmiar."
+        }
+      ],
+      "correctOptionIds": [
+        "a",
+        "c"
+      ]
+    },
+    {
+      "id": "u-historyk-04",
+      "type": "multiple-choice",
+      "title": "Zapis i jego granice",
+      "instruction": "Wymyślony zapis brzmi: «W poniedziałek kowal naprawił bramę». Co podaje sam tekst? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "praca-historyka"
+      ],
+      "explanation": "Tekst nazywa dzień, czynność i naprawiany obiekt. Nie zawiera nazwiska ani ceny.",
+      "hint": "Odnajdź każde stwierdzenie w przytoczonym zdaniu.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wymienia poniedziałek."
+        },
+        {
+          "id": "b",
+          "text": "Podaje nazwisko kowala."
+        },
+        {
+          "id": "c",
+          "text": "Wspomina o naprawie."
+        },
+        {
+          "id": "d",
+          "text": "Podaje koszt pracy."
+        },
+        {
+          "id": "e",
+          "text": "Wymienia bramę."
+        }
+      ],
+      "correctOptionIds": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    {
+      "id": "u-historyk-05",
+      "type": "multiple-choice",
+      "title": "Nieznany bohater",
+      "instruction": "Wymyślona sytuacja: w opowiadaniu występuje piekarz o zwyczajnym imieniu. Autor nie wyjaśnił, czy ta osoba naprawdę żyła. Co można powiedzieć? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "praca-historyka"
+      ],
+      "explanation": "Imię, zawód i obecność w opowiadaniu nie rozstrzygają historyczności. Potrzebne są informacje potwierdzające rzeczywiste życie.",
+      "hint": "Postać historyczną od fikcyjnej odróżnia rzeczywiste istnienie, nie wygląd imienia.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Zwyczajny zawód dowodzi historyczności."
+        },
+        {
+          "id": "b",
+          "text": "Do rozstrzygnięcia potrzebne są dalsze informacje."
+        },
+        {
+          "id": "c",
+          "text": "Samo imię nie potwierdza rzeczywistego życia."
+        },
+        {
+          "id": "d",
+          "text": "Każdy bohater opowiadania jest fikcyjny."
+        },
+        {
+          "id": "e",
+          "text": "Warto poszukać źródeł dotyczących tej osoby."
+        }
+      ],
+      "correctOptionIds": [
+        "b",
+        "c",
+        "e"
+      ]
+    },
+    {
+      "id": "u-historyk-06",
+      "type": "sorting",
+      "title": "Co oznacza tutaj historia?",
+      "instruction": "Przyporządkuj zdania do znaczenia słowa «historia».",
+      "lessonIds": [
+        "praca-historyka"
+      ],
+      "explanation": "To samo słowo może oznaczać dzieje, opowiadanie lub naukę. Znaczenie ustalamy z całego zdania.",
+      "hint": "Zapytaj: wydarzenia, opowiadanie czy badanie?",
+      "categories": [
+        {
+          "id": "a",
+          "text": "Przeszłe dzieje"
+        },
+        {
+          "id": "b",
+          "text": "Opowieść"
+        },
+        {
+          "id": "c",
+          "text": "Nauka"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Historia osady obejmuje jej powstanie i rozwój.",
+          "categoryId": "a",
+          "explanation": "Mowa o tym, co działo się z osadą."
+        },
+        {
+          "id": "i2",
+          "text": "Przed snem wymyślam historię o latającym rowerze.",
+          "categoryId": "b",
+          "explanation": "To tworzona opowieść."
+        },
+        {
+          "id": "i3",
+          "text": "Na studiach z historii uczę się badać źródła.",
+          "categoryId": "c",
+          "explanation": "Opis dotyczy nauki badającej przeszłość."
+        }
+      ]
+    },
+    {
+      "id": "u-historyk-07",
+      "type": "sorting",
+      "title": "Pytanie czy gotowy wniosek?",
+      "instruction": "Wymyślona pracownia bada dawny młyn. Podziel zdania według ich roli.",
+      "lessonIds": [
+        "praca-historyka"
+      ],
+      "explanation": "Pytanie wyznacza poszukiwania. Oznajmujący wniosek trzeba oprzeć na informacjach, nie na pewnym tonie wypowiedzi.",
+      "hint": "Sprawdź, czy zdanie czegoś szuka, czy już coś ogłasza.",
+      "categories": [
+        {
+          "id": "a",
+          "text": "Pytanie badawcze"
+        },
+        {
+          "id": "b",
+          "text": "Wniosek wymagający dowodu"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Kiedy naprawiono koło młyna?",
+          "categoryId": "a",
+          "explanation": "To pytanie o czas zdarzenia."
+        },
+        {
+          "id": "i2",
+          "text": "Młyn należał do najbogatszej osoby w okolicy.",
+          "categoryId": "b",
+          "explanation": "Taki wniosek wymaga źródeł."
+        },
+        {
+          "id": "i3",
+          "text": "Kto pracował w młynie?",
+          "categoryId": "a",
+          "explanation": "To pytanie o ludzi."
+        },
+        {
+          "id": "i4",
+          "text": "Każdy mieszkaniec lubił właściciela młyna.",
+          "categoryId": "b",
+          "explanation": "Zdanie twierdzi coś o wszystkich mieszkańcach."
+        }
+      ]
+    },
+    {
+      "id": "u-historyk-08",
+      "type": "sorting",
+      "title": "Co napisać na wystawie?",
+      "instruction": "Wymyślony przykład: znamy rok wykonania przedmiotu, ale nie jego autora. Rozdziel rzetelne podpisy i dopiski bez podstaw.",
+      "lessonIds": [
+        "praca-historyka"
+      ],
+      "explanation": "Uczciwy opis odróżnia ustalenie od niewiedzy. Nie trzeba wypełniać każdej luki wymysłem.",
+      "hint": "Wróć do dwóch informacji podanych w poleceniu.",
+      "categories": [
+        {
+          "id": "a",
+          "text": "Rzetelny zapis"
+        },
+        {
+          "id": "b",
+          "text": "Dopisek bez podstaw"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Rok wykonania jest ustalony.",
+          "categoryId": "a",
+          "explanation": "Ta informacja jest podana w założeniu."
+        },
+        {
+          "id": "i2",
+          "text": "Autorem był na pewno miejscowy władca.",
+          "categoryId": "b",
+          "explanation": "Autora nie ustalono."
+        },
+        {
+          "id": "i3",
+          "text": "Autor pozostaje nieznany.",
+          "categoryId": "a",
+          "explanation": "To uczciwie opisuje brak wiedzy."
+        },
+        {
+          "id": "i4",
+          "text": "Najładniejsze nazwisko z listy jest nazwiskiem autora.",
+          "categoryId": "b",
+          "explanation": "Wybór nazwiska nie jest dowodem."
+        }
+      ]
+    },
+    {
+      "id": "u-historyk-09",
+      "type": "sorting",
+      "title": "Czy to wystarczy jako dowód?",
+      "instruction": "Wymyślony przykład: badamy, czy dana osoba naprawdę żyła. Podziel opisy podstaw wniosku.",
+      "lessonIds": [
+        "praca-historyka"
+      ],
+      "explanation": "Dokumenty i źródła mogą potwierdzać życie osoby. Realizm obrazka ani popularność imienia nie wystarczają.",
+      "hint": "Oceń podstawę wniosku, a nie atrakcyjność opowieści.",
+      "categories": [
+        {
+          "id": "a",
+          "text": "Potwierdza życie według opisu"
+        },
+        {
+          "id": "b",
+          "text": "Nie rozstrzyga rzeczywistego życia"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Porównane wiarygodne dokumenty potwierdzają życie osoby.",
+          "categoryId": "a",
+          "explanation": "Opis wprost podaje potwierdzenie."
+        },
+        {
+          "id": "i2",
+          "text": "Bohater ma realistycznie namalowany portret.",
+          "categoryId": "b",
+          "explanation": "Realistycznie można narysować także postać fikcyjną."
+        },
+        {
+          "id": "i3",
+          "text": "Wiarygodne źródła opisują rzeczywiste życie tej osoby.",
+          "categoryId": "a",
+          "explanation": "Wskazano potwierdzenie w źródłach."
+        },
+        {
+          "id": "i4",
+          "text": "Imię bohatera jest bardzo popularne.",
+          "categoryId": "b",
+          "explanation": "Popularność imienia nie dowodzi istnienia konkretnej osoby."
+        }
+      ]
+    },
+    {
+      "id": "u-historyk-10",
+      "type": "matching",
+      "title": "Jakiego śladu szukać?",
+      "instruction": "Wymyślona sytuacja badawcza: dopasuj pytanie do śladu, który najbezpośredniej dotyczy jego treści.",
+      "lessonIds": [
+        "praca-historyka"
+      ],
+      "explanation": "Dobór źródła zależy od pytania. Wykaz, fotografia i wspomnienie przekazują inne rodzaje informacji.",
+      "hint": "Szukaj wiadomości potrzebnej do konkretnego pytania.",
+      "pairs": [
+        {
+          "id": "p1",
+          "left": "Jakie towary sprzedano?",
+          "right": "Wykaz sprzedaży z nazwami towarów."
+        },
+        {
+          "id": "p2",
+          "left": "Jak wyglądał budynek?",
+          "right": "Wyraźna fotografia budynku."
+        },
+        {
+          "id": "p3",
+          "left": "Jak uczestnik opisał swoje wrażenia?",
+          "right": "Jego zapisane wspomnienie z opisem uczuć."
+        }
+      ]
+    },
+    {
+      "id": "u-historyk-11",
+      "type": "matching",
+      "title": "Wyjaśnij pomyłkę badacza",
+      "instruction": "Połącz błąd z wyjaśnieniem, które pomaga go poprawić.",
+      "lessonIds": [
+        "praca-historyka"
+      ],
+      "explanation": "Rzetelność wymaga oparcia twierdzeń na źródłach. Styl i popularność nie zastępują dowodu.",
+      "hint": "Zauważ, jaka niewłaściwa podstawa pojawia się w każdym błędzie.",
+      "pairs": [
+        {
+          "id": "p1",
+          "left": "Wymyślone nazwisko wpisano jako pewne.",
+          "right": "Brak nazwiska trzeba zaznaczyć, a nie ukrywać wymysłem."
+        },
+        {
+          "id": "p2",
+          "left": "Z dwóch sprzecznych relacji wybrano ładniej napisaną.",
+          "right": "Relacje trzeba sprawdzić i porównać, nie oceniać po stylu."
+        },
+        {
+          "id": "p3",
+          "left": "Sławnego bohatera uznano za historycznego tylko z powodu sławy.",
+          "right": "Decyduje rzeczywiste życie potwierdzone informacjami."
+        }
+      ]
+    },
+    {
+      "id": "u-historyk-12",
+      "type": "matching",
+      "title": "Które zdanie pasuje do śladu?",
+      "instruction": "Wymyślone źródła: dopasuj do każdego zapisu wyłącznie informację, którą podaje.",
+      "lessonIds": [
+        "praca-historyka"
+      ],
+      "explanation": "Odczytujemy wiadomości podane wprost. Nie ustalamy na tej podstawie koloru skrzyni, imion podróżnych ani ich nastroju.",
+      "hint": "Nie dodawaj szczegółu, którego zapis nie zawiera.",
+      "pairs": [
+        {
+          "id": "p1",
+          "left": "«Przy oknie stała skrzynia».",
+          "right": "Zapis wymienia położenie skrzyni."
+        },
+        {
+          "id": "p2",
+          "left": "«Naprawa kosztowała pięć monet».",
+          "right": "Zapis podaje koszt naprawy."
+        },
+        {
+          "id": "p3",
+          "left": "«Na targ wyruszono we wtorek».",
+          "right": "Zapis wskazuje dzień wyruszenia."
+        }
+      ]
+    },
+    {
+      "id": "u-historyk-13",
+      "type": "matching",
+      "title": "Co zrobić z nową wiadomością?",
+      "instruction": "Wymyślona pracownia porządkuje ustalenia. Dopasuj sytuację do rzetelnej reakcji.",
+      "lessonIds": [
+        "praca-historyka"
+      ],
+      "explanation": "Badacz może poprawiać ustalenia. Wyraźne pokazywanie niewiedzy i pytań jest częścią rzetelnej pracy.",
+      "hint": "Dobra reakcja nie ukrywa trudności ani nie wymyśla braków.",
+      "pairs": [
+        {
+          "id": "p1",
+          "left": "Nowe źródło przeczy wcześniejszemu ustaleniu.",
+          "right": "Ponownie sprawdzić ustalenie i porównać źródła."
+        },
+        {
+          "id": "p2",
+          "left": "Nie da się odczytać fragmentu dokumentu.",
+          "right": "Zaznaczyć, że treść tego fragmentu jest nieznana."
+        },
+        {
+          "id": "p3",
+          "left": "W opisie pomylono pytanie z odpowiedzią.",
+          "right": "Oddzielić to, co badamy, od tego, co już ustalono."
+        }
+      ]
+    },
+    {
+      "id": "u-historyk-14",
+      "type": "short-answer",
+      "title": "Nauka o przeszłości",
+      "instruction": "Jak nazywa się nauka badająca przeszłość ludzi? Wpisz tylko nazwę nauki.",
+      "lessonIds": [
+        "praca-historyka"
+      ],
+      "explanation": "Historia jako nauka bada przeszłość ludzi przy użyciu źródeł. Nie pytamy tutaj o nazwę zawodu badacza.",
+      "hint": "Szukamy nazwy nauki, nie osoby.",
+      "acceptedAnswers": [
+        "historia"
+      ],
+      "normalization": "trim-collapse-casefold"
+    },
+    {
+      "id": "u-historyk-15",
+      "type": "short-answer",
+      "title": "Bohater z wyobraźni",
+      "instruction": "Autorka w całości wymyśliła bohatera na potrzeby powieści. Uzupełnij jednym słowem: «To postać …».",
+      "lessonIds": [
+        "praca-historyka"
+      ],
+      "explanation": "Postać fikcyjna jest wytworem wyobraźni. Zwyczajny wygląd ani zawód bohatera tego nie zmieniają.",
+      "hint": "Wybierz określenie przeciwstawne postaci historycznej.",
+      "acceptedAnswers": [
+        "fikcyjna",
+        "wymyślona",
+        "zmyślona"
+      ],
+      "normalization": "trim-collapse-casefold"
+    },
+    {
+      "id": "u-historyk-16",
+      "type": "short-answer",
+      "title": "Pewność czy przypuszczenie?",
+      "instruction": "Wymyślona notatka: «Może mieszkańcy lubili tę salę, ale nie mamy na to dowodów». Uzupełnij jednym słowem: «Niepotwierdzone przypuszczenie to …».",
+      "lessonIds": [
+        "praca-historyka"
+      ],
+      "explanation": "Domysł może być punktem wyjścia do poszukiwań, ale bez dowodów nie staje się ustalonym faktem.",
+      "hint": "Nie chodzi o potwierdzoną wiadomość.",
+      "acceptedAnswers": [
+        "domysł",
+        "domysl"
+      ],
+      "normalization": "trim-collapse-casefold"
+    },
+    {
+      "id": "u-zrodla-01",
+      "type": "multiple-choice",
+      "title": "Napis czy sam kształt?",
+      "instruction": "Które źródło przekazuje zapisaną treść wprost? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Spis zawiera tekst. Tłuczek bez znaków jest źródłem materialnym niepisanym, a sama ustna melodia przekazem niematerialnym.",
+      "hint": "Pytamy o zapis słów, a nie o wiek śladu.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Własnoręcznie zapisany spis narzędzi."
+        },
+        {
+          "id": "b",
+          "text": "Kamienny tłuczek bez znaków."
+        },
+        {
+          "id": "c",
+          "text": "Ustnie przekazywana melodia."
+        }
+      ],
+      "correctOptionIds": [
+        "a"
+      ]
+    },
+    {
+      "id": "u-zrodla-02",
+      "type": "multiple-choice",
+      "title": "Co odkrywa oglądanie?",
+      "instruction": "Wymyślona sytuacja: oglądasz drewniany kubek bez napisów, bez innych źródeł. Co możesz sprawdzić przez oglądanie? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Kształt i pęknięcie można obejrzeć. Imię właściciela i jego upodobania wymagałyby dodatkowych informacji.",
+      "hint": "Oddziel widoczne cechy od historii właściciela.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Imię pierwszego właściciela."
+        },
+        {
+          "id": "b",
+          "text": "Kształt uchwytu."
+        },
+        {
+          "id": "c",
+          "text": "Ulubiony napój właściciela."
+        },
+        {
+          "id": "d",
+          "text": "Widoczne pęknięcie."
+        }
+      ],
+      "correctOptionIds": [
+        "b",
+        "d"
+      ]
+    },
+    {
+      "id": "u-zrodla-03",
+      "type": "multiple-choice",
+      "title": "Ślad poza pudełkiem",
+      "instruction": "Które przykłady są niematerialnym przekazem w podziale tego działu? Pytamy o samą treść lub zwyczaj, nie o nośnik. Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Ustne opowieści, przekazywane zwyczaje i melodie należą tu do źródeł niematerialnych. Zapisany zeszyt jest materialnym źródłem pisanym.",
+      "hint": "Sprawdź, czy wskazano rzecz z tekstem, czy przekazywaną treść lub czynność.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Ustna opowieść o dawnym targu."
+        },
+        {
+          "id": "b",
+          "text": "Zeszyt z zapisanym tekstem pieśni."
+        },
+        {
+          "id": "c",
+          "text": "Zwyczaj wspólnego śpiewania przekazywany młodszym."
+        },
+        {
+          "id": "d",
+          "text": "Dawna melodia przekazywana przez śpiew, bez zapisu."
+        }
+      ],
+      "correctOptionIds": [
+        "a",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "id": "u-zrodla-04",
+      "type": "multiple-choice",
+      "title": "Wykopalisko nie mówi wszystkiego",
+      "instruction": "Wymyślona sytuacja: przy wykopalisku zapisano miejsce znalezienia glinianego guzika, ale nie ma danych o jego właścicielu. Co jest uzasadnione? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Opis pozwala ustalić miejsce i granice obecnej wiedzy. Ani imienia, ani epoki nie wolno dopisywać tylko na podstawie położenia w ziemi.",
+      "hint": "Wybierz tylko twierdzenia oparte na opisie.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Właściciel był królem."
+        },
+        {
+          "id": "b",
+          "text": "Miejsce znalezienia jest znane."
+        },
+        {
+          "id": "c",
+          "text": "Nie ustalono jeszcze właściciela."
+        },
+        {
+          "id": "d",
+          "text": "Sam guzik nie podaje imienia właściciela."
+        },
+        {
+          "id": "e",
+          "text": "Każde znalezisko z ziemi pochodzi sprzed pisma."
+        }
+      ],
+      "correctOptionIds": [
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "id": "u-zrodla-05",
+      "type": "multiple-choice",
+      "title": "Tego śladu nie schowasz do szuflady",
+      "instruction": "Wskaż źródło niematerialne. Oceniaj nazwany przekaz, nie jego ewentualne nagranie. Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Zwyczaj jest utrzymywany przez ludzi. Pozostałe przykłady są rzeczami, z których jedna zawiera tekst.",
+      "hint": "Czy nazwano przedmiot, czy podtrzymywany zwyczaj?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Mosiężny klucz bez napisów."
+        },
+        {
+          "id": "b",
+          "text": "Papierowy rozkład z zapisanymi godzinami."
+        },
+        {
+          "id": "c",
+          "text": "Przekazywany przez wspólne działanie zwyczaj dożynek."
+        },
+        {
+          "id": "d",
+          "text": "Kamienny mur bez napisów."
+        }
+      ],
+      "correctOptionIds": [
+        "c"
+      ]
+    },
+    {
+      "id": "u-zrodla-06",
+      "type": "multiple-choice",
+      "title": "Jak łączyć wiadomości?",
+      "instruction": "Wymyślone źródła: plan pokazuje układ dawnego domu, list opisuje jego mieszkańców. Które działania pomagają poznać przeszłość domu? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Źródła mogą się uzupełniać, jeśli dotyczą tego samego obiektu. Układ pomieszczeń nie ujawnia wszystkich upodobań mieszkańców.",
+      "hint": "Pomyśl o uzupełnianiu wiadomości i sprawdzeniu wspólnego tematu.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Porównać informacje z obu źródeł."
+        },
+        {
+          "id": "b",
+          "text": "Ustalić ulubiony kolor wszystkich mieszkańców z samego planu."
+        },
+        {
+          "id": "c",
+          "text": "Sprawdzić, czy źródła dotyczą tego samego domu."
+        },
+        {
+          "id": "d",
+          "text": "Odrzucić list tylko dlatego, że nie ma rysunku."
+        }
+      ],
+      "correctOptionIds": [
+        "a",
+        "c"
+      ]
+    },
+    {
+      "id": "u-zrodla-07",
+      "type": "sorting",
+      "title": "Mała skrzynka źródeł",
+      "instruction": "Przyporządkuj jednoznaczne przykłady do podziału z lekcji.",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Zapisany tekst, rzecz bez tekstu i przekazywana praktyka są różnymi rodzajami śladów.",
+      "hint": "Najpierw sprawdź, czy to rzecz, potem czy zawiera tekst.",
+      "categories": [
+        {
+          "id": "a",
+          "text": "Materialne pisane"
+        },
+        {
+          "id": "b",
+          "text": "Materialne niepisane"
+        },
+        {
+          "id": "c",
+          "text": "Niematerialne"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Ręcznie zapisany przepis na chleb.",
+          "categoryId": "a",
+          "explanation": "Przepis zawiera zapisaną treść."
+        },
+        {
+          "id": "i2",
+          "text": "Drewniana forma do wypieku bez napisów.",
+          "categoryId": "b",
+          "explanation": "To przedmiot bez zapisu."
+        },
+        {
+          "id": "i3",
+          "text": "Sposób wspólnego pieczenia uczony ustnie i w działaniu.",
+          "categoryId": "c",
+          "explanation": "Mowa o przekazywanej praktyce, nie o jej nośniku."
+        }
+      ]
+    },
+    {
+      "id": "u-zrodla-08",
+      "type": "sorting",
+      "title": "Co mówi źródło, a co dopowiedziano?",
+      "instruction": "Wymyślona etykieta archiwalna mówi: «List zawiera zamówienie dwóch koców». Podziel zdania.",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Źródło opisuje zamówienie i liczbę rzeczy. Kolor oraz upodobania to dopowiedzenia bez podstaw.",
+      "hint": "Szukaj potwierdzenia w jednym zdaniu z polecenia.",
+      "categories": [
+        {
+          "id": "a",
+          "text": "Wynika z podanego opisu"
+        },
+        {
+          "id": "b",
+          "text": "Nie wynika z opisu"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "List dotyczy zamówienia.",
+          "categoryId": "a",
+          "explanation": "To wprost podane."
+        },
+        {
+          "id": "i2",
+          "text": "Koce były czerwone.",
+          "categoryId": "b",
+          "explanation": "Nie podano koloru."
+        },
+        {
+          "id": "i3",
+          "text": "W zamówieniu wymieniono dwa koce.",
+          "categoryId": "a",
+          "explanation": "Liczba jest podana."
+        },
+        {
+          "id": "i4",
+          "text": "Nabywca uwielbiał zimę.",
+          "categoryId": "b",
+          "explanation": "Nie ma informacji o upodobaniach."
+        }
+      ]
+    },
+    {
+      "id": "u-zrodla-09",
+      "type": "sorting",
+      "title": "Zapis w pracowni",
+      "instruction": "Wymyślone wykopalisko: podziel działania na takie, które zachowują informacje, i takie, które je gubią.",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Zabytek jest ważny razem z wiadomościami o znalezieniu. Utraconego miejsca nie da się odczytać z samej ładnej ekspozycji.",
+      "hint": "Pomyśl, czy po działaniu da się ustalić pochodzenie rzeczy.",
+      "categories": [
+        {
+          "id": "a",
+          "text": "Zachowuje informacje"
+        },
+        {
+          "id": "b",
+          "text": "Gubi informacje"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Zanotowanie miejsca znalezienia.",
+          "categoryId": "a",
+          "explanation": "Zostaje wiadomość o położeniu znaleziska."
+        },
+        {
+          "id": "i2",
+          "text": "Pomieszanie nieopisanych znalezisk z różnych miejsc.",
+          "categoryId": "b",
+          "explanation": "Tracimy powiązanie przedmiotów z miejscem."
+        },
+        {
+          "id": "i3",
+          "text": "Zapisanie warstwy, w której leżał przedmiot.",
+          "categoryId": "a",
+          "explanation": "Warstwa pomaga badać kontekst."
+        },
+        {
+          "id": "i4",
+          "text": "Usunięcie etykiet z numerami stanowisk.",
+          "categoryId": "b",
+          "explanation": "Trudniej odtworzyć pochodzenie znalezisk."
+        }
+      ]
+    },
+    {
+      "id": "u-zrodla-10",
+      "type": "sorting",
+      "title": "Tekst to nie jego nośnik",
+      "instruction": "Przyporządkuj nazwane ślady. W kategorii niematerialnej oceniaj samą ustną wypowiedź.",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Utrwalony tekst na kartce i sama ustna treść to nie to samo w podziale stosowanym w lekcji.",
+      "hint": "Oceniaj dokładnie to, co zostało nazwane.",
+      "categories": [
+        {
+          "id": "a",
+          "text": "Materialne pisane"
+        },
+        {
+          "id": "b",
+          "text": "Niematerialne"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Papierowa kartka z zapisanym wspomnieniem.",
+          "categoryId": "a",
+          "explanation": "To rzecz z tekstem."
+        },
+        {
+          "id": "i2",
+          "text": "Sama ustna wypowiedź świadka o dawnym zwyczaju.",
+          "categoryId": "b",
+          "explanation": "Nie pytamy o sprzęt ani zapis."
+        },
+        {
+          "id": "i3",
+          "text": "Zeszyt z zapisanymi słowami dawnej pieśni.",
+          "categoryId": "a",
+          "explanation": "Tekst znajduje się na materialnym nośniku."
+        },
+        {
+          "id": "i4",
+          "text": "Sama opowieść przekazywana ustnie między pokoleniami.",
+          "categoryId": "b",
+          "explanation": "Opis dotyczy przekazu ustnego."
+        }
+      ]
+    },
+    {
+      "id": "u-zrodla-11",
+      "type": "sorting",
+      "title": "Budowla też jest śladem",
+      "instruction": "Podziel przykłady na materialne niepisane i materialne pisane.",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Źródłami niepisanymi są nie tylko małe przedmioty. Budowle i ich części także mogą pomagać badać przeszłość.",
+      "hint": "Rozmiar źródła nie decyduje o tym, czy jest pisane.",
+      "categories": [
+        {
+          "id": "a",
+          "text": "Materialne niepisane"
+        },
+        {
+          "id": "b",
+          "text": "Materialne pisane"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Dawny drewniany most bez napisów.",
+          "categoryId": "a",
+          "explanation": "Budowla może przekazywać informacje bez tekstu."
+        },
+        {
+          "id": "i2",
+          "text": "Notatnik z zapisanym przebiegiem budowy.",
+          "categoryId": "b",
+          "explanation": "Notatnik zawiera tekst."
+        },
+        {
+          "id": "i3",
+          "text": "Żelazny zawias bez znaków.",
+          "categoryId": "a",
+          "explanation": "To rzecz bez zapisu."
+        },
+        {
+          "id": "i4",
+          "text": "Zachowany dokument z listą budowniczych.",
+          "categoryId": "b",
+          "explanation": "Lista jest zapisaną treścią."
+        }
+      ]
+    },
+    {
+      "id": "u-zrodla-12",
+      "type": "matching",
+      "title": "Z czego dowiemy się tego szczegółu?",
+      "instruction": "Wymyślona wystawa: połącz ślad z informacją, którą podaje opis.",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Każdy ślad pozwala pytać o inny szczegół. Relacja przekazuje wspomnienie, nie gwarantuje wszystkich okoliczności wydarzenia.",
+      "hint": "Zwróć uwagę na treść lub cechę wymienioną w każdym opisie.",
+      "pairs": [
+        {
+          "id": "p1",
+          "left": "Dziennik z zapisem kolejnych dni podróży.",
+          "right": "Zapisany przebieg podróży."
+        },
+        {
+          "id": "p2",
+          "left": "Ręcznie wykonany kosz bez napisów.",
+          "right": "Widoczny sposób splecenia kosza."
+        },
+        {
+          "id": "p3",
+          "left": "Ustna relacja świadka o spotkaniu.",
+          "right": "To, jak rozmówca wspomina spotkanie."
+        }
+      ]
+    },
+    {
+      "id": "u-zrodla-13",
+      "type": "matching",
+      "title": "Nazwij rodzaj śladu",
+      "instruction": "Połącz przykład z pełną nazwą rodzaju źródła w tym dziale.",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Dwie pierwsze rzeczy są materialne, ale tylko księga zawiera tekst. Ostatni przykład to sam ustny przekaz.",
+      "hint": "Nie dodawaj do ustnej opowieści nieopisanego urządzenia.",
+      "pairs": [
+        {
+          "id": "p1",
+          "left": "Księga z zapisanymi wydatkami.",
+          "right": "Materialne pisane."
+        },
+        {
+          "id": "p2",
+          "left": "Dawny ceramiczny dzban bez napisów.",
+          "right": "Materialne niepisane."
+        },
+        {
+          "id": "p3",
+          "left": "Sama ustna opowieść o dawnym rzemiośle.",
+          "right": "Niematerialne."
+        }
+      ]
+    },
+    {
+      "id": "u-zrodla-14",
+      "type": "matching",
+      "title": "Pytanie do archeologa",
+      "instruction": "Połącz pojęcie z opisem jego roli.",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Badacz wykorzystuje zarówno znalezisko, jak i zapis jego pochodzenia. Sam przedmiot nie zastępuje tych wiadomości.",
+      "hint": "Jedna karta dotyczy zawodu, pozostałe informacji o znalezisku.",
+      "pairs": [
+        {
+          "id": "p1",
+          "left": "Archeolog.",
+          "right": "Bada materialne pozostałości działalności ludzi, często z wykopalisk."
+        },
+        {
+          "id": "p2",
+          "left": "Miejsce znalezienia.",
+          "right": "Mówi, gdzie odkryto dany przedmiot."
+        },
+        {
+          "id": "p3",
+          "left": "Warstwa znalezienia.",
+          "right": "Pomaga ustalić kontekst położenia rzeczy w ziemi."
+        }
+      ]
+    },
+    {
+      "id": "u-zrodla-15",
+      "type": "short-answer",
+      "title": "Dokończ nazwę kategorii",
+      "instruction": "Ręcznie zapisana księga zawiera tekst. Uzupełnij jednym słowem: «To źródło materialne …».",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "W przyjętym podziale materialny nośnik zawierający zapisaną treść jest źródłem materialnym pisanym.",
+      "hint": "Pytamy o obecność zapisanej treści.",
+      "acceptedAnswers": [
+        "pisane"
+      ],
+      "normalization": "trim-collapse-casefold"
+    },
+    {
+      "id": "u-zrodla-16",
+      "type": "short-answer",
+      "title": "Źródło bez tekstu",
+      "instruction": "Stara drewniana łopata nie ma żadnych napisów. Uzupełnij jednym słowem: «To źródło materialne …».",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Łopata jest rzeczą i nie zawiera tekstu, więc w tym zadaniu zaliczamy ją do materialnych źródeł niepisanych.",
+      "hint": "Brak napisu nie oznacza braku wartości dla badacza.",
+      "acceptedAnswers": [
+        "niepisane"
+      ],
+      "normalization": "trim-collapse-casefold"
+    },
+    {
+      "id": "u-zrodla-17",
+      "type": "short-answer",
+      "title": "Nie tylko rzeczy",
+      "instruction": "Pytamy o sam przekazywany ustnie zwyczaj, bez opisu na papierze i bez nośnika nagrania. Uzupełnij jednym słowem: «To źródło …».",
+      "lessonIds": [
+        "zrodla-historyczne"
+      ],
+      "explanation": "Sama przekazywana praktyka jest w podziale z lekcji źródłem niematerialnym. Jej zapis byłby odrębnym materialnym śladem.",
+      "hint": "Nie oceniaj tutaj kartki, urządzenia ani pliku.",
+      "acceptedAnswers": [
+        "niematerialne"
+      ],
+      "normalization": "trim-collapse-casefold"
+    },
+    {
+      "id": "u-rodzina-01",
+      "type": "multiple-choice",
+      "title": "Podpis, którego brakuje",
+      "instruction": "Fikcyjna rodzina znalazła zdjęcie bez daty. Na odwrocie ktoś niedawno napisał: «Chyba piknik w maju». Które działanie pomoże sprawdzić ten domysł? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "historia-rodziny"
+      ],
+      "hint": "Słowo «chyba» oznacza niepewność. Szukaj sposobu zdobycia dodatkowego śladu.",
+      "explanation": "Rozmowa z uczestnikiem pikniku może dostarczyć informacji do porównania. Sam niedawny, niepewny podpis nie potwierdza daty, a dopisanie roku nie tworzy dowodu.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Uznać maj za pewny."
+        },
+        {
+          "id": "b",
+          "text": "Zapytać osobę, która była na tym pikniku, kiedy się odbył."
+        },
+        {
+          "id": "c",
+          "text": "Dopisać dowolny rok, aby zdjęcie miało pełną datę."
+        }
+      ],
+      "correctOptionIds": [
+        "b"
+      ]
+    },
+    {
+      "id": "u-rodzina-02",
+      "type": "multiple-choice",
+      "title": "Dwa imiona na jednym poziomie",
+      "instruction": "Fikcyjna rodzina: na rysunku podpisano «Ola jest córką Uli». Obok Oli zapisano imię Wera, ale bez linii i opisu. Co wynika z tych danych? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "historia-rodziny"
+      ],
+      "hint": "Oddziel opisane powiązanie od samego sąsiedztwa imion.",
+      "explanation": "Podpis wprost wskazuje Ulę jako mamę Oli. Bliskość imienia Wery nie pozwala ustalić, kim Wera jest dla pozostałych osób.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wera to siostra Oli."
+        },
+        {
+          "id": "b",
+          "text": "Ola jest mamą Uli."
+        },
+        {
+          "id": "c",
+          "text": "Wera jest drugą córką Uli, bo jej imię zapisano obok Oli."
+        },
+        {
+          "id": "d",
+          "text": "Ula jest mamą Oli."
+        }
+      ],
+      "correctOptionIds": [
+        "d"
+      ]
+    },
+    {
+      "id": "u-rodzina-03",
+      "type": "multiple-choice",
+      "title": "Dwie wersje wspomnienia",
+      "instruction": "Fikcyjna rodzina: dwie osoby inaczej pamiętają miejsce dawnego spotkania. Jak można dalej badać sprawę? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "historia-rodziny"
+      ],
+      "hint": "Dobra metoda pomaga sprawdzać wiadomości, zamiast wybierać wygodną wersję.",
+      "explanation": "Zapisanie obu wersji chroni przed zgubieniem różnic. Poszukanie zaproszenia daje kolejny ślad do porównania. Głośniejszy głos ani usunięcie jednej wypowiedzi nie rozstrzygają sporu.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Zapisać obie wersje."
+        },
+        {
+          "id": "b",
+          "text": "Wybrać wersję osoby, która mówi głośniej."
+        },
+        {
+          "id": "c",
+          "text": "Poszukać zachowanego zaproszenia z miejscem spotkania."
+        },
+        {
+          "id": "d",
+          "text": "Usunąć jedną wypowiedź z notatki."
+        }
+      ],
+      "correctOptionIds": [
+        "a",
+        "c"
+      ]
+    },
+    {
+      "id": "u-rodzina-04",
+      "type": "multiple-choice",
+      "title": "Rodzic i dziecko w obie strony",
+      "instruction": "Fikcyjna rodzina: Adam jest ojcem Doroty, a Dorota jest matką Leona. Zaznacz wszystkie zdania wynikające z opisu.",
+      "lessonIds": [
+        "historia-rodziny"
+      ],
+      "hint": "Tę samą relację można opisać od strony rodzica lub dziecka.",
+      "explanation": "Skoro Adam jest ojcem Doroty, Dorota jest jego córką. Ponieważ Leon jest synem Doroty, dla jej ojca Adama jest wnukiem. Opis wskazuje na trzy pokolenia, a nie rodzeństwo.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Adam jest synem Doroty."
+        },
+        {
+          "id": "b",
+          "text": "Dorota jest córką Adama."
+        },
+        {
+          "id": "c",
+          "text": "Leon jest bratem Adama."
+        },
+        {
+          "id": "d",
+          "text": "Dorota jest siostrą Leona."
+        },
+        {
+          "id": "e",
+          "text": "Leon jest wnukiem Adama."
+        }
+      ],
+      "correctOptionIds": [
+        "b",
+        "e"
+      ]
+    },
+    {
+      "id": "u-rodzina-05",
+      "type": "multiple-choice",
+      "title": "Mała wystawa bez prywatnych danych",
+      "instruction": "Fikcyjna rodzina przygotowuje szkolną wystawę o dawnych zabawach. Które działania pozwalają opowiadać o przeszłości i chronić prywatność? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "historia-rodziny"
+      ],
+      "hint": "Do opisu zabawy nie potrzeba adresu ani numeru dokumentu.",
+      "explanation": "Wystawie służą zgoda na wykorzystanie wspomnienia, ukrycie zbędnych danych oraz opis zabawki. Publiczne numery dokumentów nie pomagają wyjaśnić zabawy i naruszają prywatność.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Zapytać o zgodę na pokazanie wspomnienia."
+        },
+        {
+          "id": "b",
+          "text": "Pokazać numery wszystkich rodzinnych dokumentów."
+        },
+        {
+          "id": "c",
+          "text": "Zasłonić adres widoczny na kopii starego listu."
+        },
+        {
+          "id": "d",
+          "text": "Opisać dawną zabawkę."
+        }
+      ],
+      "correctOptionIds": [
+        "a",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "id": "u-rodzina-06",
+      "type": "multiple-choice",
+      "title": "Zwyczaj wędruje dalej",
+      "instruction": "Fikcyjna rodzina od wielu lat wyplata papierowe ozdoby. Starsi uczą tego młodszych. Które zdania pasują do opisu? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "historia-rodziny"
+      ],
+      "hint": "Sprawdź, co jest przekazywane i komu. Opis dotyczy tylko tej rodziny.",
+      "explanation": "Tradycją jest przekazywany zwyczaj, a nie sam papier. Uczenie młodszych i powtarzanie czynności podtrzymuje tradycję. Nie wynika z tego obowiązek dla wszystkich rodzin ani koniec zwyczaju.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Każda rodzina musi robić takie ozdoby."
+        },
+        {
+          "id": "b",
+          "text": "To rodzinna tradycja."
+        },
+        {
+          "id": "c",
+          "text": "Młodsi poznają zwyczaj dzięki starszym."
+        },
+        {
+          "id": "d",
+          "text": "Zwyczaj zniknął, skoro młodsi się go uczą."
+        },
+        {
+          "id": "e",
+          "text": "Wspólne wyplatanie może pomóc przekazać ten zwyczaj dalej."
+        }
+      ],
+      "correctOptionIds": [
+        "b",
+        "c",
+        "e"
+      ]
+    },
+    {
+      "id": "u-rodzina-07",
+      "type": "sorting",
+      "title": "Co rzeczywiście mówi kartka?",
+      "instruction": "Fikcyjna rodzina znalazła kartkę: «W sobotę odwiedziliśmy muzeum. Padał deszcz». Oddziel informacje zapisane na kartce od domysłów.",
+      "lessonIds": [
+        "historia-rodziny"
+      ],
+      "hint": "Czy dane zdanie da się potwierdzić samymi słowami z kartki?",
+      "explanation": "Kartka podaje dzień tygodnia, miejsce wyjścia i pogodę. Nie podaje nastroju uczestników ani nazwy miasta, więc nie można ich dopowiadać jako pewnych informacji.",
+      "categories": [
+        {
+          "id": "zapis",
+          "text": "Zapisano na kartce"
+        },
+        {
+          "id": "domysl",
+          "text": "Domysł bez potwierdzenia"
+        }
+      ],
+      "items": [
+        {
+          "id": "a",
+          "text": "Wyjście odbyło się w sobotę.",
+          "categoryId": "zapis",
+          "explanation": "Dzień tygodnia podano wprost."
+        },
+        {
+          "id": "b",
+          "text": "Wszyscy byli smutni.",
+          "categoryId": "domysl",
+          "explanation": "Deszcz nie dowodzi, jaki był nastrój uczestników."
+        },
+        {
+          "id": "c",
+          "text": "Odwiedzono muzeum.",
+          "categoryId": "zapis",
+          "explanation": "Muzeum jest wymienione w treści kartki."
+        },
+        {
+          "id": "d",
+          "text": "Muzeum było w Krakowie.",
+          "categoryId": "domysl",
+          "explanation": "Nie zapisano nazwy miasta."
+        }
+      ]
+    },
+    {
+      "id": "u-rodzina-08",
+      "type": "sorting",
+      "title": "Przedmiot czy przekazywany zwyczaj?",
+      "instruction": "Fikcyjna rodzina przygotowuje opis swoich pamiątek i zwyczajów. Przyporządkuj każdy przykład. Oceniaj to, co nazwano, nie jego ewentualne nagranie.",
+      "lessonIds": [
+        "historia-rodziny"
+      ],
+      "hint": "Przedmiot można przechować w pudełku. Zwyczaj trwa dzięki temu, że ludzie go powtarzają.",
+      "explanation": "Szachownica i broszka to rzeczy. Coroczne spotkanie oraz wspólnie śpiewana pieśń są tutaj przykładami przekazywanych zwyczajów, a nie ich materialnych zapisów.",
+      "categories": [
+        {
+          "id": "rzecz",
+          "text": "Pamiątkowy przedmiot"
+        },
+        {
+          "id": "zwyczaj",
+          "text": "Przekazywany zwyczaj"
+        }
+      ],
+      "items": [
+        {
+          "id": "a",
+          "text": "Drewniana szachownica po dawnym krewnym.",
+          "categoryId": "rzecz",
+          "explanation": "To zachowany przedmiot używany dawniej."
+        },
+        {
+          "id": "b",
+          "text": "Coroczny rodzinny spacer tą samą trasą, przekazywany młodszym.",
+          "categoryId": "zwyczaj",
+          "explanation": "Opis dotyczy powtarzanej czynności."
+        },
+        {
+          "id": "c",
+          "text": "Srebrna broszka przechowywana w pudełku.",
+          "categoryId": "rzecz",
+          "explanation": "Broszka jest materialną pamiątką."
+        },
+        {
+          "id": "d",
+          "text": "Śpiewanie na spotkaniach pieśni, której starsi uczą młodszych.",
+          "categoryId": "zwyczaj",
+          "explanation": "Przekazuje się sposób wspólnego śpiewania, nie opisany tutaj przedmiot."
+        }
+      ]
+    },
+    {
+      "id": "u-rodzina-09",
+      "type": "sorting",
+      "title": "Pytania, które otwierają rozmowę",
+      "instruction": "Fikcyjna rodzina rozmawia o dawnych zabawach. Podziel wypowiedzi na pytania o wspomnienia i zdania podsuwające gotową odpowiedź.",
+      "lessonIds": [
+        "historia-rodziny"
+      ],
+      "hint": "Dobre pytanie pozwala rozmówcy samemu opowiedzieć, co pamięta.",
+      "explanation": "Pytania o miejsce zabaw i ich zasady nie narzucają wspomnień. Pozostałe zdania z góry zakładają brak radości lub jedną zabawę, choć rozmówca tego nie powiedział.",
+      "categories": [
+        {
+          "id": "pytanie",
+          "text": "Pyta o wspomnienia"
+        },
+        {
+          "id": "podsuwa",
+          "text": "Podsuwa odpowiedź"
+        }
+      ],
+      "items": [
+        {
+          "id": "a",
+          "text": "Gdzie bawiliście się po szkole?",
+          "categoryId": "pytanie",
+          "explanation": "Rozmówca może sam wskazać miejsce."
+        },
+        {
+          "id": "b",
+          "text": "Na pewno bez tabletu nigdy nie było wam wesoło, prawda?",
+          "categoryId": "podsuwa",
+          "explanation": "Zdanie z góry przypisuje dawnym zabawom brak radości."
+        },
+        {
+          "id": "c",
+          "text": "Jakie zasady miała wasza ulubiona zabawa?",
+          "categoryId": "pytanie",
+          "explanation": "Pytanie zachęca do podania zapamiętanych zasad."
+        },
+        {
+          "id": "d",
+          "text": "Pewnie wszyscy graliście tylko w piłkę, tak?",
+          "categoryId": "podsuwa",
+          "explanation": "Wypowiedź narzuca jedną możliwą zabawę."
+        }
+      ]
+    },
+    {
+      "id": "u-rodzina-10",
+      "type": "sorting",
+      "title": "Dwie gałęzie zapisane słowami",
+      "instruction": "Fikcyjna rodzina: Rita jest matką Sary. Jan jest ojcem Rity. Sara jest matką Olka, a Olek ojcem Mai. Podziel wymienione osoby według ich relacji z Sarą.",
+      "lessonIds": [
+        "historia-rodziny"
+      ],
+      "hint": "Idąc od Sary do rodziców, szukasz przodków. Idąc do dzieci i wnuków, szukasz potomków.",
+      "explanation": "Matka Sary Rita i ojciec Rity Jan należą do przodków Sary. Jej syn Olek i córka Olka Maja należą do potomków. Wszystkie połączenia podano w opisie.",
+      "categories": [
+        {
+          "id": "przodkowie",
+          "text": "Przodkowie Sary"
+        },
+        {
+          "id": "potomkowie",
+          "text": "Potomkowie Sary"
+        }
+      ],
+      "items": [
+        {
+          "id": "maja",
+          "text": "Maja",
+          "categoryId": "potomkowie",
+          "explanation": "Maja jest córką syna Sary, czyli jej wnuczką."
+        },
+        {
+          "id": "rita",
+          "text": "Rita",
+          "categoryId": "przodkowie",
+          "explanation": "Rita jest matką Sary."
+        },
+        {
+          "id": "olek",
+          "text": "Olek",
+          "categoryId": "potomkowie",
+          "explanation": "Olek jest synem Sary."
+        },
+        {
+          "id": "jan",
+          "text": "Jan",
+          "categoryId": "przodkowie",
+          "explanation": "Jan jest ojcem matki Sary, czyli jej dziadkiem."
+        }
+      ]
+    },
+    {
+      "id": "u-rodzina-11",
+      "type": "matching",
+      "title": "Cztery pytania do rodzinnego archiwum",
+      "instruction": "Fikcyjna rodzina bada historię krewnej. Połącz każdy ślad z pytaniem, na które jego opisana treść pomaga odpowiedzieć.",
+      "lessonIds": [
+        "historia-rodziny"
+      ],
+      "hint": "Szukaj szczegółu wymienionego w opisie, a nie informacji, którą dopiero trzeba byłoby zgadnąć.",
+      "explanation": "Różne ślady odpowiadają na różne pytania: świadectwo podaje szkołę, pamiętnik wrażenia, zdjęcie wygląd stroju, a wykaz odznaczeń nazwę nagrody.",
+      "pairs": [
+        {
+          "id": "szkola",
+          "left": "Świadectwo z nazwą szkoły krewnej.",
+          "right": "Do której szkoły uczęszczała?"
+        },
+        {
+          "id": "wrazenia",
+          "left": "Pamiętnik opisujący jej emocje przed występem.",
+          "right": "Jak opisała swoje uczucia przed występem?"
+        },
+        {
+          "id": "stroj",
+          "left": "Wyraźne zdjęcie całego jej stroju scenicznego.",
+          "right": "Jak wyglądał jej strój na scenie?"
+        },
+        {
+          "id": "nagroda",
+          "left": "Wykaz jej odznaczeń z nazwami nagród.",
+          "right": "Jaką nagrodę otrzymała?"
+        }
+      ]
+    },
+    {
+      "id": "u-rodzina-12",
+      "type": "matching",
+      "title": "Kto patrzy na kogo?",
+      "instruction": "Fikcyjna rodzina: Celina jest matką Ewy. Ewa jest matką Borysa. Filip jest bratem Borysa. Połącz pytania z relacjami wynikającymi z opisu.",
+      "lessonIds": [
+        "historia-rodziny"
+      ],
+      "hint": "Zawsze sprawdź, dla której osoby ustalasz relację.",
+      "explanation": "Celina jest matką matki Borysa, więc jego babcią. Borys jest synem Ewy, a Filip jest wprost nazwany bratem Borysa. Nie trzeba zakładać, kto jest rodzicem Filipa.",
+      "pairs": [
+        {
+          "id": "babcia",
+          "left": "Kim jest Celina dla Borysa?",
+          "right": "Babcią."
+        },
+        {
+          "id": "syn",
+          "left": "Kim jest Borys dla Ewy?",
+          "right": "Synem."
+        },
+        {
+          "id": "brat",
+          "left": "Kim jest Filip dla Borysa?",
+          "right": "Bratem."
+        }
+      ]
+    },
+    {
+      "id": "u-rodzina-13",
+      "type": "matching",
+      "title": "Uzupełnij uczciwą notatkę",
+      "instruction": "Fikcyjna rodzina zapisuje wyniki poszukiwań. Dobierz do każdej sytuacji najtrafniejszą notatkę.",
+      "lessonIds": [
+        "historia-rodziny"
+      ],
+      "hint": "Zachowaj różnicę między wiedzą, czyimś wspomnieniem, sporem i brakiem wiadomości.",
+      "explanation": "Notatka powinna pokazywać, skąd pochodzi informacja i jak jest pewna. Braku nazwiska nie zastępuje się pomysłem, a rozbieżnych wspomnień nie łączy w jedną pewną datę.",
+      "pairs": [
+        {
+          "id": "dokument",
+          "left": "Na dyplomie wyraźnie zapisano rok 1986.",
+          "right": "Na dyplomie widnieje data 1986."
+        },
+        {
+          "id": "wspomnienie",
+          "left": "Tylko jedna osoba opowiada, że spotkanie było zimą.",
+          "right": "Według wspomnienia rozmówcy spotkanie odbyło się zimą."
+        },
+        {
+          "id": "spor",
+          "left": "Dwie osoby podają inne daty tego samego spotkania.",
+          "right": "Daty we wspomnieniach są rozbieżne; trzeba je sprawdzić."
+        },
+        {
+          "id": "brak",
+          "left": "Nikt nie zna nazwiska osoby ze zdjęcia; nie ma podpisu.",
+          "right": "Nazwisko osoby ze zdjęcia pozostaje nieustalone."
+        }
+      ]
+    },
+    {
+      "id": "u-rodzina-14",
+      "type": "matching",
+      "title": "Pamiątka potrzebuje opieki",
+      "instruction": "Fikcyjna rodzina chce zachować ślady swojej historii. Połącz każdy problem z działaniem, które pomaga mu zaradzić.",
+      "lessonIds": [
+        "historia-rodziny"
+      ],
+      "hint": "Wybierz działanie, które ocali treść lub informację, zamiast ją zmienić.",
+      "explanation": "Kopia pomaga ocalić treść blaknącego listu. Osobna etykieta zachowuje informację o pochodzeniu pamiątki. Spisanie wspomnienia za zgodą rozmówcy pomaga zachować ustną opowieść.",
+      "pairs": [
+        {
+          "id": "list",
+          "left": "Tekst listu zaczyna blaknąć.",
+          "right": "Wykonać czytelną kopię i bezpiecznie zachować oryginał."
+        },
+        {
+          "id": "pochodzenie",
+          "left": "Tylko jedna osoba pamięta, po kim jest stary zegarek.",
+          "right": "Zapisać tę wiadomość na osobnej etykiecie przy pamiątce."
+        },
+        {
+          "id": "opowiesc",
+          "left": "Opowieści o dawnych zabawach nie zapisano.",
+          "right": "Poprosić o zgodę i spisać wspomnienie rozmówcy."
+        }
+      ]
+    },
+    {
+      "id": "u-rodzina-15",
+      "type": "ordering",
+      "title": "Od przodkini do potomkini",
+      "instruction": "Fikcyjna rodzina: Marta jest matką Ireny. Irena jest matką Pawła, a Paweł ojcem Zosi. Ułóż te osoby wzdłuż podanej linii pokoleń, od przodkini do najmłodszego pokolenia.",
+      "lessonIds": [
+        "historia-rodziny"
+      ],
+      "hint": "Po każdej osobie umieść jej dziecko wskazane w opisie.",
+      "explanation": "Linia prowadzi od Marty do jej córki Ireny, dalej do syna Ireny Pawła i jego córki Zosi. Kolejność wynika z rodzicielstwa, nie z ułożenia imion na ekranie.",
+      "items": [
+        {
+          "id": "pawel",
+          "text": "Paweł"
+        },
+        {
+          "id": "zosia",
+          "text": "Zosia"
+        },
+        {
+          "id": "marta",
+          "text": "Marta"
+        },
+        {
+          "id": "irena",
+          "text": "Irena"
+        }
+      ],
+      "correctOrder": [
+        "marta",
+        "irena",
+        "pawel",
+        "zosia"
+      ]
+    },
+    {
+      "id": "u-rodzina-16",
+      "type": "ordering",
+      "title": "Jak powstał rodzinny album?",
+      "instruction": "Fikcyjna rodzina opisała tworzenie albumu. Ułóż etapy zgodnie ze słowami «najpierw», «potem» i «na końcu».",
+      "lessonIds": [
+        "historia-rodziny"
+      ],
+      "hint": "Każda karta podaje, co wydarzyło się przed nią lub po niej.",
+      "explanation": "Najpierw zebrano zdjęcia, potem sprawdzono ich podpisy. Dopiero po sprawdzeniu wykonano opisy, a na końcu pokazano album. To odtwarza podaną historię pracy nad albumem.",
+      "items": [
+        {
+          "id": "opisy",
+          "text": "Po sprawdzeniu podpisów przygotowano opisy do albumu."
+        },
+        {
+          "id": "pokaz",
+          "text": "Na końcu pokazano gotowy album na spotkaniu."
+        },
+        {
+          "id": "zbior",
+          "text": "Najpierw zebrano zdjęcia do albumu."
+        },
+        {
+          "id": "sprawdzenie",
+          "text": "Po zebraniu zdjęć sprawdzono ich podpisy z osobami, które pamiętały wydarzenia."
+        }
+      ],
+      "correctOrder": [
+        "zbior",
+        "sprawdzenie",
+        "opisy",
+        "pokaz"
+      ]
+    },
+    {
+      "id": "u-rodzina-17",
+      "type": "short-answer",
+      "title": "Relacja od drugiej strony",
+      "instruction": "Fikcyjna rodzina: Alicja jest matką Konrada, a Konrad ojcem Lidii. Kim Lidia jest dla Alicji? Wpisz tylko nazwę relacji.",
+      "lessonIds": [
+        "historia-rodziny"
+      ],
+      "hint": "Lidia jest córką syna Alicji.",
+      "explanation": "Konrad jest synem Alicji, a Lidia jest jego córką. Córka syna to wnuczka, więc patrzymy tu od strony Alicji, nie Lidii.",
+      "acceptedAnswers": [
+        "wnuczka",
+        "wnuczką"
+      ],
+      "normalization": "trim-collapse-casefold"
+    },
+    {
+      "id": "u-epoki-01",
+      "type": "multiple-choice",
+      "title": "Dwie osady i pismo",
+      "instruction": "W wymyślonym przykładzie w osadzie A ludzie używali już pisma, a w osadzie B jeszcze go nie znali. Który wniosek pasuje do lekcji? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "epoki"
+      ],
+      "hint": "Porównaj obie osady. Czy jedna wspólna chwila wprowadzenia pisma pasuje do opisu?",
+      "explanation": "Różna znajomość pisma pokazuje, dlaczego nie przyjmujemy jednego momentu końca prehistorii dla wszystkich miejsc. Brak pisma nie oznacza ani braku ludzi, ani braku śladów ich życia.",
+      "options": [
+        {
+          "id": "a",
+          "text": "W osadzie B nie było jeszcze ludzi."
+        },
+        {
+          "id": "b",
+          "text": "W osadzie B nie mogły powstać żadne narzędzia."
+        },
+        {
+          "id": "c",
+          "text": "Pojawienie się pisma nie musiało nastąpić w obu osadach jednocześnie."
+        }
+      ],
+      "correctOptionIds": [
+        "c"
+      ]
+    },
+    {
+      "id": "u-epoki-02",
+      "type": "multiple-choice",
+      "title": "Brakująca sala muzeum",
+      "instruction": "Sale ustawiono według szkolnej kolejności epok: starożytność, średniowiecze, ?, współczesność. Jaka nazwa pasuje w miejsce znaku zapytania? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "epoki"
+      ],
+      "hint": "Szukaj okresu późniejszego od średniowiecza, ale wcześniejszego od współczesności.",
+      "explanation": "Pomiędzy średniowieczem a współczesnością w tym podziale znajduje się nowożytność. Prehistoria i starożytność są wcześniejsze, a chronologia jest sposobem porządkowania czasu, nie nazwą tej epoki.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Nowożytność"
+        },
+        {
+          "id": "b",
+          "text": "Prehistoria, czyli czasy przed pojawieniem się pisma"
+        },
+        {
+          "id": "c",
+          "text": "Starożytność"
+        },
+        {
+          "id": "d",
+          "text": "Chronologia"
+        }
+      ],
+      "correctOptionIds": [
+        "a"
+      ]
+    },
+    {
+      "id": "u-epoki-03",
+      "type": "multiple-choice",
+      "title": "Napis na osi czasu",
+      "instruction": "Pod osią zapisano: «W tym dziale granice epok to umownie 476, 1492 i 1918. To jeden ze szkolnych podziałów». Które uwagi są zgodne z tym podpisem? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "epoki"
+      ],
+      "hint": "Zwróć uwagę na słowa «umownie» i «jeden ze».",
+      "explanation": "Podpis uprzedza, że są też inne podziały, a daty są punktami porządkującymi. Nie twierdzi, że wszystkie przemiany wydarzyły się naraz ani że można pominąć kolejność epok.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wszystkie zwyczaje zmieniały się w tych latach jednocześnie."
+        },
+        {
+          "id": "b",
+          "text": "Można spotkać inny podział dziejów."
+        },
+        {
+          "id": "c",
+          "text": "Nie trzeba już zachowywać kolejności epok."
+        },
+        {
+          "id": "d",
+          "text": "Te daty pomagają porządkować dzieje, ale nie opisują zmiany życia wszystkich ludzi w jednym dniu."
+        }
+      ],
+      "correctOptionIds": [
+        "b",
+        "d"
+      ]
+    },
+    {
+      "id": "u-epoki-04",
+      "type": "multiple-choice",
+      "title": "Sprawdź sąsiadów",
+      "instruction": "Sprawdź pary według uproszczonej szkolnej kolejności epok. Zaznacz wszystkie, w których druga epoka następuje bezpośrednio po pierwszej.",
+      "lessonIds": [
+        "epoki"
+      ],
+      "hint": "Sama poprawna kolejność nie wystarcza: między epokami z pary nie może być innej epoki.",
+      "explanation": "Starożytność sąsiaduje ze średniowieczem, średniowiecze z nowożytnością, a nowożytność ze współczesnością. Prehistorię od średniowiecza oddziela starożytność.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Prehistoria → średniowiecze"
+        },
+        {
+          "id": "b",
+          "text": "Starożytność → średniowiecze"
+        },
+        {
+          "id": "c",
+          "text": "Średniowiecze → nowożytność"
+        },
+        {
+          "id": "d",
+          "text": "Nowożytność → współczesność"
+        }
+      ],
+      "correctOptionIds": [
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "id": "u-epoki-05",
+      "type": "multiple-choice",
+      "title": "Czy etykieta wystarczy?",
+      "instruction": "W muzeum stoi naczynie bez napisów. Podpis brzmi «starożytność». Co można poprawnie powiedzieć o takim zestawieniu? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "epoki"
+      ],
+      "hint": "Brak pisma na jednym przedmiocie to nie to samo co brak pisma w danym okresie.",
+      "explanation": "Ludzie używali przedmiotów bez napisów także po pojawieniu się pisma. Sam brak napisu nie dowodzi pochodzenia z prehistorii. Do sprawdzenia datowania potrzebne są dodatkowe wiadomości o znalezisku.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Naczynie mogło powstać w czasach, gdy znano już pismo."
+        },
+        {
+          "id": "b",
+          "text": "Każda rzecz bez napisu pochodzi z prehistorii."
+        },
+        {
+          "id": "c",
+          "text": "Sam brak napisu nie obala podpisu «starożytność»."
+        },
+        {
+          "id": "d",
+          "text": "Nazwę epoki da się zawsze ustalić z koloru naczynia."
+        },
+        {
+          "id": "e",
+          "text": "Warto sprawdzić dodatkowe informacje o czasie powstania naczynia."
+        }
+      ],
+      "correctOptionIds": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    {
+      "id": "u-epoki-06",
+      "type": "sorting",
+      "title": "Co wiemy o piśmie?",
+      "instruction": "Podziel opisy na takie, które mówią wprost o czasach sprzed pojawienia się pisma w danym miejscu, i takie, które nie pozwalają tego ustalić.",
+      "lessonIds": [
+        "epoki"
+      ],
+      "hint": "Oceń całą wiadomość. Brak liter na pojedynczej rzeczy nie opisuje wiedzy wszystkich ludzi.",
+      "explanation": "Bezpośrednia informacja o czasach sprzed pojawienia się pisma wskazuje prehistorię danego miejsca. Sam przedmiot bez liter albo ustna pieśń mogły istnieć również później.",
+      "categories": [
+        {
+          "id": "przed",
+          "text": "Wprost: przed pojawieniem się pisma"
+        },
+        {
+          "id": "brak",
+          "text": "Za mało danych"
+        }
+      ],
+      "items": [
+        {
+          "id": "a",
+          "text": "Opis osady: «Ludzie żyli tu, zanim w tej okolicy pojawiło się pismo».",
+          "categoryId": "przed",
+          "explanation": "Opis wprost umieszcza życie osady przed pojawieniem się pisma."
+        },
+        {
+          "id": "b",
+          "text": "Znaleziono grzebień bez żadnych liter.",
+          "categoryId": "brak",
+          "explanation": "Grzebienie bez napisów powstają w różnych okresach."
+        },
+        {
+          "id": "c",
+          "text": "Podpis wystawy: «Miejscowe narzędzia z czasów sprzed pojawienia się tu pisma».",
+          "categoryId": "przed",
+          "explanation": "Podpis podaje potrzebną relację czasową."
+        },
+        {
+          "id": "d",
+          "text": "Ludzie przekazywali sobie pieśń ustnie.",
+          "categoryId": "brak",
+          "explanation": "Ustne przekazywanie pieśni nie dowodzi braku znajomości pisma."
+        }
+      ]
+    },
+    {
+      "id": "u-epoki-07",
+      "type": "sorting",
+      "title": "Zaznaczenia między granicami",
+      "instruction": "Przyjmij szkolną konwencję tego działu: granice to 476, 1492 i 1918. Przyporządkuj punkty z opisów do epok. To nie jest jedyny możliwy podział dziejów.",
+      "lessonIds": [
+        "epoki"
+      ],
+      "hint": "Szukaj dwóch granic otaczających punkt. Żaden punkt nie leży dokładnie na granicy.",
+      "explanation": "Między 476 a 1492 leży średniowiecze, między 1492 a 1918 nowożytność, a po 1918 współczesność. Opisy położenia wystarczają, nawet bez numeru roku punktu.",
+      "categories": [
+        {
+          "id": "sred",
+          "text": "Średniowiecze"
+        },
+        {
+          "id": "now",
+          "text": "Nowożytność"
+        },
+        {
+          "id": "wsp",
+          "text": "Współczesność"
+        }
+      ],
+      "items": [
+        {
+          "id": "a",
+          "text": "Punkt leży po 1492, ale przed 1918.",
+          "categoryId": "now",
+          "explanation": "To obszar między granicami nowożytności."
+        },
+        {
+          "id": "b",
+          "text": "Punkt leży po 1918.",
+          "categoryId": "wsp",
+          "explanation": "W tym podziale jest to obszar współczesności."
+        },
+        {
+          "id": "c",
+          "text": "Punkt leży po 476, ale przed 1492.",
+          "categoryId": "sred",
+          "explanation": "To obszar średniowiecza w przyjętej konwencji."
+        },
+        {
+          "id": "d",
+          "text": "Punkt leży tuż przed 1918, a długo po 1492.",
+          "categoryId": "now",
+          "explanation": "Bliskość końcowej granicy nie przenosi punktu do następnej epoki."
+        }
+      ]
+    },
+    {
+      "id": "u-epoki-08",
+      "type": "sorting",
+      "title": "Przed salą średniowiecza i po niej",
+      "instruction": "Przyjmij kolejność: prehistoria, starożytność, średniowiecze, nowożytność, współczesność. Umieść pozostałe okresy przed średniowieczem lub po nim.",
+      "lessonIds": [
+        "epoki"
+      ],
+      "hint": "Nie pytamy wyłącznie o najbliższych sąsiadów, lecz o wszystkie okresy wcześniejsze lub późniejsze.",
+      "explanation": "Prehistoria i starożytność są wcześniejsze od średniowiecza. Nowożytność oraz współczesność są późniejsze. Podział na dwie grupy zachowuje tę samą kolejność dziejów.",
+      "categories": [
+        {
+          "id": "przed",
+          "text": "Przed średniowieczem"
+        },
+        {
+          "id": "po",
+          "text": "Po średniowieczu"
+        }
+      ],
+      "items": [
+        {
+          "id": "wsp",
+          "text": "Współczesność",
+          "categoryId": "po",
+          "explanation": "Występuje po średniowieczu i nowożytności."
+        },
+        {
+          "id": "pre",
+          "text": "Prehistoria",
+          "categoryId": "przed",
+          "explanation": "Poprzedza starożytność i średniowiecze."
+        },
+        {
+          "id": "now",
+          "text": "Nowożytność",
+          "categoryId": "po",
+          "explanation": "Następuje bezpośrednio po średniowieczu."
+        },
+        {
+          "id": "sta",
+          "text": "Starożytność",
+          "categoryId": "przed",
+          "explanation": "W tym ciągu poprzedza średniowiecze."
+        }
+      ]
+    },
+    {
+      "id": "u-epoki-09",
+      "type": "sorting",
+      "title": "Umowa historyków czy nagła zmiana świata?",
+      "instruction": "Podziel wypowiedzi o epokach na zgodne z lekcją i wymagające poprawienia.",
+      "lessonIds": [
+        "epoki"
+      ],
+      "hint": "Granica na osi pomaga się uczyć, lecz nie jest przełącznikiem zmieniającym życie wszędzie naraz.",
+      "explanation": "Można przyjmować różne umowne granice, a przemiany rozciągały się w czasie. Podział na epoki porządkuje wiedzę; nie oznacza jednoczesnej zmiany stroju lub znajomości pisma u wszystkich ludzi.",
+      "categories": [
+        {
+          "id": "zgodne",
+          "text": "Zgodne z lekcją"
+        },
+        {
+          "id": "popraw",
+          "text": "Wymaga poprawienia"
+        }
+      ],
+      "items": [
+        {
+          "id": "a",
+          "text": "Podręczniki mogą wskazywać różne umowne granice epok.",
+          "categoryId": "zgodne",
+          "explanation": "Przyjęty w dziale podział nie jest jedynym stosowanym."
+        },
+        {
+          "id": "b",
+          "text": "W dniu granicznym wszyscy ludzie zmieniali sposób ubierania.",
+          "categoryId": "popraw",
+          "explanation": "Zmiany obyczajów nie następowały wszędzie jednego dnia."
+        },
+        {
+          "id": "c",
+          "text": "Podział pomaga porządkować opowieść o przeszłości.",
+          "categoryId": "zgodne",
+          "explanation": "Epoki tworzą duże, uporządkowane odcinki dziejów."
+        },
+        {
+          "id": "d",
+          "text": "Każda społeczność poznała pismo w tej samej chwili.",
+          "categoryId": "popraw",
+          "explanation": "Pismo pojawiało się i upowszechniało w różnym czasie."
+        }
+      ]
+    },
+    {
+      "id": "u-epoki-10",
+      "type": "matching",
+      "title": "Jakiej wiadomości brakuje?",
+      "instruction": "Wymyślone sytuacje z pracowni wystawy: połącz każdą trudność z pytaniem, które pomaga uzupełnić brakującą wiadomość.",
+      "lessonIds": [
+        "epoki"
+      ],
+      "hint": "Jedna trudność dotyczy znajomości pisma, druga przyjętej umowy, a trzecia dopisku przy dacie.",
+      "explanation": "Brak liter na rzeczy nie wystarcza do uznania jej za prehistoryczną. Przy różnych granicach trzeba sprawdzić konwencję obu książek. Sam numer 600 bez dopisku ery nie pozwala przypisać daty do epoki.",
+      "pairs": [
+        {
+          "id": "pismo",
+          "left": "Naczynie bez liter uznano za prehistoryczne tylko dlatego, że nie ma na nim napisu.",
+          "right": "Czy w miejscu i czasie powstania naczynia ludzie znali już pismo?"
+        },
+        {
+          "id": "umowa",
+          "left": "Dwa podręczniki podają inne umowne daty początku nowożytności.",
+          "right": "Jaki podział dziejów przyjęto w każdym z podręczników?"
+        },
+        {
+          "id": "era",
+          "left": "Karta wystawy podaje rok 600, ale nie podaje ery.",
+          "right": "Czy chodzi o 600 p.n.e., czy o 600 n.e.?"
+        }
+      ]
+    },
+    {
+      "id": "u-epoki-11",
+      "type": "matching",
+      "title": "Granice opisane bez dat",
+      "instruction": "W uproszczonym szkolnym podziale dopasuj każdą granicę do epoki leżącej bezpośrednio po niej. Nie ustalamy tu jednego dnia przemiany życia wszystkich ludzi.",
+      "lessonIds": [
+        "epoki"
+      ],
+      "hint": "Słowo «po» wskazuje późniejszy okres z każdej pary.",
+      "explanation": "Po prehistorii następuje starożytność, po starożytności średniowiecze, po średniowieczu nowożytność, a po nowożytności współczesność. Opisy granic sprawdzają kierunek czytania osi.",
+      "pairs": [
+        {
+          "id": "a",
+          "left": "Granica prehistorii i starożytności.",
+          "right": "Starożytność"
+        },
+        {
+          "id": "b",
+          "left": "Granica starożytności i średniowiecza.",
+          "right": "Średniowiecze"
+        },
+        {
+          "id": "c",
+          "left": "Granica średniowiecza i nowożytności.",
+          "right": "Nowożytność"
+        },
+        {
+          "id": "d",
+          "left": "Granica nowożytności i współczesności.",
+          "right": "Współczesność"
+        }
+      ]
+    },
+    {
+      "id": "u-epoki-12",
+      "type": "matching",
+      "title": "Popraw podpis wystawy",
+      "instruction": "Połącz każdy błędny podpis z wyjaśnieniem, które poprawia właśnie ten błąd.",
+      "lessonIds": [
+        "epoki"
+      ],
+      "hint": "Jeden błąd dotyczy pisma, drugi granic, a trzeci kolejności.",
+      "explanation": "Brak napisu na rzeczy nie dowodzi prehistorycznego pochodzenia. Umowna granica nie oznacza zmiany życia wszystkich ludzi jednego dnia. W szkolnej kolejności nowożytność poprzedza współczesność.",
+      "pairs": [
+        {
+          "id": "pismo",
+          "left": "«Łyżka bez liter zawsze pochodzi z prehistorii».",
+          "right": "Przedmioty bez napisów wykonywano również w późniejszych epokach."
+        },
+        {
+          "id": "granice",
+          "left": "«Granica epoki zmieniała całe życie na świecie w jeden dzień».",
+          "right": "Granice są umowne, a przemiany zachodziły w różnym tempie."
+        },
+        {
+          "id": "kolejnosc",
+          "left": "«Po współczesności zaczęła się nowożytność».",
+          "right": "W przyjętym ciągu nowożytność jest wcześniejsza od współczesności."
+        }
+      ]
+    },
+    {
+      "id": "u-epoki-13",
+      "type": "ordering",
+      "title": "Zmiana nie zachodzi jednego dnia",
+      "instruction": "Fikcyjna osada stopniowo poznaje pismo. Ułóż fragmenty jej historii od wcześniejszego do późniejszego według opisanych relacji czasowych.",
+      "lessonIds": [
+        "epoki"
+      ],
+      "hint": "Odróżnij pierwsze użycie pisma, jego późniejsze upowszechnianie i jeszcze późniejszą pracę badaczy.",
+      "explanation": "Najpierw w osadzie nie znano pisma, potem zaczęły go używać pierwsze osoby. Późniejsze upowszechnianie nie usunęło ustnych zwyczajów. Badacze wybrali granicę dopiero podczas opisywania przeszłości: umowny podział nie spowodował zmian w życiu mieszkańców.",
+      "items": [
+        {
+          "id": "upowszechnienie",
+          "text": "Później pisma uczyły się kolejne osoby, a ustne zwyczaje nadal trwały."
+        },
+        {
+          "id": "przed",
+          "text": "Zanim poznano pismo, mieszkańcy przekazywali wiadomości wyłącznie ustnie."
+        },
+        {
+          "id": "badacze",
+          "text": "Po opisanych przemianach badacze umownie wybrali pojawienie się pisma jako granicę okresów tej osady."
+        },
+        {
+          "id": "pierwsze",
+          "text": "Pierwsze osoby zaczęły używać pisma; pozostali mieszkańcy jeszcze go nie znali."
+        }
+      ],
+      "correctOrder": [
+        "przed",
+        "pierwsze",
+        "upowszechnienie",
+        "badacze"
+      ]
+    },
+    {
+      "id": "u-epoki-14",
+      "type": "ordering",
+      "title": "Od granicy do granicy",
+      "instruction": "Ułóż etykiety od wcześniejszej do późniejszej. Przyjmij konwencję tego działu: 476 to granica starożytności i średniowiecza, 1492 średniowiecza i nowożytności, a 1918 nowożytności i współczesności. To nie jedyny podział.",
+      "lessonIds": [
+        "epoki"
+      ],
+      "hint": "Najpierw znajdź granicę starożytności. Między dwoma punktami umieść epokę, którą one ograniczają.",
+      "explanation": "Po granicy 476 rozciąga się średniowiecze aż do granicy 1492. Potem trwa nowożytność do granicy 1918. Nie przypisujemy samych lat granicznych wyłącznie do jednej z sąsiednich epok.",
+      "items": [
+        {
+          "id": "g1492",
+          "text": "Granica 1492."
+        },
+        {
+          "id": "now",
+          "text": "Wnętrze okresu nowożytności."
+        },
+        {
+          "id": "g476",
+          "text": "Granica 476."
+        },
+        {
+          "id": "g1918",
+          "text": "Granica 1918."
+        },
+        {
+          "id": "sred",
+          "text": "Wnętrze okresu średniowiecza."
+        }
+      ],
+      "correctOrder": [
+        "g476",
+        "sred",
+        "g1492",
+        "now",
+        "g1918"
+      ]
+    },
+    {
+      "id": "u-epoki-15",
+      "type": "short-answer",
+      "title": "Nazwa po prehistorii",
+      "instruction": "W uproszczonym szkolnym ciągu wystawa o prehistorii stoi przed wystawą o najbliższym późniejszym okresie. Jak nazywa się ten późniejszy okres? Wpisz tylko nazwę.",
+      "lessonIds": [
+        "epoki"
+      ],
+      "hint": "Nie pomijaj pierwszej epoki po prehistorii.",
+      "explanation": "Bezpośrednio po prehistorii w tym ciągu znajduje się starożytność. Średniowiecze jest kolejną, a nie najbliższą późniejszą epoką.",
+      "acceptedAnswers": [
+        "starożytność",
+        "starozytnosc"
+      ],
+      "normalization": "trim-collapse-casefold"
+    },
+    {
+      "id": "u-epoki-16",
+      "type": "short-answer",
+      "title": "Co wyznacza koniec prehistorii?",
+      "instruction": "Uzupełnij jednym słowem w odpowiedniej formie: «W lekcji koniec prehistorii wiążemy z pojawieniem się … w danym miejscu».",
+      "lessonIds": [
+        "epoki"
+      ],
+      "hint": "Chodzi o sposób utrwalania słów za pomocą znaków, a nie o jedną wspólną datę dla świata.",
+      "explanation": "Prehistoria to czasy sprzed pojawienia się pisma. Dlatego w zdaniu potrzebna jest forma «pisma». Ta zmiana nie zachodziła we wszystkich miejscach jednocześnie.",
+      "acceptedAnswers": [
+        "pisma"
+      ],
+      "normalization": "trim-collapse-casefold"
+    },
+    {
+      "id": "u-czas-01",
+      "type": "multiple-choice",
+      "title": "Tuż przy zmianie ery",
+      "instruction": "Porównaj umowne oznaczenia lat. Który zapis podaje rok bezpośrednio następujący po 2 p.n.e.? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "chronologia"
+      ],
+      "explanation": "Po 2 p.n.e. następuje 1 p.n.e., a dopiero potem 1 n.e. Nie ma roku zerowego.",
+      "hint": "Przed naszą erą numery lat maleją wraz z upływem czasu.",
+      "options": [
+        {
+          "id": "a",
+          "text": "1 p.n.e."
+        },
+        {
+          "id": "b",
+          "text": "0"
+        },
+        {
+          "id": "c",
+          "text": "2 n.e."
+        }
+      ],
+      "correctOptionIds": [
+        "a"
+      ]
+    },
+    {
+      "id": "u-czas-02",
+      "type": "multiple-choice",
+      "title": "Daty po lewej stronie",
+      "instruction": "Umowny punkt odniesienia to 3 n.e. Które z dat są od niego wcześniejsze? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "chronologia"
+      ],
+      "explanation": "Każdy podany rok p.n.e. jest wcześniejszy od 3 n.e., a 1 n.e. poprzedza 3 n.e. Równa data nie jest wcześniejsza.",
+      "hint": "Nie myl «wcześniej» z «wcześniej lub w tym samym roku».",
+      "options": [
+        {
+          "id": "a",
+          "text": "8 p.n.e."
+        },
+        {
+          "id": "b",
+          "text": "6 n.e."
+        },
+        {
+          "id": "c",
+          "text": "1 n.e."
+        },
+        {
+          "id": "d",
+          "text": "3 n.e."
+        }
+      ],
+      "correctOptionIds": [
+        "a",
+        "c"
+      ]
+    },
+    {
+      "id": "u-czas-03",
+      "type": "multiple-choice",
+      "title": "Sprawdź kolejność kartek",
+      "instruction": "Każda para zawiera umowne daty. Wybierz zapisy od daty wcześniejszej do późniejszej. Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "chronologia"
+      ],
+      "explanation": "Przed naszą erą większy numer jest wcześniejszy. Przejście z 1 p.n.e. do 1 n.e. jest poprawne, a w naszej erze numery rosną.",
+      "hint": "Dla każdej pary sprawdź erę i kierunek upływu czasu.",
+      "options": [
+        {
+          "id": "a",
+          "text": "9 p.n.e. → 4 p.n.e."
+        },
+        {
+          "id": "b",
+          "text": "2 n.e. → 1 p.n.e."
+        },
+        {
+          "id": "c",
+          "text": "1 p.n.e. → 1 n.e."
+        },
+        {
+          "id": "d",
+          "text": "4 n.e. → 9 n.e."
+        }
+      ],
+      "correctOptionIds": [
+        "a",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "id": "u-czas-04",
+      "type": "multiple-choice",
+      "title": "Oś to nie ranking",
+      "instruction": "Uczeń porządkuje umowne wydarzenia chronologicznie. Które zasady są poprawne? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "chronologia"
+      ],
+      "explanation": "Chronologia dotyczy czasu, a nie ważności czy długości opisu. Dopiski er zmieniają sposób porównywania numerów lat.",
+      "hint": "Pomyśl, co mierzy oś czasu.",
+      "options": [
+        {
+          "id": "a",
+          "text": "O miejscu decyduje długość opisu."
+        },
+        {
+          "id": "b",
+          "text": "Trzeba kierować się datą."
+        },
+        {
+          "id": "c",
+          "text": "Znaczenie wydarzenia nie ustala jego miejsca w czasie."
+        },
+        {
+          "id": "d",
+          "text": "Między erami wstawia się rok 0."
+        },
+        {
+          "id": "e",
+          "text": "Trzeba rozróżniać p.n.e. i n.e."
+        }
+      ],
+      "correctOptionIds": [
+        "b",
+        "c",
+        "e"
+      ]
+    },
+    {
+      "id": "u-czas-05",
+      "type": "sorting",
+      "title": "Era jest częścią daty",
+      "instruction": "Podziel umowne oznaczenia według ery.",
+      "lessonIds": [
+        "chronologia"
+      ],
+      "explanation": "Ten sam numer roku może występować w obu erach. Dlatego nie wolno pomijać dopisku.",
+      "hint": "Zacznij od przeczytania dopisku, nie liczby.",
+      "categories": [
+        {
+          "id": "a",
+          "text": "Przed naszą erą"
+        },
+        {
+          "id": "b",
+          "text": "Nasza era"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "300 p.n.e.",
+          "categoryId": "a",
+          "explanation": "Dopisek p.n.e. wskazuje erę."
+        },
+        {
+          "id": "i2",
+          "text": "300 n.e.",
+          "categoryId": "b",
+          "explanation": "Dopisek n.e. wskazuje naszą erę."
+        },
+        {
+          "id": "i3",
+          "text": "1 p.n.e.",
+          "categoryId": "a",
+          "explanation": "To ostatni rok przed naszą erą."
+        },
+        {
+          "id": "i4",
+          "text": "1 n.e.",
+          "categoryId": "b",
+          "explanation": "To pierwszy rok naszej ery."
+        }
+      ]
+    },
+    {
+      "id": "u-czas-06",
+      "type": "sorting",
+      "title": "Sprawdź jednostki",
+      "instruction": "Podziel przeliczenia jednostek na poprawne i wymagające poprawienia.",
+      "lessonIds": [
+        "chronologia"
+      ],
+      "explanation": "Przy przeliczaniu wieku używamy 100 lat, a tysiąclecia 1000 lat. Samo podobieństwo nazw nie wystarcza.",
+      "hint": "Użyj podstawowych jednostek z lekcji.",
+      "categories": [
+        {
+          "id": "a",
+          "text": "Poprawne"
+        },
+        {
+          "id": "b",
+          "text": "Wymaga poprawienia"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Wiek to 100 lat.",
+          "categoryId": "a",
+          "explanation": "Tak definiujemy wiek."
+        },
+        {
+          "id": "i2",
+          "text": "Tysiąclecie to 100 lat.",
+          "categoryId": "b",
+          "explanation": "Tysiąclecie obejmuje 1000 lat."
+        },
+        {
+          "id": "i3",
+          "text": "Dwa wieki to 200 lat.",
+          "categoryId": "a",
+          "explanation": "2 razy 100 to 200."
+        },
+        {
+          "id": "i4",
+          "text": "Dziesięć wieków to 100 lat.",
+          "categoryId": "b",
+          "explanation": "10 razy 100 to 1000 lat."
+        }
+      ]
+    },
+    {
+      "id": "u-czas-07",
+      "type": "sorting",
+      "title": "Po obu stronach punktu",
+      "instruction": "Umowna data odniesienia to 10 p.n.e. Podziel pozostałe daty według ich położenia w czasie.",
+      "lessonIds": [
+        "chronologia"
+      ],
+      "explanation": "Położenie daty ustalamy według ery i kierunku numerowania lat. Każdy rok n.e. jest późniejszy od podanego roku p.n.e.",
+      "hint": "Punkt odniesienia też leży przed naszą erą.",
+      "categories": [
+        {
+          "id": "a",
+          "text": "Wcześniej niż 10 p.n.e."
+        },
+        {
+          "id": "b",
+          "text": "Później niż 10 p.n.e."
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "20 p.n.e.",
+          "categoryId": "a",
+          "explanation": "Większy numer p.n.e. oznacza wcześniejszy rok."
+        },
+        {
+          "id": "i2",
+          "text": "3 p.n.e.",
+          "categoryId": "b",
+          "explanation": "Mniejszy numer p.n.e. oznacza późniejszy rok."
+        },
+        {
+          "id": "i3",
+          "text": "1 n.e.",
+          "categoryId": "b",
+          "explanation": "Nasza era następuje po latach p.n.e."
+        },
+        {
+          "id": "i4",
+          "text": "100 p.n.e.",
+          "categoryId": "a",
+          "explanation": "To rok wcześniejszy od 10 p.n.e."
+        }
+      ]
+    },
+    {
+      "id": "u-czas-08",
+      "type": "matching",
+      "title": "Co informuje podpis?",
+      "instruction": "Połącz element zapisu czasu z jego znaczeniem.",
+      "lessonIds": [
+        "chronologia"
+      ],
+      "explanation": "Era opisuje położenie daty, a kierunek polecenia mówi, jak czytać kolejność.",
+      "hint": "Odróżnij dopisek ery od kierunku układania.",
+      "pairs": [
+        {
+          "id": "p1",
+          "left": "p.n.e.",
+          "right": "Przed naszą erą."
+        },
+        {
+          "id": "p2",
+          "left": "n.e.",
+          "right": "Nasza era."
+        },
+        {
+          "id": "p3",
+          "left": "Chronologicznie od najpóźniejszego.",
+          "right": "Od tego, co nastąpiło później, ku wcześniejszemu."
+        }
+      ]
+    },
+    {
+      "id": "u-czas-09",
+      "type": "matching",
+      "title": "Wybierz sposób porównania",
+      "instruction": "Dobierz zasadę do rodzaju porównywanych umownych dat.",
+      "lessonIds": [
+        "chronologia"
+      ],
+      "explanation": "Nie istnieje jedna zasada «większy zawsze później» dla wszystkich zapisów. Najpierw ustalamy erę.",
+      "hint": "Przeczytaj, czy obie daty leżą w tej samej erze.",
+      "pairs": [
+        {
+          "id": "p1",
+          "left": "Dwa różne lata n.e.",
+          "right": "Większy numer wskazuje późniejszy rok."
+        },
+        {
+          "id": "p2",
+          "left": "Dwa różne lata p.n.e.",
+          "right": "Większy numer wskazuje wcześniejszy rok."
+        },
+        {
+          "id": "p3",
+          "left": "Rok p.n.e. i rok n.e.",
+          "right": "Rok p.n.e. jest wcześniejszy od roku n.e."
+        }
+      ]
+    },
+    {
+      "id": "u-czas-10",
+      "type": "ordering",
+      "title": "Jednostki rosną",
+      "instruction": "Ustaw od najmniejszego do największego czasu.",
+      "lessonIds": [
+        "chronologia"
+      ],
+      "explanation": "Wartości to kolejno 1, 100, 200 i 1000 lat. Porównujemy długości jednostek, a nie długość ich nazw.",
+      "hint": "Zamień każdą kartę na liczbę lat.",
+      "items": [
+        {
+          "id": "i1",
+          "text": "Dwa wieki"
+        },
+        {
+          "id": "i2",
+          "text": "Jeden rok"
+        },
+        {
+          "id": "i3",
+          "text": "Jedno tysiąclecie"
+        },
+        {
+          "id": "i4",
+          "text": "Jeden wiek"
+        }
+      ],
+      "correctOrder": [
+        "i2",
+        "i4",
+        "i1",
+        "i3"
+      ]
+    },
+    {
+      "id": "u-czas-11",
+      "type": "short-answer",
+      "title": "Nazwa porządku",
+      "instruction": "Uzupełnij jednym słowem: «Porządkowanie wydarzeń według czasu to …».",
+      "lessonIds": [
+        "chronologia"
+      ],
+      "explanation": "Chronologia pozwala ustalać kolejność wydarzeń. Nie jest nazwą epoki ani jednostki czasu.",
+      "hint": "To nazwa umiejętności z tej lekcji.",
+      "acceptedAnswers": [
+        "chronologia"
+      ],
+      "normalization": "trim-collapse-casefold"
+    },
+    {
+      "id": "u-rzym-01",
+      "type": "multiple-choice",
+      "title": "Czy to ten sam wiek?",
+      "instruction": "Wybierz umowne daty należące do X wieku n.e. Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "wieki-i-liczby-rzymskie"
+      ],
+      "explanation": "X wiek n.e. obejmuje lata 901–1000. Rok 900 kończy IX wiek, a 1001 zaczyna XI wiek.",
+      "hint": "Rok kończący się na 00 zamyka wiek.",
+      "options": [
+        {
+          "id": "a",
+          "text": "900 n.e."
+        },
+        {
+          "id": "b",
+          "text": "901 n.e."
+        },
+        {
+          "id": "c",
+          "text": "1001 n.e."
+        }
+      ],
+      "correctOptionIds": [
+        "b"
+      ]
+    },
+    {
+      "id": "u-rzym-02",
+      "type": "multiple-choice",
+      "title": "Sprawdź rzymskie etykiety",
+      "instruction": "Wskaż poprawne standardowe zapisy rzymskie. Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "wieki-i-liczby-rzymskie"
+      ],
+      "explanation": "XIV oznacza 10 + 4. XIX to 19, IX to 9, a IV to 4; pozostałe etykiety podają błędne wartości.",
+      "hint": "Zwróć uwagę na I stojące przed V lub X.",
+      "options": [
+        {
+          "id": "a",
+          "text": "XIV = 14"
+        },
+        {
+          "id": "b",
+          "text": "IX = 11"
+        },
+        {
+          "id": "c",
+          "text": "XIX = 21"
+        },
+        {
+          "id": "d",
+          "text": "IV = 6"
+        }
+      ],
+      "correctOptionIds": [
+        "a"
+      ]
+    },
+    {
+      "id": "u-rzym-03",
+      "type": "multiple-choice",
+      "title": "Granice wieków pod lupą",
+      "instruction": "Które opisy wieków są poprawne? Wszystkie lata są umownymi przykładami. Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "wieki-i-liczby-rzymskie"
+      ],
+      "explanation": "Wieki n.e. zaczynają się od roku z końcówką 01. Przed naszą erą chronologicznie idziemy od większego numeru do mniejszego. III wiek n.e. to 201–300.",
+      "hint": "Sprawdź zarówno granice, jak i kierunek przed naszą erą.",
+      "options": [
+        {
+          "id": "a",
+          "text": "I wiek n.e.: od 1 do 100 n.e."
+        },
+        {
+          "id": "b",
+          "text": "II wiek p.n.e.: od 200 do 101 p.n.e."
+        },
+        {
+          "id": "c",
+          "text": "III wiek n.e.: od 301 do 400 n.e."
+        },
+        {
+          "id": "d",
+          "text": "II wiek n.e.: od 101 do 200 n.e."
+        },
+        {
+          "id": "e",
+          "text": "I wiek p.n.e.: od 1 do 100 p.n.e. w kolejności chronologicznej."
+        }
+      ],
+      "correctOptionIds": [
+        "a",
+        "b",
+        "d"
+      ]
+    },
+    {
+      "id": "u-rzym-04",
+      "type": "sorting",
+      "title": "Adresy na granicy wieków",
+      "instruction": "Przyporządkuj umowne daty do wieków.",
+      "lessonIds": [
+        "wieki-i-liczby-rzymskie"
+      ],
+      "explanation": "XII wiek n.e. trwa od 1101 do 1200, a XIII od 1201 do 1300. Końcówka 00 nie rozpoczyna nowego wieku.",
+      "hint": "Rozdziel rok kończący wiek i rok rozpoczynający następny.",
+      "categories": [
+        {
+          "id": "a",
+          "text": "XII wiek n.e."
+        },
+        {
+          "id": "b",
+          "text": "XIII wiek n.e."
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "1101 n.e.",
+          "categoryId": "a",
+          "explanation": "To początek XII wieku."
+        },
+        {
+          "id": "i2",
+          "text": "1200 n.e.",
+          "categoryId": "a",
+          "explanation": "To koniec XII wieku."
+        },
+        {
+          "id": "i3",
+          "text": "1201 n.e.",
+          "categoryId": "b",
+          "explanation": "To początek XIII wieku."
+        },
+        {
+          "id": "i4",
+          "text": "1300 n.e.",
+          "categoryId": "b",
+          "explanation": "To koniec XIII wieku."
+        }
+      ]
+    },
+    {
+      "id": "u-rzym-05",
+      "type": "sorting",
+      "title": "Przed naszą erą też są wieki",
+      "instruction": "Przyporządkuj umowne daty do właściwego wieku p.n.e.",
+      "lessonIds": [
+        "wieki-i-liczby-rzymskie"
+      ],
+      "explanation": "I wiek p.n.e. obejmuje od 100 do 1 p.n.e., a II od 200 do 101 p.n.e. Lata są liczone w przeciwnym kierunku niż n.e.",
+      "hint": "Numer wieku ustalisz z zakresu stu lat.",
+      "categories": [
+        {
+          "id": "a",
+          "text": "I wiek p.n.e."
+        },
+        {
+          "id": "b",
+          "text": "II wiek p.n.e."
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "100 p.n.e.",
+          "categoryId": "a",
+          "explanation": "To chronologiczny początek I wieku p.n.e."
+        },
+        {
+          "id": "i2",
+          "text": "101 p.n.e.",
+          "categoryId": "b",
+          "explanation": "To chronologiczny koniec II wieku p.n.e."
+        },
+        {
+          "id": "i3",
+          "text": "200 p.n.e.",
+          "categoryId": "b",
+          "explanation": "To chronologiczny początek II wieku p.n.e."
+        },
+        {
+          "id": "i4",
+          "text": "1 p.n.e.",
+          "categoryId": "a",
+          "explanation": "To chronologiczny koniec I wieku p.n.e."
+        }
+      ]
+    },
+    {
+      "id": "u-rzym-06",
+      "type": "matching",
+      "title": "Czytasz znak, znasz wartość",
+      "instruction": "Połącz podstawowy znak rzymski z wartością.",
+      "lessonIds": [
+        "wieki-i-liczby-rzymskie"
+      ],
+      "explanation": "Znaki L, C, D i M oznaczają odpowiednio 50, 100, 500 i 1000. Są podstawą większych zapisów.",
+      "hint": "Przypomnij sobie tabelę znaków z lekcji.",
+      "pairs": [
+        {
+          "id": "p1",
+          "left": "L",
+          "right": "50"
+        },
+        {
+          "id": "p2",
+          "left": "C",
+          "right": "100"
+        },
+        {
+          "id": "p3",
+          "left": "D",
+          "right": "500"
+        },
+        {
+          "id": "p4",
+          "left": "M",
+          "right": "1000"
+        }
+      ]
+    },
+    {
+      "id": "u-rzym-07",
+      "type": "matching",
+      "title": "Pomyłka w adresie",
+      "instruction": "Połącz błędny wniosek o umownej dacie z właściwą korektą.",
+      "lessonIds": [
+        "wieki-i-liczby-rzymskie"
+      ],
+      "explanation": "Lata graniczne trzeba czytać ostrożnie. W p.n.e. początek wieku ma większy numer roku niż jego koniec.",
+      "hint": "Sprawdź końcówki 00 i 01 oraz dopisek ery.",
+      "pairs": [
+        {
+          "id": "p1",
+          "left": "«Rok 1800 zaczyna XIX wiek n.e.»",
+          "right": "Rok 1800 kończy XVIII wiek n.e."
+        },
+        {
+          "id": "p2",
+          "left": "«Rok 1801 jest w XVIII wieku n.e.»",
+          "right": "Rok 1801 rozpoczyna XIX wiek n.e."
+        },
+        {
+          "id": "p3",
+          "left": "«III wiek p.n.e. zaczyna się od 201 p.n.e.»",
+          "right": "Chronologiczny początek III wieku p.n.e. to 300 p.n.e."
+        }
+      ]
+    },
+    {
+      "id": "u-rzym-08",
+      "type": "ordering",
+      "title": "Rzymskie numery rosną",
+      "instruction": "Ułóż liczby od najmniejszej do największej.",
+      "lessonIds": [
+        "wieki-i-liczby-rzymskie"
+      ],
+      "explanation": "IV = 4, IX = 9, XIV = 14, XIX = 19. Porządkujemy wartości, nie liczbę liter.",
+      "hint": "Najpierw odczytaj każdą liczbę.",
+      "items": [
+        {
+          "id": "i1",
+          "text": "XIX"
+        },
+        {
+          "id": "i2",
+          "text": "IX"
+        },
+        {
+          "id": "i3",
+          "text": "XIV"
+        },
+        {
+          "id": "i4",
+          "text": "IV"
+        }
+      ],
+      "correctOrder": [
+        "i4",
+        "i2",
+        "i3",
+        "i1"
+      ]
+    },
+    {
+      "id": "u-rzym-09",
+      "type": "ordering",
+      "title": "Przez dwa wieki przed naszą erą",
+      "instruction": "Umowne daty ustaw od najwcześniejszej do najpóźniejszej.",
+      "lessonIds": [
+        "wieki-i-liczby-rzymskie"
+      ],
+      "explanation": "Chronologicznie jest to 200, 199, 101, 100 p.n.e. Po końcu II wieku p.n.e. zaczyna się I wiek p.n.e.",
+      "hint": "Wszystkie daty są p.n.e.; większy numer jest wcześniejszy.",
+      "items": [
+        {
+          "id": "i1",
+          "text": "101 p.n.e."
+        },
+        {
+          "id": "i2",
+          "text": "199 p.n.e."
+        },
+        {
+          "id": "i3",
+          "text": "100 p.n.e."
+        },
+        {
+          "id": "i4",
+          "text": "200 p.n.e."
+        }
+      ],
+      "correctOrder": [
+        "i4",
+        "i2",
+        "i1",
+        "i3"
+      ]
+    },
+    {
+      "id": "u-rzym-10",
+      "type": "short-answer",
+      "title": "Odejmowanie w zapisie",
+      "instruction": "Zapisz liczbę 4 standardową liczbą rzymską. Wpisz tylko znaki rzymskie.",
+      "lessonIds": [
+        "wieki-i-liczby-rzymskie"
+      ],
+      "explanation": "IV oznacza 5 minus 1. W szkolnym standardowym zapisie liczby 4 używamy IV.",
+      "hint": "Jeden stoi przed znakiem oznaczającym pięć.",
+      "acceptedAnswers": [
+        "IV"
+      ],
+      "normalization": "trim-collapse-casefold"
+    },
+    {
+      "id": "u-rzym-11",
+      "type": "short-answer",
+      "title": "Końcowy rok wieku",
+      "instruction": "Umowna data to 2000 n.e. Podaj numer jej wieku w zapisie rzymskim, bez słowa «wiek».",
+      "lessonIds": [
+        "wieki-i-liczby-rzymskie"
+      ],
+      "explanation": "Rok 2000 zamyka XX wiek, który trwa od 1901 do 2000. XXI wiek zaczyna się w 2001.",
+      "hint": "Dwie końcowe cyfry 00 oznaczają koniec wieku.",
+      "acceptedAnswers": [
+        "XX"
+      ],
+      "normalization": "trim-collapse-casefold"
+    },
+    {
+      "id": "u-odstep-01",
+      "type": "multiple-choice",
+      "title": "Czy przekroczono granicę ery?",
+      "instruction": "Dla której pary umownych dat obliczymy odstęp jako sumę numerów lat pomniejszoną o jeden? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "uplyw-lat"
+      ],
+      "explanation": "Wzór z sumą i odjęciem jednego dotyczy różnych er. W tej samej erze liczymy różnicę numerów lat.",
+      "hint": "Sprawdź dopiski przy obu datach.",
+      "options": [
+        {
+          "id": "a",
+          "text": "25 p.n.e. i 5 p.n.e."
+        },
+        {
+          "id": "b",
+          "text": "25 n.e. i 5 n.e."
+        },
+        {
+          "id": "c",
+          "text": "25 p.n.e. i 5 n.e."
+        }
+      ],
+      "correctOptionIds": [
+        "c"
+      ]
+    },
+    {
+      "id": "u-odstep-02",
+      "type": "multiple-choice",
+      "title": "Różne zapisy jednego rachunku",
+      "instruction": "Umowne daty to 4 p.n.e. i 3 n.e. Które rachunki poprawnie obliczają odstęp między oznaczeniami tych lat? Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "uplyw-lat"
+      ],
+      "explanation": "Odstęp wynosi 6 lat. Można odjąć jeden od sumy albo najpierw pomniejszyć jeden ze składników o jeden. To ten sam rachunek, bo nie ma roku 0.",
+      "hint": "Nie doliczaj nieistniejącego roku zerowego.",
+      "options": [
+        {
+          "id": "a",
+          "text": "4 + 3 = 7"
+        },
+        {
+          "id": "b",
+          "text": "4 + 3 − 1 = 6"
+        },
+        {
+          "id": "c",
+          "text": "4 − 3 = 1"
+        },
+        {
+          "id": "d",
+          "text": "(4 − 1) + 3 = 6"
+        }
+      ],
+      "correctOptionIds": [
+        "b",
+        "d"
+      ]
+    },
+    {
+      "id": "u-odstep-03",
+      "type": "multiple-choice",
+      "title": "Rachunki pod lupą",
+      "instruction": "Wybierz poprawne obliczenia odstępów między umownymi oznaczeniami lat. Zaznacz wszystkie poprawne odpowiedzi.",
+      "lessonIds": [
+        "uplyw-lat"
+      ],
+      "explanation": "W tej samej erze odejmujemy numery lat. W różnych erach odejmujemy jeden od sumy. Od 2 p.n.e. do 2 n.e. są 3 lata, nie 4.",
+      "hint": "Przy każdym rachunku osobno sprawdź, czy zmienia się era.",
+      "options": [
+        {
+          "id": "a",
+          "text": "Od 20 do 35 n.e.: 35 − 20 = 15 lat."
+        },
+        {
+          "id": "b",
+          "text": "Od 20 do 5 p.n.e.: 20 − 5 = 15 lat."
+        },
+        {
+          "id": "c",
+          "text": "Od 2 p.n.e. do 2 n.e.: 2 + 2 = 4 lata."
+        },
+        {
+          "id": "d",
+          "text": "Od 1 p.n.e. do 1 n.e.: 1 + 1 − 1 = 1 rok."
+        },
+        {
+          "id": "e",
+          "text": "Od 20 do 35 n.e.: 35 − 20 − 1 = 14 lat."
+        }
+      ],
+      "correctOptionIds": [
+        "a",
+        "b",
+        "d"
+      ]
+    },
+    {
+      "id": "u-odstep-04",
+      "type": "sorting",
+      "title": "Dobierz regułę do pary",
+      "instruction": "Umowne daty przyporządkuj do sposobu obliczenia odstępu.",
+      "lessonIds": [
+        "uplyw-lat"
+      ],
+      "explanation": "O wyborze reguły decydują dopiski er, nie sama wielkość liczb. Odejmowanie jednego nie jest potrzebne w tej samej erze.",
+      "hint": "Najpierw rozpoznaj, czy era się zmienia.",
+      "categories": [
+        {
+          "id": "a",
+          "text": "Różnica numerów lat"
+        },
+        {
+          "id": "b",
+          "text": "Suma numerów lat minus jeden"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "30 p.n.e. i 10 p.n.e.",
+          "categoryId": "a",
+          "explanation": "Obie daty są w tej samej erze."
+        },
+        {
+          "id": "i2",
+          "text": "30 p.n.e. i 10 n.e.",
+          "categoryId": "b",
+          "explanation": "Daty należą do różnych er."
+        },
+        {
+          "id": "i3",
+          "text": "10 n.e. i 30 n.e.",
+          "categoryId": "a",
+          "explanation": "Obie daty należą do naszej ery."
+        },
+        {
+          "id": "i4",
+          "text": "10 p.n.e. i 30 n.e.",
+          "categoryId": "b",
+          "explanation": "Trzeba przejść przez granicę er."
+        }
+      ]
+    },
+    {
+      "id": "u-odstep-05",
+      "type": "sorting",
+      "title": "Napraw tabliczkę z wynikiem",
+      "instruction": "Podziel obliczenia odstępów dla umownych dat na poprawne i błędne.",
+      "lessonIds": [
+        "uplyw-lat"
+      ],
+      "explanation": "Błędne wyniki biorą się tutaj z odjęcia jednego w złym miejscu lub doliczenia roku zerowego.",
+      "hint": "W tej samej erze różnica; w różnych erach suma minus jeden.",
+      "categories": [
+        {
+          "id": "a",
+          "text": "Poprawne"
+        },
+        {
+          "id": "b",
+          "text": "Błędne"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Od 50 do 80 n.e. upłynęło 30 lat.",
+          "categoryId": "a",
+          "explanation": "80 minus 50 to 30."
+        },
+        {
+          "id": "i2",
+          "text": "Od 50 do 20 p.n.e. upłynęło 29 lat.",
+          "categoryId": "b",
+          "explanation": "W tej samej erze nie odejmujemy dodatkowego roku: wynik to 30."
+        },
+        {
+          "id": "i3",
+          "text": "Od 7 p.n.e. do 4 n.e. upłynęło 10 lat.",
+          "categoryId": "a",
+          "explanation": "7 plus 4 minus 1 to 10."
+        },
+        {
+          "id": "i4",
+          "text": "Od 1 p.n.e. do 1 n.e. upłynęły 2 lata.",
+          "categoryId": "b",
+          "explanation": "Nie ma roku 0, więc odstęp wynosi 1 rok."
+        }
+      ]
+    },
+    {
+      "id": "u-odstep-06",
+      "type": "matching",
+      "title": "Ten sam odstęp, różne daty",
+      "instruction": "Połącz parę umownych oznaczeń lat z odstępem między nimi.",
+      "lessonIds": [
+        "uplyw-lat"
+      ],
+      "explanation": "Odstępy to 16 − 10 = 6, 15 − 5 = 10 oraz 3 + 5 − 1 = 7 lat. Dwa pierwsze rachunki nie przekraczają granicy er.",
+      "hint": "Dopasuj wynik dopiero po sprawdzeniu ery.",
+      "pairs": [
+        {
+          "id": "p1",
+          "left": "10 n.e. i 16 n.e.",
+          "right": "6 lat"
+        },
+        {
+          "id": "p2",
+          "left": "15 p.n.e. i 5 p.n.e.",
+          "right": "10 lat"
+        },
+        {
+          "id": "p3",
+          "left": "3 p.n.e. i 5 n.e.",
+          "right": "7 lat"
+        }
+      ]
+    },
+    {
+      "id": "u-odstep-07",
+      "type": "matching",
+      "title": "Wyjaśnij błędny wynik",
+      "instruction": "Dopasuj błąd w umownym rachunku do jego przyczyny.",
+      "lessonIds": [
+        "uplyw-lat"
+      ],
+      "explanation": "Wyniki poprawne to odpowiednio 6, 5 i 15 lat. Każdy błąd wynika z innego niewłaściwego zastosowania reguły.",
+      "hint": "Najpierw wskaż, co zrobiono z liczbami, potem czy pasuje to do er.",
+      "pairs": [
+        {
+          "id": "p1",
+          "left": "«Od 3 p.n.e. do 4 n.e. jest 7 lat».",
+          "right": "Zapomniano odjąć jeden przy zmianie ery."
+        },
+        {
+          "id": "p2",
+          "left": "«Od 10 do 15 n.e. są 4 lata».",
+          "right": "Niepotrzebnie odjęto dodatkowy rok w tej samej erze."
+        },
+        {
+          "id": "p3",
+          "left": "«Od 20 do 5 p.n.e. jest 25 lat».",
+          "right": "Dodano numery lat zamiast policzyć ich różnicę."
+        }
+      ]
+    },
+    {
+      "id": "u-odstep-08",
+      "type": "ordering",
+      "title": "Ułóż od najkrótszego odstępu",
+      "instruction": "Oblicz odstępy między umownymi oznaczeniami lat i ustaw od najmniejszego do największego.",
+      "lessonIds": [
+        "uplyw-lat"
+      ],
+      "explanation": "Odstępy wynoszą kolejno 1, 3, 4 i 6 lat. Porządkujemy wyniki, a nie numery pierwszych dat.",
+      "hint": "Policz osobno każdą parę.",
+      "items": [
+        {
+          "id": "i1",
+          "text": "2 p.n.e. i 3 n.e."
+        },
+        {
+          "id": "i2",
+          "text": "10 n.e. i 11 n.e."
+        },
+        {
+          "id": "i3",
+          "text": "10 p.n.e. i 4 p.n.e."
+        },
+        {
+          "id": "i4",
+          "text": "1 p.n.e. i 3 n.e."
+        }
+      ],
+      "correctOrder": [
+        "i2",
+        "i4",
+        "i1",
+        "i3"
+      ]
+    },
+    {
+      "id": "u-odstep-09",
+      "type": "ordering",
+      "title": "Kroki obliczenia przez ery",
+      "instruction": "Ułóż czynności dla obliczenia odstępu między umownymi latami 8 p.n.e. i 6 n.e. Zastosuj metodę: rozpoznanie er, suma, poprawka, zapis wyniku.",
+      "lessonIds": [
+        "uplyw-lat"
+      ],
+      "explanation": "Po rozpoznaniu różnych er sumujemy 8 i 6. Od 14 odejmujemy 1 z powodu braku roku 0 i zapisujemy 13 lat.",
+      "hint": "Polecenie podaje metodę i kolejność etapów.",
+      "items": [
+        {
+          "id": "i1",
+          "text": "Odjąć jeden od sumy."
+        },
+        {
+          "id": "i2",
+          "text": "Rozpoznać dwie różne ery."
+        },
+        {
+          "id": "i3",
+          "text": "Zapisać wynik 13 lat."
+        },
+        {
+          "id": "i4",
+          "text": "Dodać 8 i 6, otrzymując 14."
+        }
+      ],
+      "correctOrder": [
+        "i2",
+        "i4",
+        "i1",
+        "i3"
+      ]
+    },
+    {
+      "id": "u-odstep-10",
+      "type": "ordering",
+      "title": "Porównaj trzy przedziały",
+      "instruction": "Ustaw pary umownych lat od największego odstępu do najmniejszego.",
+      "lessonIds": [
+        "uplyw-lat"
+      ],
+      "explanation": "Odstępy to 10, 7 i 2 lata w kolejności malejącej. Przy parze z dwóch er stosujemy 4 + 4 − 1.",
+      "hint": "Tym razem zaczynamy od największego wyniku.",
+      "items": [
+        {
+          "id": "i1",
+          "text": "4 p.n.e. i 4 n.e."
+        },
+        {
+          "id": "i2",
+          "text": "40 n.e. i 50 n.e."
+        },
+        {
+          "id": "i3",
+          "text": "9 p.n.e. i 7 p.n.e."
+        }
+      ],
+      "correctOrder": [
+        "i2",
+        "i1",
+        "i3"
+      ]
+    },
+    {
+      "id": "u-odstep-11",
+      "type": "short-answer",
+      "title": "Dlaczego poprawiamy sumę?",
+      "instruction": "Uzupełnij jednym słowem: «Przy przejściu między erami odejmujemy jeden, ponieważ nie istnieje rok …».",
+      "lessonIds": [
+        "uplyw-lat"
+      ],
+      "explanation": "Po 1 p.n.e. następuje 1 n.e. Brak roku zerowego wyjaśnia poprawkę w rachunku przez granicę er.",
+      "hint": "Szukamy przymiotnika określającego brakujący rok.",
+      "acceptedAnswers": [
+        "zerowy"
+      ],
+      "normalization": "trim-collapse-casefold"
     }
   ],
   "learningPath": [
@@ -4448,6 +7770,202 @@
         {
           "taskId": "e-odstep-12",
           "points": 1
+        },
+        {
+          "taskId": "u-historyk-03",
+          "points": 1
+        },
+        {
+          "taskId": "u-historyk-04",
+          "points": 1
+        },
+        {
+          "taskId": "u-historyk-08",
+          "points": 1
+        },
+        {
+          "taskId": "u-historyk-13",
+          "points": 1
+        },
+        {
+          "taskId": "u-historyk-15",
+          "points": 1
+        },
+        {
+          "taskId": "u-zrodla-01",
+          "points": 1
+        },
+        {
+          "taskId": "u-zrodla-02",
+          "points": 1
+        },
+        {
+          "taskId": "u-zrodla-03",
+          "points": 1
+        },
+        {
+          "taskId": "u-zrodla-04",
+          "points": 1
+        },
+        {
+          "taskId": "u-zrodla-05",
+          "points": 1
+        },
+        {
+          "taskId": "u-zrodla-06",
+          "points": 1
+        },
+        {
+          "taskId": "u-zrodla-07",
+          "points": 1
+        },
+        {
+          "taskId": "u-zrodla-10",
+          "points": 1
+        },
+        {
+          "taskId": "u-zrodla-11",
+          "points": 1
+        },
+        {
+          "taskId": "u-zrodla-14",
+          "points": 1
+        },
+        {
+          "taskId": "u-zrodla-16",
+          "points": 1
+        },
+        {
+          "taskId": "u-rodzina-02",
+          "points": 1
+        },
+        {
+          "taskId": "u-rodzina-03",
+          "points": 1
+        },
+        {
+          "taskId": "u-rodzina-08",
+          "points": 1
+        },
+        {
+          "taskId": "u-rodzina-09",
+          "points": 1
+        },
+        {
+          "taskId": "u-rodzina-11",
+          "points": 1
+        },
+        {
+          "taskId": "u-rodzina-12",
+          "points": 1
+        },
+        {
+          "taskId": "u-rodzina-13",
+          "points": 1
+        },
+        {
+          "taskId": "u-rodzina-14",
+          "points": 1
+        },
+        {
+          "taskId": "u-rodzina-17",
+          "points": 1
+        },
+        {
+          "taskId": "u-epoki-02",
+          "points": 1
+        },
+        {
+          "taskId": "u-epoki-03",
+          "points": 1
+        },
+        {
+          "taskId": "u-epoki-05",
+          "points": 1
+        },
+        {
+          "taskId": "u-epoki-07",
+          "points": 1
+        },
+        {
+          "taskId": "u-epoki-08",
+          "points": 1
+        },
+        {
+          "taskId": "u-epoki-14",
+          "points": 1
+        },
+        {
+          "taskId": "u-epoki-15",
+          "points": 1
+        },
+        {
+          "taskId": "u-epoki-16",
+          "points": 1
+        },
+        {
+          "taskId": "u-czas-01",
+          "points": 1
+        },
+        {
+          "taskId": "u-czas-05",
+          "points": 1
+        },
+        {
+          "taskId": "u-czas-08",
+          "points": 1
+        },
+        {
+          "taskId": "u-czas-10",
+          "points": 1
+        },
+        {
+          "taskId": "u-rzym-01",
+          "points": 1
+        },
+        {
+          "taskId": "u-rzym-02",
+          "points": 1
+        },
+        {
+          "taskId": "u-rzym-05",
+          "points": 1
+        },
+        {
+          "taskId": "u-rzym-06",
+          "points": 1
+        },
+        {
+          "taskId": "u-rzym-07",
+          "points": 1
+        },
+        {
+          "taskId": "u-rzym-10",
+          "points": 1
+        },
+        {
+          "taskId": "u-odstep-01",
+          "points": 1
+        },
+        {
+          "taskId": "u-odstep-02",
+          "points": 1
+        },
+        {
+          "taskId": "u-odstep-04",
+          "points": 1
+        },
+        {
+          "taskId": "u-odstep-08",
+          "points": 1
+        },
+        {
+          "taskId": "u-odstep-09",
+          "points": 1
+        },
+        {
+          "taskId": "u-odstep-11",
+          "points": 1
         }
       ],
       "feedback": "after-submit",
@@ -4495,21 +8013,38 @@
       "p-historyk-05",
       "p-historyk-06",
       "p-historyk-07",
-      "p-historyk-08"
+      "p-historyk-08",
+      "u-historyk-01",
+      "u-historyk-02",
+      "u-historyk-05",
+      "u-historyk-06",
+      "u-historyk-07",
+      "u-historyk-09",
+      "u-historyk-10",
+      "u-historyk-11",
+      "u-historyk-12",
+      "u-historyk-14",
+      "u-historyk-16"
     ],
     "odkryj-zrodla": [
       "p-zrodla-01",
       "p-zrodla-04",
-      "p-zrodla-07"
+      "p-zrodla-07",
+      "u-zrodla-09",
+      "u-zrodla-15"
     ],
     "posortuj-zrodla": [
       "p-zrodla-02",
       "p-zrodla-05",
-      "p-zrodla-08"
+      "p-zrodla-08",
+      "u-zrodla-12",
+      "u-zrodla-17"
     ],
     "wybierz-zrodla-pisane": [
       "p-zrodla-03",
-      "p-zrodla-06"
+      "p-zrodla-06",
+      "u-zrodla-08",
+      "u-zrodla-13"
     ],
     "rodzinne-pary": [
       "p-rodzina-01",
@@ -4519,7 +8054,15 @@
       "p-rodzina-05",
       "p-rodzina-06",
       "p-rodzina-07",
-      "p-rodzina-08"
+      "p-rodzina-08",
+      "u-rodzina-01",
+      "u-rodzina-04",
+      "u-rodzina-05",
+      "u-rodzina-06",
+      "u-rodzina-07",
+      "u-rodzina-10",
+      "u-rodzina-15",
+      "u-rodzina-16"
     ],
     "napraw-czas": [
       "p-czas-01",
@@ -4533,7 +8076,14 @@
       "p-czas-09",
       "p-czas-10",
       "p-czas-11",
-      "p-czas-12"
+      "p-czas-12",
+      "u-czas-02",
+      "u-czas-03",
+      "u-czas-04",
+      "u-czas-06",
+      "u-czas-07",
+      "u-czas-09",
+      "u-czas-11"
     ],
     "regal-epok": [
       "p-epoki-01",
@@ -4543,7 +8093,15 @@
       "p-epoki-05",
       "p-epoki-06",
       "p-epoki-07",
-      "p-epoki-08"
+      "p-epoki-08",
+      "u-epoki-01",
+      "u-epoki-04",
+      "u-epoki-06",
+      "u-epoki-09",
+      "u-epoki-10",
+      "u-epoki-11",
+      "u-epoki-12",
+      "u-epoki-13"
     ],
     "rzymskie-pary": [
       "p-rzym-01",
@@ -4557,7 +8115,12 @@
       "p-rzym-09",
       "p-rzym-10",
       "p-rzym-11",
-      "p-rzym-12"
+      "p-rzym-12",
+      "u-rzym-03",
+      "u-rzym-04",
+      "u-rzym-08",
+      "u-rzym-09",
+      "u-rzym-11"
     ],
     "napraw-obliczenie": [
       "p-odstep-01",
@@ -4571,7 +8134,12 @@
       "p-odstep-09",
       "p-odstep-10",
       "p-odstep-11",
-      "p-odstep-12"
+      "p-odstep-12",
+      "u-odstep-03",
+      "u-odstep-05",
+      "u-odstep-06",
+      "u-odstep-07",
+      "u-odstep-10"
     ]
   }
 }

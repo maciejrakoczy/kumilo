@@ -33,7 +33,7 @@ Pary pokazują dopasowanie krzywą linią oraz takim samym numerem na obu kartac
 
 Widok karty jest w `assets/activity-view.mjs`, a jego style w `assets/activity.css`, oddzielnie od pozostałych ekranów. `mountTask` przyjmuje `controls: false` i `onStateChange`, dzięki czemu wspólna stopka może obsłużyć stan, licznik i zatwierdzenie każdego typu bez powielania przycisków w rendererze. Zwracane `check()` zatwierdza tylko odpowiednie typy w nauce; nie ocenia odpowiedzi w teście. `getState()` udostępnia postęp i gotowość do sprawdzenia, bez sugerowania poprawności niezatwierdzonych odpowiedzi testowych.
 
-Bank „Detektywów przeszłości” zawiera 77 zadań do nauki i osobne 84 zadania testowe. Pojedyncza wyprawa wybiera dziewięć aktywności, a test 16 pytań. Rozkład tematów i ograniczenia opisuje [bank zadań](question-bank.md).
+Bank „Detektywów przeszłości” zawiera 260 aktywności: 127 do nauki i osobne 133 zadania testowe. Pojedyncza wyprawa wybiera dziewięć aktywności, a test 16 pytań. Wśród 42 pytań wielokrotnego wyboru występują zestawy z jedną, dwiema i trzema poprawnymi odpowiedziami oraz 3–5 opcjami. Nie należy zakładać stałej liczby zaznaczeń. Rozkład tematów i ograniczenia opisuje [bank zadań](question-bank.md).
 
 Każdy etap wyprawy ma własną pulę wariantów w `learningVariants`. Nowe przejście losuje inne przykłady: najpierw niewidziane w danym etapie, a po wyczerpaniu puli rozpoczyna kolejny obieg bez natychmiastowego powtórzenia ostatniego wariantu. Kontynuacja nie losuje ponownie rozpoczętej aktywności. Zapisane są identyfikatory wariantów i historia ich wyświetlania, nie częściowe odpowiedzi. Gwiazdki nadal dotyczą dziewięciu stałych etapów: nowy wariant nie daje dodatkowej gwiazdki za już ukończony etap.
 
