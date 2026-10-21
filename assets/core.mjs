@@ -1,3 +1,4 @@
+import {learningLessons, learningSlots, validateLearningPlan} from './learning-plan.mjs';
 // Runtime checks protect the UI; the Python/JSON Schema validator remains authoritative.
 const own = (object, key) => Object.hasOwn(object, key);
 const object = value => value !== null && typeof value === 'object' && !Array.isArray(value);
@@ -163,6 +164,7 @@ export function validateTopic(doc) {
     check(typeof test.shuffleQuestions === 'boolean', test.id, 'shuffleQuestions musi być wartością logiczną');
     if (test.timeLimitSeconds !== null) positive(test.timeLimitSeconds, `${test.id}.timeLimitSeconds`);
   }
+  validateLearningPlan(doc);
   return doc;
 }
 
@@ -198,7 +200,35 @@ export function gradeTest(topic, test, answers = {}) {
   return { points, maxPoints, percent: maxPoints ? Math.round(points / maxPoints * 100) : 0, results };
 }
 
-const emptyProgress = () => ({ completedTaskIds: [], readLessonIds: [], lastTaskId: null, lastResult: null });
+const emptyProgress = topic => ({ completedTaskIds: [], readLessonIds: [], lastTaskId: null, lastResult: null, ...learningProgress(null, topic) });
+function learningProgress(raw, topic) {
+  if (!own(topic, 'learningPlan')) return {};
+  const value = object(raw) ? raw : {};
+  const slots = learningSlots(topic), ids = new Set(slots.map(s => s.id));
+  const lessonIds = new Set(learningLessons(topic).map(l => l.lessonId));
+  const tasks = new Map(topic.tasks.map(t => [t.id, t]));
+  const selected = [], seen = [], extraPractice = [];
+  const selectedTaskIds = new Set();
+  for (const slot of slots) {
+    const allowed = new Set(slot.taskIds);
+    const choice = object(value.selected) && own(value.selected, slot.id) ? value.selected[slot.id] : null;
+    if (allowed.has(choice) && !selectedTaskIds.has(choice)) { selected.push([slot.id, choice]); selectedTaskIds.add(choice); }
+    const history = object(value.seen) && own(value.seen, slot.id) ? value.seen[slot.id] : null;
+    if (Array.isArray(history)) seen.push([slot.id, [...new Set(history.filter(id => allowed.has(id)))]]);
+    const extra = object(value.extraPractice) && own(value.extraPractice, slot.id) ? value.extraPractice[slot.id] : null;
+    if (object(extra) && allowed.has(extra.taskId) && extra.taskId !== choice && scoreable.has(tasks.get(extra.taskId)?.type) && typeof extra.done === 'boolean') {
+      extraPractice.push([slot.id, {taskId: extra.taskId, done: extra.done}]);
+    }
+  }
+  return {learning: {
+    completedSlotIds: Array.isArray(value.completedSlotIds) ? [...new Set(value.completedSlotIds.filter(id => ids.has(id)))] : [],
+    selected: Object.fromEntries(selected), seen: Object.fromEntries(seen),
+    activeLessonId: lessonIds.has(value.activeLessonId) ? value.activeLessonId : null,
+    lastSlotId: slots.some(slot => slot.id === value.lastSlotId && slot.lessonId === value.activeLessonId) ? value.lastSlotId : null,
+    extraPractice: Object.fromEntries(extraPractice),
+    cursors: Object.fromEntries(object(value.cursors) ? Object.entries(value.cursors).filter(([lessonId, slotId]) => lessonIds.has(lessonId) && (slotId === null || slots.some(slot => slot.id === slotId && slot.lessonId === lessonId))) : []),
+  }};
+}
 function practiceProgress(value, topic) {
   if (!object(value)) return {};
   const selected = [], seen = [];
@@ -237,7 +267,7 @@ export function createProgressStore(storage, key = 'kumilo.progress.v1') {
     get available() { return available; },
     read(topicKey, topic) {
       const all = load(), value = own(all, topicKey) ? all[topicKey] : null;
-      if (!object(value)) return emptyProgress();
+      if (!object(value)) return emptyProgress(topic);
       const tasks = new Set(topic.tasks.map(task => task.id)), lessons = new Set(topic.lessons.map(lesson => lesson.id));
       const sanitize = (ids, allowed) => Array.isArray(ids) ? [...new Set(ids.filter(id => allowed.has(id)))] : [];
       return {
@@ -245,6 +275,7 @@ export function createProgressStore(storage, key = 'kumilo.progress.v1') {
         lastTaskId: tasks.has(value.lastTaskId) ? value.lastTaskId : null,
         lastResult: validResult(value.lastResult, topic) ? structuredClone(value.lastResult) : null,
         ...practiceProgress(value.practice, topic),
+        ...learningProgress(value.learning, topic),
       };
     },
     write(topicKey, progress) {

@@ -3,7 +3,10 @@ import {mountTask} from './tasks.mjs';
 import {escapeHtml as h, button, owl, sadOwl} from './ui.mjs';
 import {learningRewards, rewardShelf, celebrate} from './rewards.mjs';
 import {drawTest, drawLearning, testSummary} from './selection.mjs';
-import {activityScreen} from './activity-view.mjs';
+import {activityScreen, journeyTrack} from './activity-view.mjs';
+import {learningLessons, learningSlots} from './learning-plan.mjs';
+import {startLearningSession, learningEntries, completeLearningEntry, markLearningSeen, mixedLearningReview} from './learning-session.mjs';
+import {learningHome, learningTopics, planRewardShelf} from './learning-view.mjs';
 
 const app = document.getElementById('app');
 const catalogUrl = new URL('./data/catalog.json', document.baseURI);
@@ -14,9 +17,11 @@ let catalog, entries = [], selected, topic, progress;
 let view = 'loading', requestId = 0, taskView = null, queue = [], position = 0, reviewing = false;
 let exam = null, student = '', report = null, timer = null, retry = null, reviewLessonIds = [];
 let stopCelebration = () => {};
+let planEntries = [], planLessonId = null;
 const taskById = id => topic.tasks.find(task => task.id === id);
 const currentTask = () => {
   if (view === 'exam') return taskById(exam.questions[position].taskId);
+  if (topic.learningPlan && planEntries.length) return taskById(planEntries[position].taskId);
   const anchor = queue[position], selected = progress.practice?.selected || {};
   return taskById(Object.hasOwn(selected, anchor) ? selected[anchor] : anchor);
 };
@@ -65,6 +70,7 @@ function render() {
     count.textContent = `${view === 'learn' ? 'Zadanie' : 'Pytanie'} ${position + 1} z ${view === 'learn' ? queue.length : exam.questions.length}`;
   }
   if (view === 'home') renderHome();
+  if (view === 'topics') app.innerHTML = `${contextual()}${learningTopics(topic, progress)}`;
   if (view === 'lessons' || view === 'review-lessons') renderLessons();
   if (view === 'learn') renderLearn();
   if (view === 'finish') renderFinish();
@@ -75,6 +81,7 @@ function render() {
   storageStatus();
 }
 function renderHome() {
+  if (topic.learningPlan) { app.innerHTML = `${contextual()}${learningHome(topic, progress)}`; return; }
   const count = progress.completedTaskIds.filter(id => topic.learningPath.includes(id)).length;
   const inProgress = count > 0 && count < topic.learningPath.length;
   app.innerHTML = `${contextual()}<section class="hero"><div class="hero-copy"><p class="eyebrow">TWOJA WYPRAWA Z KUMILO</p><h1>${h(topic.title)}</h1><p>${h(topic.summary)}</p></div>${owl('mascot', 'Sowa Kumilo — Twoja towarzyszka odkryć')}</section><div class="choice-grid"><button class="choice learn" data-action="learn"><span class="choice-icon" aria-hidden="true">✦</span><span><b>${inProgress ? 'Kontynuuj wyprawę' : count === topic.learningPath.length ? 'Wyprawa ukończona!' : 'Ucz się przez zabawę'}</b><small>${count ? `${count} z ${topic.learningPath.length} aktywności ukończonych` : 'Odkrywaj, łącz tropy i próbuj.'}</small></span><span class="arrow" aria-hidden="true">→</span></button><button class="choice" data-action="test-intro"><span class="choice-icon" aria-hidden="true">✓</span><span><b>Sprawdź się</b><small>Pełny test z wybranego tematu</small></span><span class="arrow" aria-hidden="true">→</span></button></div><div class="home-links">${button('Lekcje i mapa myśli', 'lessons', 'text-button')}${progress.lastResult ? button('Ostatni wynik', 'last-result', 'text-button') : ''}${count ? button('Przejdź wyprawę od początku', 'replay', 'text-button') : ''}</div>`;
@@ -91,6 +98,7 @@ function renderLessons() {
   app.innerHTML = frame(`<div ${revision ? 'data-review-lessons' : ''}>${heading}<div class="stage"><div class="lesson-list">${lessons.map(lesson => `<details class="lesson-notes" data-lesson-id="${lesson.id}"><summary>${h(lesson.title)} ${progress.readLessonIds.includes(lesson.id) ? '<span class="read-mark">· otwierano</span>' : ''}</summary><ul>${lesson.goals.map(goal => `<li>${h(goal)}</li>`).join('')}</ul>${lesson.paragraphs.map(p => `<p>${h(p)}</p>`).join('')}</details>`).join('')}</div>${revision ? '' : `<section class="mindmap"><h2>Mapa myśli</h2>${mapNode(topic.mindMap)}</section>`}<div class="footer-actions">${revision ? `${relatedIds.length ? button('Poćwicz dostępne zadania', 'review-activities') : ''}${button('Nowe podejście do testu →', 'test-intro')}` : button('Ucz się przez zabawę →', 'learn')}</div></div></div>`, 'Lekcje otwarte', lessons.filter(lesson => progress.readLessonIds.includes(lesson.id)).length, lessons.length);
 }
 function beginLearning(forceStart = false, reviewIds = null) {
+  if (topic.learningPlan) { stopTimer(); exam = null; go('topics'); return; }
   stopTimer(); exam = null;
   reviewing = Boolean(reviewIds);
   queue = reviewIds || [...topic.learningPath];
@@ -99,16 +107,18 @@ function beginLearning(forceStart = false, reviewIds = null) {
   if (position < 0) { go('finish'); return; }
   const practice = progress.practice || {selected: {}, seen: {}};
   const missing = queue.filter(anchor => forceStart || reviewing || !Object.hasOwn(practice.selected, anchor));
-  const drawn = drawLearning(topic, missing, practice.seen);
+  const reservedTypes = queue.filter(anchor => !missing.includes(anchor)).map(anchor => taskById(practice.selected[anchor]).type);
+  const drawn = drawLearning(topic, missing, practice.seen, Math.random, reservedTypes);
   progress.practice = {selected: {...practice.selected, ...drawn.selected}, seen: practice.seen};
   progress.lastTaskId = queue[position]; save(); go('learn');
 }
 function renderLearn() {
+  if (topic.learningPlan) { renderPlannedLearn(); return; }
   const task = currentTask();
   const anchor = queue[position];
   const history = Object.hasOwn(progress.practice.seen, anchor) ? progress.practice.seen[anchor] : [];
   if (history.at(-1) !== task.id) {
-    progress.practice.seen[anchor] = [...(history.includes(task.id) ? [] : history), task.id];
+    progress.practice.seen[anchor] = [...(history.includes(task.id) ? history.filter(id => taskById(id).type !== task.type) : history), task.id];
     save();
   }
   const before = learningRewards(topic.learningPath, progress.completedTaskIds);
@@ -144,8 +154,69 @@ function updateTaskFooter(task, state) {
   document.getElementById('task-next-help').textContent = state.solved ? 'Możesz przejść dalej' : checking ? state.canCheck ? 'Sprawdź odpowiedź, aby przejść dalej' : 'Uzupełnij odpowiedź' : guidance[task.type] || 'Wybierz poprawną odpowiedź';
 }
 function renderFinish() {
+  if (topic.learningPlan) { renderPlannedFinish(); return; }
   app.innerHTML = frame(`<div class="stage"><div class="celebrate">${owl('award-owl')}<p class="eyebrow">${reviewing ? 'POWTÓRKA ZA TOBĄ' : 'WYPRAWA UKOŃCZONA'}</p><h1>${reviewing ? 'Tropy odświeżone!' : 'Odkrywca na medal!'}</h1><p>${reviewing ? 'Wróciłeś do tematów, które wymagały powtórki.' : 'Wszystkie aktywności tej wyprawy masz już za sobą.'}</p></div><div class="footer-actions">${button('Sprawdź się →', 'test-intro')}${button('Na start', 'home', 'secondary')}</div><details class="mindmap"><summary>Zobacz, jak łączą się Twoje odkrycia</summary>${mapNode(topic.mindMap)}</details></div>`, 'Aktywności', queue.length || topic.learningPath.length, queue.length || topic.learningPath.length);
   app.querySelector('.celebrate').insertAdjacentHTML('afterend', rewardShelf(topic.learningPath, progress.completedTaskIds, topic.tasks));
+  stopCelebration = celebrate(app.querySelector('.celebrate'));
+}
+function beginPlannedLesson(lessonId, replay = false) {
+  stopTimer(); exam = null; reviewing = false;
+  try {
+    const session = startLearningSession(topic, progress, {lessonId, replay});
+    planLessonId = lessonId; planEntries = session.entries;
+    queue = planEntries.map(entry => entry.id); position = session.position;
+    save(); go(position < 0 ? 'finish' : 'learn');
+  } catch (error) { showError(error); }
+}
+function beginPlannedReview(lessonIds = null) {
+  stopTimer(); exam = null; reviewing = true; planLessonId = null;
+  try {
+    planEntries = mixedLearningReview(topic, progress.learning, lessonIds);
+    queue = planEntries.map(entry => entry.id); position = 0;
+    go(queue.length ? 'learn' : 'lessons');
+  } catch (error) { showError(error); }
+}
+function renderPlannedLearn() {
+  const entry = planEntries[position], task = taskById(entry.taskId);
+  markLearningSeen(topic, progress.learning, entry); save();
+  const path = learningSlots(topic).map(slot => slot.id);
+  const before = learningRewards(path, progress.learning.completedSlotIds);
+  app.innerHTML = activityScreen({task, index: position + 1, total: queue.length, reviewing, hints: entry.hints, stageTitle: entry.title, notes: lessonDetails(task), stars: `${before.stars} / ${before.total}`});
+  let hadMistake = false;
+  taskView = mountTask(document.getElementById('task-area'), task, {controls: false,
+    onStateChange: state => { hadMistake ||= state.incorrect; updateTaskFooter(task, state); },
+    onComplete: () => {
+      completeLearningEntry(topic, progress.learning, entry, hadMistake);
+      if (!reviewing) {
+        planEntries = learningEntries(topic, progress.learning, planLessonId);
+        queue = planEntries.map(item => item.id);
+        position = planEntries.findIndex(item => item.id === entry.id);
+        progress.learning.lastSlotId = planEntries[position + 1]?.slotId || null;
+      }
+      save();
+      const after = learningRewards(path, progress.learning.completedSlotIds);
+      document.getElementById('learn-stars').textContent = `${after.stars} / ${after.total}`;
+      const reward = document.getElementById('reward-area');
+      reward.hidden = false;
+      reward.innerHTML = `${owl('mini-owl')}<div><strong>${after.stars > before.stars ? '+1 gwiazdka!' : entry.extra ? 'Dodatkowy trop odkryty!' : 'Trop odświeżony!'}</strong></div><span class="reward-token" aria-hidden="true">★</span>`;
+      stopCelebration = celebrate(reward);
+      document.getElementById('session-count').textContent = `Zadanie ${position + 1} z ${queue.length}`;
+      app.querySelector('.journey-track').outerHTML = journeyTrack({index: position + 1, total: queue.length, label: reviewing ? 'Powtórka' : 'Postęp nauki'});
+      const next = app.querySelector('.task-primary-group .primary');
+      next.disabled = false; next.classList.add('ready-next'); next.focus({preventScroll: true});
+    },
+  });
+}
+function advancePlannedLearning() {
+  position++;
+  if (!reviewing) { progress.learning.lastSlotId = planEntries[position]?.slotId || null; save(); }
+  go(position < queue.length ? 'learn' : 'finish');
+}
+function renderPlannedFinish() {
+  const lessons = learningLessons(topic), lesson = lessons.find(item => item.lessonId === planLessonId);
+  const next = lesson ? lessons[lessons.indexOf(lesson) + 1] : null;
+  const nextButton = next ? `<button class="primary" data-action="learn-lesson" data-lesson="${h(next.lessonId)}">Kolejny temat →</button>` : button('Wybierz temat', 'topics');
+  app.innerHTML = frame(`<div class="stage"><div class="celebrate">${owl('award-owl')}<p class="eyebrow">${reviewing ? 'POWTÓRKA ZA TOBĄ' : 'TEMAT ODKRYTY'}</p><h1>${reviewing ? 'Tropy odświeżone!' : h(lesson.title)}</h1><p>${reviewing ? 'Wróć do tych tropów ponownie przy kolejnej okazji.' : 'Wszystkie kroki tej wyprawy masz już za sobą.'}</p></div>${!reviewing ? planRewardShelf(topic, progress, planLessonId) : ''}<div class="footer-actions">${reviewing ? button('Wybierz temat', 'topics') : nextButton}${button('Na start', 'home', 'secondary')}${button('Sprawdź się', 'test-intro', 'text-button')}</div></div>`, 'Aktywności', queue.length, queue.length);
   stopCelebration = celebrate(app.querySelector('.celebrate'));
 }
 function renderTestIntro() {
@@ -230,7 +301,7 @@ async function loadTopic(entry) {
     if (loaded.id !== entry.id || loaded.grade !== entry.grade || loaded.subjectId !== entry.subjectId) throw new Error('Metadane tematu nie pasują do katalogu.');
     selected = entry; topic = loaded;
     progress = store.read(entry.path, topic);
-    report = progress.lastResult; student = ''; queue = []; reviewing = false;
+    report = progress.lastResult; student = ''; queue = []; reviewing = false; planEntries = []; planLessonId = null;
     document.title = `${topic.title} · Kumilo`;
     go('home');
   } catch (error) { if (token === requestId) showError(error); }
@@ -268,6 +339,9 @@ app.addEventListener('click', event => {
   if (action === 'home') leaveForHome();
   if (action === 'picker') openPicker();
   if (action === 'learn') beginLearning();
+  if (action === 'topics') go('topics');
+  if (action === 'learn-lesson' || action === 'replay-lesson') beginPlannedLesson(target.dataset.lesson, action === 'replay-lesson');
+  if (action === 'mixed-review') beginPlannedReview();
   if (action === 'replay') beginLearning(true);
   if (action === 'lessons') go('lessons');
   if (action === 'test-intro') { student = ''; go('test-intro'); }
@@ -276,19 +350,26 @@ app.addEventListener('click', event => {
     const panel = document.getElementById('task-hint-panel');
     panel.hidden = !panel.hidden; target.setAttribute('aria-expanded', String(!panel.hidden));
   }
-  if (action === 'next-learn') { position++; if (position < queue.length) { progress.lastTaskId = queue[position]; save(); go('learn'); } else { progress.lastTaskId = null; save(); go('finish'); } }
+  if (action === 'next-learn') {
+    if (topic.learningPlan) advancePlannedLearning();
+    else { position++; if (position < queue.length) { progress.lastTaskId = queue[position]; save(); go('learn'); } else { progress.lastTaskId = null; save(); go('finish'); } }
+  }
   if (action === 'exam-back') { rememberAnswer(); position--; go('exam'); }
   if (action === 'exam-next') { rememberAnswer(); if (position < exam.questions.length - 1) { position++; go('exam'); } else go('exam-review'); }
   if (action === 'submit-exam') finishExam();
   if (action === 'last-result') { report = progress.lastResult; student = ''; go('result'); }
   if (action === 'review-mistakes') {
     const lessonIds = new Set(report.results.filter(result => !result.correct).flatMap(result => result.lessonIds));
+    if (topic.learningPlan) { beginPlannedReview([...lessonIds]); return; }
     const ids = topic.learningPath.filter(id => taskById(id).lessonIds.some(lesson => lessonIds.has(lesson)));
     const covered = new Set(ids.flatMap(id => taskById(id).lessonIds));
     if ([...lessonIds].some(id => !covered.has(id))) { reviewLessonIds = [...lessonIds]; go('review-lessons'); }
     else beginLearning(true, ids);
   }
-  if (action === 'review-activities') beginLearning(true, topic.learningPath.filter(id => taskById(id).lessonIds.some(lesson => reviewLessonIds.includes(lesson))));
+  if (action === 'review-activities') {
+    if (topic.learningPlan) beginPlannedReview(reviewLessonIds);
+    else beginLearning(true, topic.learningPath.filter(id => taskById(id).lessonIds.some(lesson => reviewLessonIds.includes(lesson))));
+  }
   if (action === 'print') window.print();
   if (action === 'retry') retry?.();
 });

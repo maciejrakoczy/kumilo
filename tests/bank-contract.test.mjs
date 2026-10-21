@@ -6,6 +6,7 @@ import {validateTopic, createProgressStore} from '../assets/core.mjs';
 const real = JSON.parse(await readFile(new URL('../data/klasa-4/historia/detektywi-przeszlosci/topic.json', import.meta.url)));
 function fixture() {
   const topic = structuredClone(real);
+  delete topic.learningPlan; // This fixture exercises the legacy optional bank contract.
   delete topic.learningVariants;
   const a = topic.tasks.find(t => t.type === 'single-choice' && t.lessonIds[0] === 'praca-historyka');
   const b = topic.tasks.find(t => t.type === 'number-answer' && t.lessonIds[0] === 'uplyw-lat');

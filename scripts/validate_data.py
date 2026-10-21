@@ -56,6 +56,70 @@ def normalize_answer(value):
     return ' '.join(value.split()).casefold()
 
 
+def validate_learning_plan(topic):
+    """Schema is checked first; prove references and simultaneous type matching here."""
+    if 'learningPlan' not in topic:
+        return []
+    plan = topic['learningPlan']
+    errors = []
+    templates = {step['id']: step for step in plan['steps']}
+    tasks = {task['id']: task for task in topic['tasks']}
+    lessons = {lesson['id'] for lesson in topic['lessons']}
+    bank = set(topic['learningPath'])
+    for variants in topic.get('learningVariants', {}).values():
+        bank.update(variants)
+    duplicates([step['id'] for step in plan['steps']], 'learningPlan.steps', errors)
+    duplicates([lesson['lessonId'] for lesson in plan['lessons']], 'learningPlan.lessons', errors)
+    if {lesson['lessonId'] for lesson in plan['lessons']} != lessons:
+        errors.append('learningPlan.lessons: wymagane pełne pokrycie lekcji')
+    used = set()
+    slot_ids = []
+    slot_types = []
+    for lesson in plan['lessons']:
+        label = f'learningPlan.lessons.{lesson["lessonId"]}'
+        duplicates([step['id'] for step in lesson['steps']], label, errors)
+        for step in lesson['steps']:
+            template = templates.get(step['id'])
+            if template is None:
+                errors.append(f'{label}: nieznany template {step["id"]}')
+                continue
+            resolved = {**template, **step}
+            if len(step['taskIds']) < resolved['count']:
+                errors.append(f'{label}.{step["id"]}: za mała pula taskIds')
+            types = set()
+            for task_id in step['taskIds']:
+                task = tasks.get(task_id)
+                if (task_id not in bank or task is None
+                        or lesson['lessonId'] not in task['lessonIds']
+                        or task['type'] not in resolved['types']):
+                    errors.append(f'{label}.{step["id"]}: niepoprawne taskIds {task_id}')
+                elif task is not None:
+                    types.add(task['type'])
+                if task_id in used:
+                    errors.append(f'{label}: taskIds {task_id} należy do różnych kroków')
+                used.add(task_id)
+            for index in range(resolved['count']):
+                slot_ids.append(f'{lesson["lessonId"]}-{step["id"]}-{index + 1}')
+                slot_types.append(types)
+    duplicates(slot_ids, 'learningPlan.slotIds', errors)
+    assigned = [None] * len(slot_types)
+
+    def place(kind, visited):
+        for index, types in enumerate(slot_types):
+            if index in visited or kind not in types:
+                continue
+            visited.add(index)
+            if assigned[index] is None or place(assigned[index], visited):
+                assigned[index] = kind
+                return True
+        return False
+
+    for kind in plan['requiredTypes']:
+        if not place(kind, set()):
+            errors.append(f'learningPlan.requiredTypes: nieosiągalny typ {kind}')
+    return errors
+
+
 def validate_topic(topic, schema):
     errors = structure_errors(topic, schema)
     if errors:
@@ -160,6 +224,7 @@ def validate_topic(topic, schema):
 
     visit(topic['mindMap'])
     duplicates(nodes, 'mindMap', errors)
+    errors.extend(validate_learning_plan(topic))
     return errors
 
 

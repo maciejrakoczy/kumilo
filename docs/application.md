@@ -17,13 +17,15 @@ Powyższe polecenie udostępnia wyłącznie `dist/`. Jeśli na stanowisku masz p
 
 ## Nauka
 
-1. Wybierz klasę, przedmiot i temat przyciskiem „Zmień”. Dostępne pozycje pochodzą wyłącznie z `data/catalog.json`.
-2. Uruchom wyprawę. Przycisk „Kontynuuj” prowadzi do pierwszej nieukończonej aktywności.
-3. Rozwiązuj zadania. Błąd nie odbiera żyć ani punktów z nauki; można próbować dalej.
-4. Przy potrzebie użyj przycisku „Podpowiedź” w stopce karty i rozwiń objaśnienie lekcji. W sekcji „Lekcje i mapa myśli” dostępny jest cały zakres.
-5. Po ukończeniu aktywności przejdź do kolejnej. Przejście całej ścieżki kończy się podsumowaniem z sową.
+„Detektywi przeszłości” korzystają z wdrożonego `learningPlan`: siedem krótkich wypraw po sześć aktywności. Kolejność, pule i ustawienia pochodzą z JSON. Kontrakt i zasady opisuje [organizacja nauki według tematów](learning-organization.md).
 
-Aktywności: odkrywanie kart, fiszki, pytania jedno- i wielokrotnego wyboru, pary w obu kierunkach, sortowanie do kategorii, układanie kolejności oraz odpowiedzi tekstowe i liczbowe. W pierwszej ścieżce nauki jest dziewięć aktywności; pełny dział obejmuje siedem lekcji.
+1. Wybierz klasę, przedmiot i temat przyciskiem „Zmień”. Dostępne pozycje pochodzą wyłącznie z `data/catalog.json`.
+2. Wybierz „Ucz się tematami”, a następnie jedną z siedmiu lekcji. „Kontynuuj” zachowuje wylosowane zadanie i miejsce przerwania, również po zmianie tematu.
+3. Rozwiązuj zadania. Błąd nie odbiera gwiazdek; po jego poprawieniu może pojawić się jeden dodatkowy przykład z tej samej puli, bez łańcucha kolejnych zadań.
+4. Przy potrzebie użyj przycisku „Podpowiedź” w stopce karty i rozwiń objaśnienie lekcji. W sekcji „Lekcje i mapa myśli” dostępny jest cały zakres.
+5. Po ukończeniu aktywności przejdź do kolejnej. Temat kończy się własnym podsumowaniem z sową. „Powtórka mieszana” na starcie lub w wyborze tematów pozwala ręcznie wrócić do zadań z różnych lekcji; nie ma harmonogramu powtórek.
+
+Aktywności: odkrywanie kart, fiszki, pytania jedno- i wielokrotnego wyboru, pary w obu kierunkach, sortowanie do kategorii, układanie kolejności oraz odpowiedzi tekstowe i liczbowe. Wyprawa pojedynczego tematu prowadzi przez: Odkryj → Zapamiętaj → Rozpoznaj → Połącz → Zastosuj → Utrwal. Daje to 42 podstawowe aktywności w całym dziale, z dodatkowymi przykładami po błędach niezwiększającymi liczby gwiazdek. Pakiety bez `learningPlan` nadal używają dawnego `learningPath`.
 
 Po odkryciu karty jej objaśnienie pojawia się wewnątrz tej karty zamiast napisu zachęcającego do odkrycia. Treść pozostaje widoczna po odkryciu kolejnych kart; nie pojawia się dodatkowy dymek pod planszą. Ponowne kliknięcie nie zwiększa postępu ani nie przyznaje kolejnej nagrody.
 
@@ -33,13 +35,13 @@ Pary pokazują dopasowanie krzywą linią oraz takim samym numerem na obu kartac
 
 Widok karty jest w `assets/activity-view.mjs`, a jego style w `assets/activity.css`, oddzielnie od pozostałych ekranów. `mountTask` przyjmuje `controls: false` i `onStateChange`, dzięki czemu wspólna stopka może obsłużyć stan, licznik i zatwierdzenie każdego typu bez powielania przycisków w rendererze. Zwracane `check()` zatwierdza tylko odpowiednie typy w nauce; nie ocenia odpowiedzi w teście. `getState()` udostępnia postęp i gotowość do sprawdzenia, bez sugerowania poprawności niezatwierdzonych odpowiedzi testowych.
 
-Bank „Detektywów przeszłości” zawiera 260 aktywności: 127 do nauki i osobne 133 zadania testowe. Pojedyncza wyprawa wybiera dziewięć aktywności, a test 16 pytań. Wśród 42 pytań wielokrotnego wyboru występują zestawy z jedną, dwiema i trzema poprawnymi odpowiedziami oraz 3–5 opcjami. Nie należy zakładać stałej liczby zaznaczeń. Rozkład tematów i ograniczenia opisuje [bank zadań](question-bank.md).
+Bank „Detektywów przeszłości” zawiera 276 aktywności: 143 do nauki i osobne 133 zadania testowe. Plan obejmuje sześć aktywności na każdą z siedmiu lekcji, a dziewięć typów jest zapewnione w skali całego planu, nie pojedynczej lekcji. Test nadal wybiera 16 pytań, z co najmniej jednym każdego z siedmiu ocenianych typów. Pozostałe miejsca testu są równoważone między typami z zachowaniem kwot tematów. Wśród 42 pytań wielokrotnego wyboru występują zestawy z jedną, dwiema i trzema poprawnymi odpowiedziami oraz 3–5 opcjami. Rozkład tematów i ograniczenia opisuje [bank zadań](question-bank.md).
 
-Każdy etap wyprawy ma własną pulę wariantów w `learningVariants`. Nowe przejście losuje inne przykłady: najpierw niewidziane w danym etapie, a po wyczerpaniu puli rozpoczyna kolejny obieg bez natychmiastowego powtórzenia ostatniego wariantu. Kontynuacja nie losuje ponownie rozpoczętej aktywności. Zapisane są identyfikatory wariantów i historia ich wyświetlania, nie częściowe odpowiedzi. Gwiazdki nadal dotyczą dziewięciu stałych etapów: nowy wariant nie daje dodatkowej gwiazdki za już ukończony etap.
+Każdy krok tematu ma własną pulę w `learningPlan.lessons[].steps[].taskIds`. Silnik przygotowuje wybory dla całego planu, zachowując zakres i wymagane typy; samo przygotowanie nie oznacza wyświetlenia. Historia daje pierwszeństwo niewidzianym przykładom, ale nie kosztem zakresu i różnorodności. „Przejdź temat od początku” losuje tylko ten temat, zachowując pozostałe wybory i wszystkie gwiazdki. Fiszki są teraz stałym drugim etapem każdej lekcji. Bank nadal zawiera dziewięć zestawów fiszek (21 kart) i dziewięć aktywności odkrywania kart; nie dodano ani nie usunięto zadań przy zmianie organizacji. W ostatnim kroku nie ma przycisku i panelu podpowiedzi, pozostaje informacja zwrotna po odpowiedzi.
 
 ### Gwiazdki i odznaki
 
-Każda pierwszy raz ukończona aktywność wyprawy daje jedną gwiazdkę. Na starcie i w podsumowaniu widać zebrane gwiazdki oraz trzy odznaki: „Pierwszy krok” za pierwszą aktywność, „Na tropie” za co najmniej połowę ścieżki i „Odkrywca” za całość. Nagrody oznaczają ukończenie aktywności, nie potwierdzają opanowania całego działu. Powtórzenie tego samego zadania nie zwiększa liczby gwiazdek.
+Każda pierwszy raz ukończona podstawowa aktywność daje jedną gwiazdkę, przypisaną do stabilnego miejsca planu. Na starcie widać sumę odkryć, w wyborze tematów ich postęp, a w podsumowaniu tematu gwiazdki i odznaki: „Pierwszy krok”, „Na tropie” i „Odkrywca”. Dodatkowe przykłady i powtórki mieszane nie mnożą gwiazdek. Wcześniejsze osiągnięcia dziewięciu etapów pozostają osobno w „Twoich wcześniejszych odkryciach”, bez uznawania nowych tematów za ukończone. Nagrody oznaczają wykonanie aktywności, nie potwierdzają opanowania całego działu.
 
 Odkrywane karty i fiszki reagują animacją, a ukończenie aktywności wyświetla krótką animację gwiazdek. Efekty nie blokują dalszego działania. Nagrody wynikają z istniejącego zapisu postępu: pozostają po odświeżeniu, a usunięcie danych Kumilo usuwa je razem z postępem. Przy niedostępnej pamięci przeglądarki nie są trwałe.
 
@@ -53,7 +55,7 @@ Kolejność można zmieniać przeciąganiem karty myszą, uchwytem przy dotyku a
 
 - Imię lub pseudonim jest tylko w pamięci bieżącej karty.
 - Test korzysta z definicji w JSON: liczby pytań, punktów i ewentualnego limitu czasu.
-- Przy `draw` aplikacja wybiera podzbiór banku według kwot tematów. Każde podejście obejmuje cały wskazany zakres i nie zawiera powtórzonych pytań. Najpierw wybierane są pytania spoza ostatniego zatwierdzonego testu; jeśli pula jest za mała, brakujące miejsca uzupełniają wcześniejsze pytania. W bieżącym banku pojemność pozwala uniknąć wszystkich pytań z bezpośrednio poprzedniego podejścia. Nie oznacza to, że pytanie nigdy nie wróci w dalszych testach.
+- Przy `draw` aplikacja zachowuje kwoty tematów i maksymalizuje różnorodność typów. W bieżącym banku każde podejście obejmuje siedem ocenianych typów i cały wskazany zakres, bez powtórzonych pytań. Pozostałe miejsca równoważy między dostępnymi typami. Pytania spoza ostatniego zatwierdzonego testu mają pierwszeństwo, o ile nie ogranicza to pokrycia typów i tematów. Przy małych pulach dopuszczone są wcześniejsze pytania; bieżący bank pozwala uniknąć wszystkich pytań z bezpośrednio poprzedniego podejścia. Nie oznacza to, że pytanie nigdy nie wróci w dalszych testach.
 - Wstęp pokazuje liczbę losowanych pytań i punktów, nie długość całego banku. Nawigacja wstecz nie losuje pytań od nowa. Ocena, objaśnienia i zapis wyniku dotyczą tylko wylosowanego zestawu.
 - Możesz wracać do pytań i pomijać je do późniejszego uzupełnienia.
 - Przed zatwierdzeniem lista pytań pokazuje brakujące odpowiedzi.
@@ -77,6 +79,8 @@ Wyłączenie pamięci przeglądarki nie powinno blokować nauki; pojawia się in
 
 - `index.html` — wspólny szkielet strony i dialogi;
 - `assets/app.mjs` — katalog, nawigacja, nauka, testy, powtórka;
+- `assets/learning-plan.mjs` — interpretacja i walidacja planu oraz wybór zadań;
+- `assets/learning-session.mjs`, `assets/learning-view.mjs` — sesje tematów, dodatkowe ćwiczenia, powtórki i ich prezentacja;
 - `assets/tasks.mjs` — wspólne mechanizmy dziewięciu typów zadań;
 - `assets/reorder.mjs` — przeciąganie i porządkowanie;
 - `assets/core.mjs` — sprawdzanie modelu, pobieranie danych, ocenianie, zapis;

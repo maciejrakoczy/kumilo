@@ -47,6 +47,7 @@ export async function checkRegression(name) {
       const {validateTopic} = await import(new URL(`./assets/core${extension}`, document.baseURI));
       const fixture = structuredClone(topic);
       delete fixture.learningVariants;
+      delete fixture.learningPlan;
       fixture.tests.forEach(test => { delete test.draw; });
       const failedTask = topic.tasks.find(t => t.id === topic.tests[0].questions[0].taskId);
       fixture.learningPath = [topic.learningPath.find(id => !topic.tasks.find(t => t.id === id).lessonIds.some(lesson => failedTask.lessonIds.includes(lesson)))];

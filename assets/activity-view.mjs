@@ -14,18 +14,22 @@ const formats = {
   'number-answer': ['Oblicz i wpisz wynik', 'Zwróć uwagę na jednostkę odpowiedzi.'],
 };
 
-export function activityScreen({task, index, total, mode = 'learn', reviewing = false, points, deadline, notes = '', stars = ''}) {
+export function journeyTrack({index, total, label}) {
+  return `<div class="journey-track" style="--journey-progress:${total > 1 ? (index - 1) / (total - 1) * 100 : 0}%" role="progressbar" aria-label="${h(label)}" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${index}">${Array.from({length: total}, (_, i) => `<span class="journey-dot ${i + 1 < index ? 'past' : i + 1 === index ? 'current' : ''}" aria-hidden="true"></span>`).join('')}</div>`;
+}
+
+export function activityScreen({task, index, total, mode = 'learn', reviewing = false, points, deadline, notes = '', stars = '', hints = true, stageTitle = ''}) {
   const study = mode === 'learn';
   const [prompt, tip] = formats[task.type];
   const title = task.type === 'matching' && task.leftLabel === 'Źródło' ? 'Połącz źródło z informacją' : prompt;
   return `<section class="activity work-activity" data-session-mode="${mode}">
-    <div class="session-heading"><h2>${h(task.title)}</h2><div class="journey-track" style="--journey-progress:${total > 1 ? (index - 1) / (total - 1) * 100 : 0}%" role="progressbar" aria-label="${reviewing ? 'Powtórka' : study ? 'Postęp nauki' : 'Postęp testu'}" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${index}">${Array.from({length: total}, (_, i) => `<span class="journey-dot ${i + 1 < index ? 'past' : i + 1 === index ? 'current' : ''}" aria-hidden="true"></span>`).join('')}</div></div>
+    <div class="session-heading"><h2>${stageTitle ? `${h(stageTitle)} · ` : ''}${h(task.title)}</h2>${journeyTrack({index, total, label: reviewing ? 'Powtórka' : study ? 'Postęp nauki' : 'Postęp testu'})}</div>
     <section class="stage question-card" aria-labelledby="question-title">
       <header class="question-top"><div><h1 id="question-title">${h(title)}</h1><p class="question-instruction">${h(task.instruction)}</p></div><div class="task-tip">${lamp}<span>${h(study ? tip : 'Możesz wracać do pytań przed zatwierdzeniem.')}</span></div></header>
       ${!study ? `<div class="question-meta"><span>${points} pkt</span>${deadline ? `<span id="time-left">Pozostało ${Math.max(0, Math.ceil((deadline - Date.now()) / 1000))} s</span>` : ''}</div>` : ''}
       <div id="task-area" data-task-id="${h(task.id)}"></div>
-      ${study ? `<div id="reward-area" class="reward-toast" role="status" hidden></div><aside id="task-hint-panel" class="task-hint-panel" aria-label="Podpowiedź" hidden><p>${h(task.hint || tip)}</p>${notes}</aside>` : ''}
-      <footer class="task-controls"><div class="task-secondary">${study ? `<button class="secondary hint-button" data-action="toggle-hint" aria-expanded="false" aria-controls="task-hint-panel">${lamp}<span>Podpowiedź</span></button><span class="learning-loot" aria-label="Gwiazdki za ukończone aktywności">★ <span id="learn-stars">${h(stars)}</span></span>` : button('← Wstecz', 'exam-back', 'secondary', index === 1)}</div><p id="task-progress" class="task-progress" role="status"></p><div class="task-primary-group">${button(study ? 'Dalej →' : index === total ? 'Przejrzyj odpowiedzi →' : 'Dalej →', study ? 'next-learn' : 'exam-next', 'primary', study)}<small id="task-next-help">${study ? 'Wykonaj zadanie, aby przejść dalej' : 'Możesz pominąć i wrócić'}</small></div></footer>
+      ${study ? `<div id="reward-area" class="reward-toast" role="status" hidden></div>${hints ? `<aside id="task-hint-panel" class="task-hint-panel" aria-label="Podpowiedź" hidden><p>${h(task.hint || tip)}</p>${notes}</aside>` : ''}` : ''}
+      <footer class="task-controls"><div class="task-secondary">${study ? `${hints ? `<button class="secondary hint-button" data-action="toggle-hint" aria-expanded="false" aria-controls="task-hint-panel">${lamp}<span>Podpowiedź</span></button>` : ''}<span class="learning-loot" aria-label="Gwiazdki za ukończone aktywności">★ <span id="learn-stars">${h(stars)}</span></span>` : button('← Wstecz', 'exam-back', 'secondary', index === 1)}</div><p id="task-progress" class="task-progress" role="status"></p><div class="task-primary-group">${button(study ? 'Dalej →' : index === total ? 'Przejrzyj odpowiedzi →' : 'Dalej →', study ? 'next-learn' : 'exam-next', 'primary', study)}<small id="task-next-help">${study ? 'Wykonaj zadanie, aby przejść dalej' : 'Możesz pominąć i wrócić'}</small></div></footer>
     </section>
   </section>`;
 }

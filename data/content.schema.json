@@ -10,6 +10,64 @@
     }
   ],
   "$defs": {
+    "planId": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+    "planTypes": {
+      "type": "array", "minItems": 1, "uniqueItems": true,
+      "items": {"enum": ["discovery", "flashcards", "single-choice", "multiple-choice", "matching", "sorting", "ordering", "short-answer", "number-answer"]}
+    },
+    "planStep": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "title", "types", "count", "hints"],
+      "properties": {
+        "id": {"$ref": "#/$defs/planId"},
+        "title": {"type": "string", "minLength": 1, "pattern": "\\S"},
+        "types": {"$ref": "#/$defs/planTypes"},
+        "count": {"type": "integer", "minimum": 1},
+        "hints": {"type": "boolean"}
+      }
+    },
+    "planLessonStep": {
+      "type": "object", "additionalProperties": false, "required": ["id", "taskIds"],
+      "properties": {
+        "id": {"$ref": "#/$defs/planId"},
+        "taskIds": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/planId"}},
+        "title": {"type": "string", "minLength": 1, "pattern": "\\S"},
+        "types": {"$ref": "#/$defs/planTypes"},
+        "count": {"type": "integer", "minimum": 1},
+        "hints": {"type": "boolean"}
+      }
+    },
+    "learningPlan": {
+      "type": "object", "additionalProperties": false,
+      "required": ["defaults", "requiredTypes", "steps", "lessons"],
+      "properties": {
+        "defaults": {
+          "type": "object", "additionalProperties": false,
+          "required": ["extraPractice", "reviewCount", "avoidImmediateRepeat"],
+          "properties": {
+            "extraPractice": {"type": "integer", "minimum": 0, "maximum": 1},
+            "reviewCount": {"type": "integer", "minimum": 1},
+            "avoidImmediateRepeat": {"type": "boolean"}
+          }
+        },
+        "requiredTypes": {
+          "type": "array", "uniqueItems": true,
+          "items": {"enum": ["discovery", "flashcards", "single-choice", "multiple-choice", "matching", "sorting", "ordering", "short-answer", "number-answer"]}
+        },
+        "steps": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/planStep"}},
+        "lessons": {
+          "type": "array", "minItems": 1,
+          "items": {
+            "type": "object", "additionalProperties": false, "required": ["lessonId", "steps"],
+            "properties": {
+              "lessonId": {"$ref": "#/$defs/planId"},
+              "extraPractice": {"type": "integer", "minimum": 0, "maximum": 1},
+              "steps": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/planLessonStep"}}
+            }
+          }
+        }
+      }
+    },
     "catalog": {
       "type": "object",
       "additionalProperties": false,
@@ -942,6 +1000,7 @@
             }
           }
         },
+        "learningPlan": {"$ref": "#/$defs/learningPlan"},
         "mindMap": {
           "$ref": "#/$defs/mindNode"
         },

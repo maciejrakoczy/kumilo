@@ -114,9 +114,15 @@ Dla liczb warunek to różnica bezwzględna nie większa niż `tolerance`. Zero 
 
 ### Ścieżka nauki
 
+Opcjonalne `learningPlan` jest obsługiwane przez schemat, walidatory i silnik. Zawiera `defaults`, `requiredTypes`, katalog szablonów `steps` i uporządkowane wyprawy `lessons`. Krok lekcji wskazuje szablon przez `id`, pulę przez `taskIds` i opcjonalne nadpisania `title`, `types`, `count`, `hints`; lekcja wskazuje `lessonId` i może nadpisać `extraPractice`. Dokładny kontrakt, przykład i zapis postępu opisuje [organizacja nauki według tematów](learning-organization.md#organizacja-sterowana-przez-json--kontrakt).
+
+Przy obecności `learningPlan` interfejs korzysta z niego zamiast dawnego przebiegu. `learningPath` i `learningVariants` nadal wyznaczają bank nauki oraz zachowują zgodność ze starymi paczkami i wcześniejszymi osiągnięciami. Pule nowych kroków muszą być rozłączne, mieścić co najmniej `count` kandydatów i zachowywać zakres lekcji oraz dozwolone typy. Walidatory sprawdzają wykonalność `requiredTypes` dla całego planu. Brak planu oznacza opisane niżej dotychczasowe zachowanie.
+
 `learningPath` to uporządkowana lista ID zadań. Przykładowo po odkrywaniu źródeł następuje ich sortowanie. W przyszłości można zbudować kilka ścieżek, ale wersja 1.0 nie definiuje warunkowych rozgałęzień ani algorytmu adaptacyjnego.
 
 Opcjonalne `learningVariants` mapuje ID kotwicy z `learningPath` na niepustą listę unikalnych ID **nowych alternatyw**, np. `{"rzymskie-pary": ["rzymskie-pary-inne"]}`. Wszystkie zadania muszą istnieć w `tasks`. Nie wpisujemy do listy samej kotwicy ani żadnego innego zadania z `learningPath`: renderer dodaje kotwicę do puli automatycznie. Wariant może należeć tylko do jednej kotwicy i musi mieć ten sam zbiór `lessonIds` co ona (kolejność nie ma znaczenia). Losowanie zmienia ćwiczenie, ale postęp i gwiazdki pozostają przypisane do stabilnej kotwicy — nie tworzymy nowych kroków ścieżki. Bez tego pola ścieżka działa jak dotąd.
+
+Bez `learningPlan` silnik najpierw przydziela różne dostępne typy do zgodnych tematycznie etapów, następnie losuje konkretne zadania. Maksymalizuje liczbę typów, a nie ich udział w całym banku. Dawne dziewięć etapów „Detektywów przeszłości” pozwalało wybrać każdy typ dokładnie raz; obecny plan zapewnia dziewięć typów w skali 42 aktywności, bez takiego wymogu na pojedynczy temat. W krótszej powtórce gwarantowana jest maksymalna osiągalna różnorodność, nie obecność nieistniejących kandydatów. Kontynuacja zachowuje zapisane warianty i uwzględnia ich typy przy uzupełnianiu brakujących etapów. Historia innych typów nie jest kasowana po rozpoczęciu nowego obiegu jednego typu.
 
 ### Mapa myśli
 
@@ -131,6 +137,8 @@ Każde pytanie wskazuje `taskId` i dodatnią całkowitą liczbę `points`. Nie k
 `questions` jest bankiem wszystkich dopuszczonych kandydatów, a nie deklaracją liczby pytań wyświetlanych uczniowi. Opcjonalne `draw` określa kwoty losowania bez powtórzeń, np. `[{"lessonId": "wieki-i-liczby-rzymskie", "count": 2}]`. Lista musi być niepusta, `lessonId` musi wskazywać istniejącą lekcję i nie może się powtarzać, a `count` jest dodatnią liczbą całkowitą. Obiekty grup zawierają wyłącznie te dwa pola.
 
 Przy `draw` każdy kandydat z `questions` musi przez swoje `lessonIds` należeć do **dokładnie jednej** wskazanej grupy: odrzucamy zarówno niepokryte pytania, jak i nakładanie się grup. Dodatkowe lekcje niewymienione w `draw` są dozwolone. Każda grupa musi mieć co najmniej `count` kandydatów; wszyscy kandydaci w tej samej grupie muszą mieć jednakowe `points` (różne grupy mogą mieć różną punktację). Dzięki temu maksymalny wynik jest znany przed losowaniem: suma `count × points` po grupach, a liczba pokazywanych pytań to suma kwot. Nie zmieniamy struktury wpisów `questions`: nadal są to tylko `{taskId, points}`. Bez `draw` test obejmuje cały bank, zgodnie z dotychczasowym zachowaniem; `shuffleQuestions` nadal steruje kolejnością, nie kwotami.
+
+Losowanie dobiera najpierw możliwie wiele różnych ocenianych typów do miejsc wynikających z kwot lekcji, potem równoważy pozostałe miejsca i wybiera konkretne pytania bez duplikatów. W bieżącym banku 16 pytań zawiera co najmniej jedno każdego z siedmiu typów. Kwoty tematów i pokrycie typów mają pierwszeństwo przed unikaniem ostatnio użytych pytań; bez `draw` lista pytań pozostaje stała. Nie dodaje to nowych pól JSON ani sztywnej proporcji typów.
 
 - `feedback`: w wersji 1.0 wyłącznie `after-submit`;
 - `scoring`: `all-or-nothing` — komplet poprawnej odpowiedzi daje całą pulę punktów, brak punktów częściowych;
@@ -169,7 +177,7 @@ Walidacja nie ustala, czy data historyczna jest prawdziwa albo czy zadanie jest 
 1. Utwórz `data/klasa-N/przedmiot/temat/topic.json`.
 2. Skorzystaj ze struktury istniejącego pliku, nadając nowe metadane i ID.
 3. Opracuj autorskie lekcje i zadania z objaśnieniami. Materiały źródłowe wyznaczają zakres, nie są kopiowane 1:1.
-4. Uzupełnij `learningPath`, mapę myśli i definicje testów.
+4. Uzupełnij `learningPath`, warianty banku nauki, mapę myśli i definicje testów. Dla wypraw tematycznych dodaj `learningPlan` ze wspólnymi szablonami i rozłącznymi pulami kroków wszystkich lekcji. Samo dopisanie lekcji wymaga również dodania jej wyprawy, jeśli plan już istnieje.
 5. Dodaj wpis do odpowiedniej klasy/przedmiotu w `catalog.json`.
 6. Uruchom walidator i testy oraz przejrzyj treść merytorycznie.
 

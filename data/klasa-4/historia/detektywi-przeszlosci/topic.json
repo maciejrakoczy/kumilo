@@ -8,6 +8,76 @@
   "language": "pl-PL",
   "title": "Detektywi przeszłości",
   "summary": "Podstawy poznawania przeszłości: źródła, rodzina i porządek czasu.",
+  "learningPlan": {
+    "defaults": {"extraPractice": 1, "reviewCount": 7, "avoidImmediateRepeat": true},
+    "requiredTypes": ["discovery", "flashcards", "single-choice", "multiple-choice", "matching", "sorting", "ordering", "short-answer", "number-answer"],
+    "steps": [
+      {"id": "odkryj", "title": "Odkryj", "types": ["discovery"], "count": 1, "hints": true},
+      {"id": "zapamietaj", "title": "Zapamiętaj", "types": ["flashcards"], "count": 1, "hints": true},
+      {"id": "rozpoznaj", "title": "Rozpoznaj", "types": ["single-choice", "multiple-choice"], "count": 1, "hints": true},
+      {"id": "polacz", "title": "Połącz", "types": ["matching", "sorting"], "count": 1, "hints": true},
+      {"id": "zastosuj", "title": "Zastosuj", "types": ["multiple-choice", "sorting"], "count": 1, "hints": true},
+      {"id": "utrwal", "title": "Utrwal", "types": ["short-answer"], "count": 1, "hints": false}
+    ],
+    "lessons": [
+      {"lessonId": "praca-historyka", "steps": [
+        {"id": "odkryj", "taskIds": ["karty-historyk-znaczenia"]},
+        {"id": "zapamietaj", "taskIds": ["fiszki-historyka", "karty-historyk-pytania", "karty-historyk-postacie"]},
+        {"id": "rozpoznaj", "taskIds": ["p-historyk-01", "p-historyk-05", "p-historyk-08", "u-historyk-01"]},
+        {"id": "polacz", "taskIds": ["p-historyk-04", "u-historyk-10", "u-historyk-11", "u-historyk-12", "p-historyk-03", "u-historyk-06"]},
+        {"id": "zastosuj", "taskIds": ["p-historyk-02", "p-historyk-07", "u-historyk-02", "u-historyk-05", "u-historyk-07", "u-historyk-09"]},
+        {"id": "utrwal", "taskIds": ["p-historyk-06", "u-historyk-14", "u-historyk-16"]}
+      ]},
+      {"lessonId": "zrodla-historyczne", "steps": [
+        {"id": "odkryj", "taskIds": ["odkryj-zrodla", "karty-zrodla-wykopaliska", "karty-zrodla-informacje"]},
+        {"id": "zapamietaj", "taskIds": ["karty-zrodla-rodzaje"]},
+        {"id": "rozpoznaj", "taskIds": ["p-zrodla-02", "p-zrodla-05", "p-zrodla-07", "wybierz-zrodla-pisane", "p-zrodla-03"]},
+        {"id": "polacz", "taskIds": ["posortuj-zrodla", "p-zrodla-01", "u-zrodla-09", "u-zrodla-13"]},
+        {"id": "zastosuj", "types": ["matching", "multiple-choice", "sorting"], "taskIds": ["p-zrodla-04", "u-zrodla-12", "p-zrodla-08", "u-zrodla-08"]},
+        {"id": "utrwal", "taskIds": ["p-zrodla-06", "u-zrodla-15", "u-zrodla-17"]}
+      ]},
+      {"lessonId": "historia-rodziny", "steps": [
+        {"id": "odkryj", "taskIds": ["karty-rodzina-pamiatki"]},
+        {"id": "zapamietaj", "taskIds": ["karty-rodzina-powiazania"]},
+        {"id": "rozpoznaj", "taskIds": ["p-rodzina-02", "p-rodzina-05", "p-rodzina-06", "u-rodzina-06"]},
+        {"id": "polacz", "taskIds": ["rodzinne-pary", "p-rodzina-01", "u-rodzina-10"]},
+        {"id": "zastosuj", "types": ["matching", "multiple-choice", "ordering", "sorting"], "taskIds": ["p-rodzina-07", "p-rodzina-08", "u-rodzina-04", "u-rodzina-15", "u-rodzina-07"]},
+        {"id": "utrwal", "types": ["short-answer", "multiple-choice", "ordering"], "taskIds": ["p-rodzina-03", "p-rodzina-04", "u-rodzina-01", "u-rodzina-05", "u-rodzina-16"]}
+      ]},
+      {"lessonId": "chronologia", "steps": [
+        {"id": "odkryj", "taskIds": ["karty-czas-kierunki"]},
+        {"id": "zapamietaj", "taskIds": ["karty-czas-dwie-ery"]},
+        {"id": "rozpoznaj", "taskIds": ["p-czas-05", "p-czas-06", "p-czas-07", "p-czas-08", "p-czas-12", "u-czas-02"]},
+        {"id": "polacz", "taskIds": ["p-czas-09", "u-czas-09", "u-czas-06", "u-czas-07"]},
+        {"id": "zastosuj", "types": ["ordering", "multiple-choice"], "taskIds": ["napraw-czas", "p-czas-01", "p-czas-02", "p-czas-03", "p-czas-04", "u-czas-03"]},
+        {"id": "utrwal", "types": ["short-answer", "number-answer", "multiple-choice"], "taskIds": ["u-czas-11", "p-czas-10", "p-czas-11", "u-czas-04"]}
+      ]},
+      {"lessonId": "epoki", "steps": [
+        {"id": "odkryj", "taskIds": ["karty-epoki-granice"]},
+        {"id": "zapamietaj", "taskIds": ["karty-epoki-rozdzialy"]},
+        {"id": "rozpoznaj", "taskIds": ["p-epoki-02", "p-epoki-05", "p-epoki-07", "p-epoki-04", "u-epoki-01"]},
+        {"id": "polacz", "taskIds": ["p-epoki-03", "u-epoki-10", "u-epoki-11", "u-epoki-12", "p-epoki-08", "u-epoki-06", "u-epoki-09"]},
+        {"id": "zastosuj", "types": ["ordering"], "taskIds": ["regal-epok", "p-epoki-01", "u-epoki-13"]},
+        {"id": "utrwal", "types": ["short-answer", "multiple-choice"], "taskIds": ["p-epoki-06", "u-epoki-04"]}
+      ]},
+      {"lessonId": "wieki-i-liczby-rzymskie", "steps": [
+        {"id": "odkryj", "taskIds": ["karty-wieki-szyfr"]},
+        {"id": "zapamietaj", "taskIds": ["karty-wieki-adresy"]},
+        {"id": "rozpoznaj", "taskIds": ["p-rzym-09", "p-rzym-10", "p-rzym-11", "p-rzym-12"]},
+        {"id": "polacz", "taskIds": ["rzymskie-pary", "p-rzym-01", "p-rzym-02", "p-rzym-03", "p-rzym-04", "u-rzym-04"]},
+        {"id": "zastosuj", "types": ["number-answer", "ordering"], "taskIds": ["p-rzym-05", "p-rzym-06", "p-rzym-07", "p-rzym-08", "u-rzym-08", "u-rzym-09"]},
+        {"id": "utrwal", "types": ["short-answer", "multiple-choice"], "taskIds": ["u-rzym-11", "u-rzym-03"]}
+      ]},
+      {"lessonId": "uplyw-lat", "steps": [
+        {"id": "odkryj", "taskIds": ["karty-odstep-przyklady"]},
+        {"id": "zapamietaj", "taskIds": ["karty-odstep-reguly"]},
+        {"id": "rozpoznaj", "taskIds": ["p-odstep-09", "p-odstep-10", "u-odstep-03"]},
+        {"id": "polacz", "taskIds": ["p-odstep-11", "u-odstep-06", "u-odstep-07", "u-odstep-05"]},
+        {"id": "zastosuj", "types": ["number-answer"], "taskIds": ["napraw-obliczenie", "p-odstep-01", "p-odstep-02", "p-odstep-03", "p-odstep-04"]},
+        {"id": "utrwal", "types": ["number-answer", "ordering"], "taskIds": ["p-odstep-05", "p-odstep-06", "p-odstep-07", "p-odstep-08", "p-odstep-12", "u-odstep-10"]}
+      ]}
+    ]
+  },
   "lessons": [
     {
       "id": "praca-historyka",
@@ -99,6 +169,213 @@
     }
   ],
   "tasks": [
+    {
+      "id": "karty-historyk-pytania",
+      "type": "flashcards",
+      "title": "Zanim powstanie opowieść",
+      "instruction": "Spróbuj odpowiedzieć i odwróć każdą fiszkę.",
+      "lessonIds": ["praca-historyka"],
+      "explanation": "Historyk zaczyna od pytań i sprawdza informacje, zamiast uznawać każdą opowieść za prawdę.",
+      "cards": [
+        {"id": "pytanie", "front": "Od czego historyk może zacząć badanie dawnego życia ludzi?", "back": "Od pytania, na przykład: jak dawniej podróżowano? Potem szuka śladów, które pomogą odpowiedzieć."},
+        {"id": "porownanie", "front": "Dwie opowieści o przeszłości różnią się. Co zrobić?", "back": "Porównać informacje i sprawdzić, na jakich śladach opiera się każda opowieść."}
+      ]
+    },
+    {
+      "id": "karty-historyk-postacie",
+      "type": "flashcards",
+      "title": "Portret to nie dowód",
+      "instruction": "Zastanów się nad każdą postacią, potem odwróć fiszki.",
+      "lessonIds": ["praca-historyka"],
+      "explanation": "O historyczności postaci decyduje to, czy naprawdę żyła, nie wygląd jej portretu.",
+      "cards": [
+        {"id": "rysunek", "front": "Czy realistyczny rysunek dowodzi, że bohater naprawdę żył?", "back": "Nie. Autor może narysować realistycznie także wymyśloną postać. Trzeba sprawdzić informacje o niej."},
+        {"id": "fikcja", "front": "Co odróżnia bohatera fikcyjnego od postaci historycznej?", "back": "Bohater fikcyjny został wymyślony, a postać historyczna naprawdę żyła."}
+      ]
+    },
+    {
+      "id": "karty-historyk-znaczenia",
+      "type": "discovery",
+      "title": "Historia ma kilka znaczeń",
+      "instruction": "Odkryj, co oznacza historia w każdym zdaniu.",
+      "lessonIds": ["praca-historyka"],
+      "explanation": "Historia to przeszłe wydarzenia, opowieść o nich lub nauka badająca przeszłość ludzi.",
+      "items": [
+        {"id": "wydarzenia", "text": "Dawni mieszkańcy zbudowali most.", "explanation": "Samo wydarzenie z życia ludzi należy do przeszłości, którą bada historia."},
+        {"id": "opowiesc", "text": "Przewodnik opowiada o dawnym moście.", "explanation": "To opowieść o przeszłości. Jej informacje można sprawdzać, porównując je ze śladami."},
+        {"id": "nauka", "text": "Badacz porównuje informacje o budowie mostu.", "explanation": "To praca historyka: historia jako nauka bada przeszłość ludzi."}
+      ]
+    },
+    {
+      "id": "karty-zrodla-rodzaje",
+      "type": "flashcards",
+      "title": "Jaki to ślad?",
+      "instruction": "Nazwij rodzaj źródła według podziału z lekcji i odwróć fiszki.",
+      "lessonIds": ["zrodla-historyczne"],
+      "explanation": "W tym dziale odróżniamy źródła materialne pisane, materialne niepisane i niematerialne.",
+      "cards": [
+        {"id": "zeszyt", "front": "Do której grupy należy zeszyt z dawnymi notatkami?", "back": "Do źródeł materialnych pisanych: jest przedmiotem z zapisaną treścią."},
+        {"id": "narzedzie", "front": "Do której grupy należy stare narzędzie bez napisów?", "back": "Do źródeł materialnych niepisanych. Jego budowa może podpowiadać, do czego służyło."},
+        {"id": "zwyczaj", "front": "Do której grupy należy zwyczaj przekazywany kolejnym pokoleniom?", "back": "Do źródeł niematerialnych. Chodzi o sam zwyczaj, nie przedmiot używany podczas jego obchodzenia."}
+      ]
+    },
+    {
+      "id": "karty-zrodla-wykopaliska",
+      "type": "discovery",
+      "title": "Nie tylko znalezisko",
+      "instruction": "Odkryj, na co zwraca uwagę archeolog w tej wymyślonej sytuacji.",
+      "lessonIds": ["zrodla-historyczne"],
+      "explanation": "Archeolog bada materialne ślady działalności ludzi razem z miejscem i warstwą ich znalezienia.",
+      "items": [
+        {"id": "miejsce", "text": "Fragment naczynia leży w odsłoniętej warstwie ziemi.", "explanation": "Liczy się nie tylko fragment, lecz także miejsce i warstwa znaleziska. To część informacji potrzebnych do badania."},
+        {"id": "pismo", "text": "Odkryto pozostałości budynku z czasów, gdy znano już pismo.", "explanation": "Archeolog może badać także takie pozostałości. Wykopaliska nie dotyczą wyłącznie czasów przed wynalezieniem pisma."}
+      ]
+    },
+    {
+      "id": "karty-zrodla-informacje",
+      "type": "discovery",
+      "title": "Każdy ślad mówi coś innego",
+      "instruction": "Odkryj możliwości źródeł z wymyślonego zbioru.",
+      "lessonIds": ["zrodla-historyczne"],
+      "explanation": "Różne źródła mogą się uzupełniać. Nie każde odpowiada na każde pytanie.",
+      "items": [
+        {"id": "list", "text": "List zawiera opis dawnej podróży.", "explanation": "Z treści można poznać to, co autor napisał o podróży. Jego relację warto porównać z innymi informacjami."},
+        {"id": "naczynie", "text": "Naczynie bez napisów zachowało swój kształt.", "explanation": "Kształt może pomóc badać sposób używania przedmiotu, ale sam nie podaje imienia właściciela."},
+        {"id": "relacja", "text": "Świadek ustnie wspomina dawne spotkanie.", "explanation": "Sam przekaz ustny jest źródłem niematerialnym. Może uzupełnić informacje z fotografii spotkania."}
+      ]
+    },
+    {
+      "id": "karty-rodzina-powiazania",
+      "type": "flashcards",
+      "title": "Czytaj rodzinne połączenia",
+      "instruction": "Pomyśl o zasadach czytania drzewa i odwróć fiszki.",
+      "lessonIds": ["historia-rodziny"],
+      "explanation": "Podpisy i linie na drzewie genealogicznym pokazują relacje; położenie na kartce samo nie wystarcza.",
+      "cards": [
+        {"id": "linie", "front": "Co sprawdzić przed odczytaniem drzewa genealogicznego?", "back": "Podpisy osób i łączące je linie. Dzięki nim rozpoznajemy powiązania rodzinne."},
+        {"id": "uklad", "front": "Czy przodkowie na każdym drzewie są narysowani na dole?", "back": "Nie. Układ rysunku może być inny, dlatego trzeba sprawdzić oznaczenia i połączenia."}
+      ]
+    },
+    {
+      "id": "karty-rodzina-pamiatki",
+      "type": "discovery",
+      "title": "Fikcyjny album rodziny Zosi",
+      "instruction": "Odkryj, jak wymyślona rodzina poznaje swoją przeszłość.",
+      "lessonIds": ["historia-rodziny"],
+      "explanation": "Zdjęcia, dokumenty, rozmowy i pamiątki pomagają poznawać historię rodziny; tradycje mogą różnić się między rodzinami.",
+      "items": [
+        {"id": "album", "text": "Zosia ogląda stare zdjęcie i pyta o nie bliskich.", "explanation": "Rozmowa może uzupełnić to, co widać na fotografii. To dwa sposoby poznawania historii rodziny."},
+        {"id": "potrawa", "text": "Bliscy Zosi przekazują młodszym sposób przygotowania świątecznej potrawy.", "explanation": "Przekazywany zwyczaj jest rodzinną tradycją. Inna rodzina nie musi mieć takiego samego zwyczaju."}
+      ]
+    },
+    {
+      "id": "karty-czas-dwie-ery",
+      "type": "flashcards",
+      "title": "Drogowskazy na osi czasu",
+      "instruction": "Przypomnij sobie reguły obu er, potem odwróć fiszki.",
+      "lessonIds": ["chronologia"],
+      "explanation": "Chronologia porządkuje wydarzenia; kierunek wzrostu numerów lat zależy od ery.",
+      "cards": [
+        {"id": "przed", "front": "Który rok był wcześniej: 600 p.n.e. czy 200 p.n.e.?", "back": "600 p.n.e. Przed naszą erą większy numer oznacza wcześniejszy rok."},
+        {"id": "po", "front": "Co następuje bezpośrednio po roku 1 p.n.e.?", "back": "Rok 1 n.e. W tym zapisie nie ma roku zerowego."},
+        {"id": "jednostki", "front": "Ile lat obejmują wiek i tysiąclecie?", "back": "Wiek obejmuje sto lat, a tysiąclecie tysiąc lat."}
+      ]
+    },
+    {
+      "id": "karty-czas-kierunki",
+      "type": "discovery",
+      "title": "Dwa kierunki numerowania",
+      "instruction": "Odkryj regułę ukrytą w każdym fragmencie osi czasu.",
+      "lessonIds": ["chronologia"],
+      "explanation": "Obie ery porządkujemy od wcześniejszych dat do późniejszych, pamiętając o braku roku zerowego.",
+      "items": [
+        {"id": "maleja", "text": "600 p.n.e. → 200 p.n.e.", "explanation": "Idąc ku późniejszym datom przed naszą erą, spotykamy coraz mniejsze numery lat."},
+        {"id": "rosna", "text": "200 n.e. → 600 n.e.", "explanation": "W naszej erze późniejszy rok ma większy numer. Skrót n.e. często pomijamy."},
+        {"id": "granica", "text": "1 p.n.e. → 1 n.e.", "explanation": "To sąsiednie lata na granicy er. Nie wstawiamy między nie roku zerowego."}
+      ]
+    },
+    {
+      "id": "karty-epoki-rozdzialy",
+      "type": "flashcards",
+      "title": "Rozdziały bez nagłego przełącznika",
+      "instruction": "Odpowiedz w myślach i odwróć każdą fiszkę.",
+      "lessonIds": ["epoki"],
+      "explanation": "Podział na epoki ułatwia opisywanie przeszłości, ale jego granice są umowne.",
+      "cards": [
+        {"id": "prehistoria", "front": "Co wyznacza koniec prehistorii w danym obszarze?", "back": "Pojawienie się pisma. W różnych miejscach następowało to w różnym czasie."},
+        {"id": "zmiana", "front": "Czy graniczna data epoki oznacza zmianę życia wszystkich ludzi jednego dnia?", "back": "Nie. Granice porządkują opis dziejów, a zmiany nie zachodziły wszędzie równocześnie."}
+      ]
+    },
+    {
+      "id": "karty-epoki-granice",
+      "type": "discovery",
+      "title": "Umowne zakładki w dziejach",
+      "instruction": "Odkryj trzy granice przyjęte w tym dziale.",
+      "lessonIds": ["epoki"],
+      "explanation": "To konwencja używana w tym dziale, nie jedyny podział stosowany przez historyków.",
+      "items": [
+        {"id": "pierwsza", "text": "Zakładka z datą 476",
+          "explanation": "W tym dziale oddziela umownie starożytność od średniowiecza."},
+        {"id": "druga", "text": "Zakładka z datą 1492",
+          "explanation": "W przyjętym tu podziale to umowna granica średniowiecza i nowożytności."},
+        {"id": "trzecia", "text": "Zakładka z datą 1918",
+          "explanation": "W konwencji tego działu oddziela umownie nowożytność od współczesności; życie ludzi nie zmieniło się wszędzie jednocześnie."}
+      ]
+    },
+    {
+      "id": "karty-wieki-adresy",
+      "type": "flashcards",
+      "title": "Ostatni i pierwszy rok wieku",
+      "instruction": "Ustal wiek podanej daty, potem odwróć fiszki.",
+      "lessonIds": ["wieki-i-liczby-rzymskie"],
+      "explanation": "Końcówka 00 zamyka wiek. Liczba rzymska wskazuje jego numer.",
+      "cards": [
+        {"id": "koniec", "front": "Który wiek zamyka rok 1700?", "back": "XVII wiek, czyli siedemnasty. Następny wiek zaczyna się w 1701 roku."},
+        {"id": "poczatek", "front": "Do którego wieku należy rok 1701?", "back": "Do XVIII wieku, czyli osiemnastego. Obejmuje on lata 1701–1800."},
+        {"id": "przed", "front": "Jakie lata obejmuje III wiek p.n.e.?", "back": "Od 300 p.n.e. do 201 p.n.e. Chronologiczny początek ma większy numer roku."}
+      ]
+    },
+    {
+      "id": "karty-wieki-szyfr",
+      "type": "discovery",
+      "title": "Rzymski zapis pod lupą",
+      "instruction": "Odkryj, jak odczytać każdy zapis.",
+      "lessonIds": ["wieki-i-liczby-rzymskie"],
+      "explanation": "Ćwiczymy poprawne zapisy rzymskie. Nie każda dowolna kombinacja znaków jest dozwolona.",
+      "items": [
+        {"id": "dziewiec", "text": "Szyfr na karcie: IX",
+          "explanation": "IX oznacza 9. W tym poprawnym zapisie I przed X oznacza odjęcie jednego od dziesięciu."},
+        {"id": "czternascie", "text": "Szyfr na karcie: XIV",
+          "explanation": "XIV oznacza 14: X to dziesięć, a IV to cztery."},
+        {"id": "dziewietnascie", "text": "Szyfr na karcie: XIX",
+          "explanation": "XIX oznacza 19: łączymy dziesięć zapisane jako X z dziewięcioma zapisanymi jako IX."}
+      ]
+    },
+    {
+      "id": "karty-odstep-reguly",
+      "type": "flashcards",
+      "title": "Najpierw sprawdź ery",
+      "instruction": "Wybierz w myślach sposób obliczenia odstępu, potem odwróć fiszki.",
+      "lessonIds": ["uplyw-lat"],
+      "explanation": "Obliczamy odstępy między oznaczeniami lat, nie dokładny wiek człowieka według dni i miesięcy.",
+      "cards": [
+        {"id": "jedna", "front": "Jak obliczyć odstęp, jeśli obie daty należą do tej samej ery?", "back": "Od większego numeru roku odejmujemy mniejszy. Dotyczy to także dwóch dat p.n.e."},
+        {"id": "dwie", "front": "Jak obliczyć odstęp od daty p.n.e. do daty n.e.?", "back": "Dodajemy oba numery lat i odejmujemy jeden, ponieważ nie ma roku zerowego."}
+      ]
+    },
+    {
+      "id": "karty-odstep-przyklady",
+      "type": "discovery",
+      "title": "Co naprawdę liczymy?",
+      "instruction": "Odkryj objaśnienia przykładów rachunkowych z lekcji.",
+      "lessonIds": ["uplyw-lat"],
+      "explanation": "To przykłady rachunkowe, a nie daty wymaganych wydarzeń. Przy przejściu między erami pomijamy nieistniejący rok zerowy.",
+      "items": [
+        {"id": "jedna", "text": "Od 84 p.n.e. do 27 p.n.e.", "explanation": "Obie daty należą do tej samej ery. Różnica numerów 84 − 27 daje odstęp 57 lat."},
+        {"id": "dwie", "text": "Od 9 p.n.e. do 14 n.e.", "explanation": "Przechodzimy między erami: 9 + 14 − 1 = 22 lata. Odejmujemy jeden z powodu braku roku zerowego."},
+        {"id": "dokladnosc", "text": "Znamy tylko oznaczenia lat, bez dni i miesięcy.", "explanation": "Możemy policzyć odstęp między oznaczeniami lat, ale nie dokładny wiek osoby ani liczbę pełnych lat między konkretnymi dniami."}
+      ]
+    },
     {
       "id": "odkryj-zrodla",
       "type": "discovery",
@@ -8006,6 +8283,9 @@
   ],
   "learningVariants": {
     "fiszki-historyka": [
+      "karty-historyk-pytania",
+      "karty-historyk-postacie",
+      "karty-historyk-znaczenia",
       "p-historyk-01",
       "p-historyk-02",
       "p-historyk-03",
@@ -8027,6 +8307,8 @@
       "u-historyk-16"
     ],
     "odkryj-zrodla": [
+      "karty-zrodla-wykopaliska",
+      "karty-zrodla-informacje",
       "p-zrodla-01",
       "p-zrodla-04",
       "p-zrodla-07",
@@ -8034,6 +8316,7 @@
       "u-zrodla-15"
     ],
     "posortuj-zrodla": [
+      "karty-zrodla-rodzaje",
       "p-zrodla-02",
       "p-zrodla-05",
       "p-zrodla-08",
@@ -8047,6 +8330,8 @@
       "u-zrodla-13"
     ],
     "rodzinne-pary": [
+      "karty-rodzina-powiazania",
+      "karty-rodzina-pamiatki",
       "p-rodzina-01",
       "p-rodzina-02",
       "p-rodzina-03",
@@ -8065,6 +8350,8 @@
       "u-rodzina-16"
     ],
     "napraw-czas": [
+      "karty-czas-dwie-ery",
+      "karty-czas-kierunki",
       "p-czas-01",
       "p-czas-02",
       "p-czas-03",
@@ -8086,6 +8373,8 @@
       "u-czas-11"
     ],
     "regal-epok": [
+      "karty-epoki-rozdzialy",
+      "karty-epoki-granice",
       "p-epoki-01",
       "p-epoki-02",
       "p-epoki-03",
@@ -8104,6 +8393,8 @@
       "u-epoki-13"
     ],
     "rzymskie-pary": [
+      "karty-wieki-adresy",
+      "karty-wieki-szyfr",
       "p-rzym-01",
       "p-rzym-02",
       "p-rzym-03",
@@ -8123,6 +8414,8 @@
       "u-rzym-11"
     ],
     "napraw-obliczenie": [
+      "karty-odstep-reguly",
+      "karty-odstep-przyklady",
       "p-odstep-01",
       "p-odstep-02",
       "p-odstep-03",

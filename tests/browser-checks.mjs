@@ -7,6 +7,7 @@ export async function runBrowserChecks() {
   const topic = await fetch('./data/klasa-4/historia/detektywi-przeszlosci/topic.json').then(r => r.json());
   const extension = document.querySelector('script[type="module"]').getAttribute('src').endsWith('.js') ? '.js' : '.mjs';
   const {testSummary} = await import(new URL(`./assets/selection${extension}`, document.baseURI));
+  const {learningLessons} = await import(new URL(`./assets/learning-plan${extension}`, document.baseURI));
   const questionCount = testSummary(topic, topic.tests[0]).count;
   const app = document.getElementById('app');
   const assert = (condition, message) => { if (!condition) throw new Error(message); };
@@ -42,7 +43,25 @@ export async function runBrowserChecks() {
       assert(document.querySelector('#brand img').getAttribute('src') === './assets/owl.svg', 'Shared owl logo missing');
       assert(document.querySelector('link[rel="icon"]').getAttribute('href') === './assets/owl.svg', 'Owl favicon missing');
     });
-    await check('Complete all nine learning activities from JSON', async () => {
+    await check('Complete all learning activities from JSON', async () => {
+      if (topic.learningPlan) {
+        click('[data-action="learn"]');
+        const lessons = learningLessons(topic);
+        for (const [index, lesson] of lessons.entries()) {
+          const replay = `[data-action="replay-lesson"][data-lesson="${lesson.lessonId}"]`;
+          click(app.querySelector(replay) ? replay : `[data-action="learn-lesson"][data-lesson="${lesson.lessonId}"]`);
+          for (const slot of lesson.slots) {
+            solve(shownTask(topic));
+            assert(!app.querySelector('[data-action="next-learn"]').disabled, `${slot.id} did not finish`);
+            click('[data-action="next-learn"]');
+          }
+          assert(app.querySelector('.celebrate'), 'Missing topic completion');
+          if (index < lessons.length - 1) {
+            click('#brand'); click('[data-action="learn"]');
+          }
+        }
+        return;
+      }
       const start = app.querySelector('[data-action="replay"]') ? '[data-action="replay"]' : '[data-action="learn"]';
       click(start);
       for (const id of topic.learningPath) {
@@ -114,7 +133,9 @@ export async function runBrowserChecks() {
       assert(app.querySelector('.celebrate .owl-reaction.result-owl'), 'Submitted mistakes did not show owl reaction');
       click('[data-action="review-mistakes"]');
       assert(shownTask(topic).lessonIds.some(id => failedTask.lessonIds.includes(id)), 'Review did not select a related lesson activity');
-      const expected = topic.learningPath.filter(id => topic.tasks.find(t => t.id === id).lessonIds.some(lesson => failedTask.lessonIds.includes(lesson))).length;
+      const expected = topic.learningPlan
+        ? Math.min(topic.learningPlan.defaults.reviewCount, learningLessons(topic).filter(lesson => failedTask.lessonIds.includes(lesson.lessonId)).flatMap(lesson => lesson.slots).filter(slot => slot.taskIds.every(id => !['discovery', 'flashcards'].includes(topic.tasks.find(task => task.id === id).type))).length)
+        : topic.learningPath.filter(id => topic.tasks.find(t => t.id === id).lessonIds.some(lesson => failedTask.lessonIds.includes(lesson))).length;
       assert(Number(app.querySelector('[role="progressbar"]').getAttribute('aria-valuemax')) === expected, 'Review contains unrelated tasks');
       click('#brand');
     });

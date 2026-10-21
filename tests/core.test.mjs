@@ -8,7 +8,7 @@ const catalog = JSON.parse(await readFile(new URL('../data/catalog.json', import
 const topic = JSON.parse(await readFile(new URL('../data/klasa-4/historia/detektywi-przeszlosci/topic.json', import.meta.url)));
 const task = type => topic.tasks.find(t => t.type === type);
 const clone = value => structuredClone(value);
-const defaultProgress = () => ({ completedTaskIds: [], readLessonIds: [], lastTaskId: null, lastResult: null });
+const defaultProgress = () => ({ completedTaskIds: [], readLessonIds: [], lastTaskId: null, lastResult: null, ...(topic.learningPlan ? {learning: {completedSlotIds: [], selected: {}, seen: {}, activeLessonId: null, lastSlotId: null, extraPractice: {}, cursors: {}}} : {}) });
 function memoryStorage() {
   const data = new Map();
   return { data, getItem: key => data.get(key) ?? null, setItem: (key, value) => data.set(key, value), removeItem: key => data.delete(key) };
@@ -115,7 +115,7 @@ test('progress stores independent topics, sanitizes stale IDs and clears only it
   assert.deepEqual(store.read('one', topic), defaultProgress());
   store.write('one', { completedTaskIds: [id, id, 'stale'], readLessonIds: [lessonId, 'stale'], lastTaskId: 'stale', lastResult: { nonsense: true } });
   store.write('two', { ...defaultProgress(), lastTaskId: id });
-  assert.deepEqual(store.read('one', topic), { completedTaskIds: [id], readLessonIds: [lessonId], lastTaskId: null, lastResult: null });
+  assert.deepEqual(store.read('one', topic), { ...defaultProgress(), completedTaskIds: [id], readLessonIds: [lessonId] });
   assert.equal(store.read('two', topic).lastTaskId, id);
   storage.setItem('unrelated', 'keep'); store.clear();
   assert.equal(storage.getItem('unrelated'), 'keep');

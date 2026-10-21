@@ -1,4 +1,5 @@
 import {solveTask, shownTask} from './browser-helpers.mjs';
+import {runLearningPlanChecks, checkLearningPlanConfiguration} from './learning-plan-browser.mjs';
 
 export async function runBankChecks() {
   const key = 'kumilo.progress.v1', old = localStorage.getItem(key), results = [];
@@ -25,6 +26,7 @@ export async function runBankChecks() {
     }
     click('[data-action="submit-exam"]');
     assert(document.querySelector('.score').textContent === `${count} / ${count} pkt`, 'Exam graded bank instead of sample');
+    assert(new Set(ids.map(id => topic.tasks.find(task => task.id === id).type)).size === 7, 'Exam omitted an activity type');
     const report = Object.values(JSON.parse(localStorage.getItem(key)))[0].lastResult;
     assert(report.results.length === count, 'Saved report contains unsampled questions');
     for (const group of topic.tests[0].draw) assert(ids.filter(id => topic.tasks.find(t => t.id === id).lessonIds.includes(group.lessonId)).length === group.count, `Coverage lost: ${group.lessonId}`);
@@ -58,17 +60,31 @@ export async function runBankChecks() {
       assert(new Set(second).size === second.length, 'Duplicate question within exam');
     });
     await check('Learning resumes the chosen variant and saves only milestone stars', async () => {
+      if (topic.learningPlan) {
+        const checks = [...await runLearningPlanChecks(), await checkLearningPlanConfiguration()];
+        results.push(...checks);
+        assert(checks.every(result => result.status === 'PASS'), 'Planned learning checks failed');
+        return;
+      }
       click('[data-action="learn"]'); const first = shownTask(topic).id;
       const initialPractice = Object.values(JSON.parse(localStorage.getItem(key)))[0].practice;
       assert(Object.keys(initialPractice.seen).length === 1, 'Unseen queued activities counted as displayed');
       await reloadTopic(); click('[data-action="learn"]');
       assert(shownTask(topic).id === first, 'Resume rerolled unfinished activity');
+      const partial = JSON.parse(localStorage.getItem(key));
+      delete Object.values(partial)[0].practice.selected[topic.learningPath.at(-1)];
+      localStorage.setItem(key, JSON.stringify(partial));
+      await reloadTopic(); click('[data-action="learn"]');
+      assert(shownTask(topic).id === first, 'Repairing a missing future selection rerolled the current activity');
       const finishRun = () => topic.learningPath.map(anchor => {
         const task = shownTask(topic); solveTask(task); click('[data-action="next-learn"]'); return [anchor, task.id];
       });
-      const run = finishRun(); click('#brand');
+      const run = finishRun();
+      assert(new Set(run.map(([, id]) => topic.tasks.find(task => task.id === id).type)).size === 9, 'Expedition omitted an activity type');
+      click('#brand');
       await reloadTopic(); click('[data-action="replay"]');
       const replay = finishRun();
+      assert(new Set(replay.map(([, id]) => topic.tasks.find(task => task.id === id).type)).size === 9, 'Replay omitted an activity type');
       assert(replay.every(([anchor, id], i) => id !== run[i][1]), 'Replay repeated a slot variant');
       const saved = Object.values(JSON.parse(localStorage.getItem(key)))[0];
       assert(saved.completedTaskIds.length === topic.learningPath.length, 'Variants farmed extra stars');

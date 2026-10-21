@@ -1,11 +1,28 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {activityScreen} from '../assets/activity-view.mjs';
+import {activityScreen, journeyTrack} from '../assets/activity-view.mjs';
 import {validateTopic} from '../assets/core.mjs';
 import {readFile} from 'node:fs/promises';
 
 const types = ['discovery', 'flashcards', 'single-choice', 'multiple-choice', 'matching', 'sorting', 'ordering', 'short-answer', 'number-answer'];
 const task = {id: 'card', type: 'single-choice', title: '<img src=x>', instruction: '<b>tekst & pytanie</b>', hint: 'tajna-podpowiedź'};
+
+test('a progress track can be refreshed after an additional example extends the session', () => {
+  const html = journeyTrack({index: 3, total: 7, label: 'Postęp <tematu>'});
+  assert.equal((html.match(/class="journey-dot/g) || []).length, 7);
+  assert.equal((html.match(/journey-dot past/g) || []).length, 2);
+  assert.equal((html.match(/journey-dot current/g) || []).length, 1);
+  assert.ok(html.includes('aria-valuemax="7"') && html.includes('aria-valuenow="3"'));
+  assert.ok(html.includes('Postęp &lt;tematu&gt;'));
+});
+
+test('a configured retrieval step omits the hint panel without removing learning rewards', () => {
+  const html = activityScreen({task, index: 6, total: 6, hints: false, stageTitle: 'Utrwal <trop>', notes: 'lesson-secret'});
+  assert.ok(!html.includes('toggle-hint') && !html.includes('task-hint-panel'));
+  assert.ok(!html.includes('lesson-secret') && !html.includes('tajna-podpowiedź'));
+  assert.ok(html.includes('reward-area') && html.includes('learn-stars'));
+  assert.ok(html.includes('Utrwal &lt;trop&gt;'));
+});
 
 test('shared card covers every task type and escapes educational text', () => {
   for (const type of types) {

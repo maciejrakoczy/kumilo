@@ -11,6 +11,45 @@ function fixture() {
 }
 const fixed = () => 0.37;
 
+test('rolling over one learning type preserves history of other types', () => {
+  const topic = {tasks: [
+    {id: 'a', type: 'matching'}, {id: 'a-two', type: 'matching'}, {id: 'sort', type: 'sorting'},
+  ], learningVariants: {a: ['a-two', 'sort']}};
+  const next = drawLearning(topic, ['a'], {a: ['sort', 'a', 'a-two']}, fixed, ['sorting']);
+  assert.equal(next.selected.a, 'a');
+  assert.deepEqual(next.seen.a, ['sort', 'a']);
+});
+
+test('type matching leaves a compatible slot for a rare learning type', () => {
+  const topic = {tasks: [
+    {id: 'a', type: 'matching'}, {id: 'a-sort', type: 'sorting'}, {id: 'b', type: 'matching'},
+  ], learningVariants: {a: ['a-sort']}};
+  const next = drawLearning(topic, ['a', 'b'], {}, fixed);
+  assert.deepEqual(next.selected, {a: 'a-sort', b: 'b'});
+});
+
+test('exam coverage may repeat a rare previous question without duplicating it within a test', () => {
+  const tasks = [
+    {id: 'rare', type: 'ordering', lessonIds: ['a']},
+    ...Array.from({length: 6}, (_, i) => ({id: `common-${i}`, type: 'matching', lessonIds: ['a']})),
+  ];
+  const topic = {tasks};
+  const definition = {questions: tasks.map(task => ({taskId: task.id, points: 1})), draw: [{lessonId: 'a', count: 4}], shuffleQuestions: false};
+  const next = drawTest(topic, definition, ['rare', 'common-0'], fixed);
+  const ids = next.questions.map(question => question.taskId);
+  assert.equal(new Set(ids).size, 4);
+  assert.ok(ids.includes('rare'));
+  assert.ok(!ids.includes('common-0'));
+});
+
+test('partial learning respects types already selected for the continued expedition', () => {
+  const topic = {tasks: [
+    {id: 'a', type: 'matching'}, {id: 'b', type: 'sorting'},
+  ], learningVariants: {a: ['b']}};
+  const next = drawLearning(topic, ['a'], {}, fixed, ['matching']);
+  assert.equal(next.selected.a, 'b');
+});
+
 test('test selection preserves coverage, weighted points, unique IDs and source bank', () => {
   const topic = fixture(), snapshot = structuredClone(topic), definition = topic.tests[0];
   const attempt = drawTest(topic, definition, [], fixed);

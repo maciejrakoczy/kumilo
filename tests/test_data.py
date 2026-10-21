@@ -123,6 +123,7 @@ class RandomizedBankTests(unittest.TestCase):
         # Keep only small, explicitly defined banks, independent of content growth.
         cls.fixture = copy.deepcopy(source)
         cls.fixture.pop('learningVariants', None)
+        cls.fixture.pop('learningPlan', None)  # This fixture models the legacy randomized bank.
         cls.fixture['lessons'] = []
         for lesson_id in ('lesson-a', 'lesson-b', 'lesson-c'):
             lesson = copy.deepcopy(source['lessons'][0])

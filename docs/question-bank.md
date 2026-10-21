@@ -1,19 +1,19 @@
 # Bank zadań „Detektywi przeszłości”
 
-Źródło publikowanej treści: `data/klasa-4/historia/detektywi-przeszlosci/topic.json`. Łącznie 260 aktywności: 127 w banku nauki i 133 w banku testowym. Ostatnie rozszerzenie dodaje 99 autorskich zadań do wcześniejszych 161, bez usuwania identyfikatorów ani zmiany dziewięciu etapów wyprawy. Banki nie współdzielą identyfikatorów; ćwiczą te same umiejętności przez inne przykłady. Część pytań wraca do tych samych zasad — nie są to 260 niezależnych zagadnień. Dwie aktywności (odkrywanie kart i fiszki) nie są ocenianymi pytaniami.
+Źródło publikowanej treści: `data/klasa-4/historia/detektywi-przeszlosci/topic.json`. Łącznie 276 aktywności: 143 w banku nauki i 133 w banku testowym. `learningPlan` organizuje naukę w siedem wypraw po sześć aktywności, wykorzystując istniejące zadania bez zmiany ich ID. Dawne dziewięć etapów pozostaje dla zgodności i wcześniejszych osiągnięć. Banki nie współdzielą identyfikatorów; ćwiczą te same umiejętności przez inne przykłady. Część pytań wraca do tych samych zasad — nie są to 276 niezależnych zagadnień. Dziewięć zestawów fiszek (21 kart) i dziewięć aktywności odkrywania kart nie podlegają ocenie testowej. Oba formaty obejmują wszystkie siedem lekcji.
 
 ## Pokrycie
 
 | Zakres | Bank nauki | Bank testów | Pytań w jednym teście |
 | --- | ---: | ---: | ---: |
-| Praca historyka, fakt i domysł | 20 | 15 | 2 |
-| Źródła i archeologia | 17 | 22 | 3 |
-| Historia rodziny | 17 | 18 | 2 |
-| Chronologia i jednostki czasu | 20 | 18 | 2 |
-| Epoki i umowność granic | 17 | 18 | 2 |
-| Liczby rzymskie i wieki | 18 | 22 | 3 |
-| Odstęp między oznaczeniami lat | 18 | 20 | 2 |
-| Razem | 127 | 133 | 16 |
+| Praca historyka, fakt i domysł | 23 | 15 | 2 |
+| Źródła i archeologia | 20 | 22 | 3 |
+| Historia rodziny | 19 | 18 | 2 |
+| Chronologia i jednostki czasu | 22 | 18 | 2 |
+| Epoki i umowność granic | 19 | 18 | 2 |
+| Liczby rzymskie i wieki | 20 | 22 | 3 |
+| Odstęp między oznaczeniami lat | 20 | 20 | 2 |
+| Razem | 143 | 133 | 16 |
 
 ## Różnorodność aktywności
 
@@ -26,9 +26,9 @@
 | Kolejność | 23 |
 | Krótka odpowiedź | 18 |
 | Odpowiedź liczbowa | 36 |
-| Odkrywanie kart | 1 |
-| Fiszki | 1 |
-| Razem | 260 |
+| Odkrywanie kart | 9 |
+| Fiszki | 9 |
+| Razem | 276 |
 
 Wielokrotny wybór nie oznacza z góry dwóch zaznaczeń: 12 zadań ma jedną poprawną odpowiedź, 18 ma dwie, a 12 ma trzy. Pytania mają 3–5 opcji i zawsze przynajmniej jedną błędną. Zarówno bank nauki, jak i testów zawiera wszystkie trzy liczby poprawnych zaznaczeń i wszystkie trzy liczby opcji. Każda z siedmiu lekcji ma pytania wielokrotnego wyboru w obu bankach. Nie ujawniamy oczekiwanej liczby zaznaczeń w poleceniu.
 
@@ -36,11 +36,15 @@ Rozszerzenie nie dodaje pytań jednokrotnego wyboru ani kolejnych samotnych obli
 
 ## Losowanie
 
-`tests[].questions` zawiera wszystkich kandydatów. `draw` deklaruje kwoty lekcji z tabeli, dzięki czemu test nie pomija żadnego zakresu. W jednym podejściu nie ma dwóch takich samych identyfikatorów. Pytania niewystępujące w ostatnim zatwierdzonym wyniku mają pierwszeństwo; bieżące pule pozwalają wybrać cały kolejny zestaw bez pokrywania się z poprzednim. Po kilku podejściach pytania mogą wracać. Nie deklarujemy niepowtarzalności w nieskończoność. Przy mniejszych bankach silnik uzupełnia brakujące miejsca wcześniej widzianymi pytaniami, nie skraca testu.
+`tests[].questions` zawiera wszystkich kandydatów. `draw` deklaruje kwoty lekcji z tabeli, dzięki czemu test nie pomija żadnego zakresu. Najpierw przydzielane są różne typy do miejsc zgodnych z kwotami: każde podejście obejmuje co najmniej jedno pytanie każdego z siedmiu ocenianych typów. Pozostałe miejsca są równoważone między typami w ramach dostępnych kandydatów, bez sztywnej proporcji. W jednym podejściu nie ma dwóch takich samych identyfikatorów. Pytania niewystępujące w ostatnim zatwierdzonym wyniku mają pierwszeństwo, jeśli nie ogranicza to pokrycia typów i tematów; bieżące pule pozwalają wybrać cały kolejny zestaw bez pokrywania się z poprzednim. Po kilku podejściach pytania mogą wracać. Przy mniejszych bankach silnik dopuszcza wcześniej widziane pytania zamiast ograniczać różnorodność lub skracać test.
 
 Pytania i opcje wyboru są tasowane. Po kliknięciu odpowiedzi opcje nie zmieniają miejsca. W zadaniu kolejności startowy układ jest tasowany i nie jest gotową poprawną odpowiedzią. Powrót w teście zachowuje odpowiedź i wylosowane pytanie. Wynik i objaśnienia dotyczą wyłącznie wybranych 16 pytań, nie wszystkich 133 kandydatów.
 
-`learningPath` określa dziewięć stałych etapów, a `learningVariants` ich alternatywne aktywności. Każdy wariant dotyczy tych samych lekcji co etap. W kolejnym przejściu pierwszeństwo mają warianty jeszcze niewyświetlone w danym obiegu puli. Dopiero wyświetlenie aktywności oznacza ją jako widzianą — nie samo przygotowanie dalszej części wyprawy. Po wyczerpaniu puli zaczyna się nowy obieg, bez bezpośredniego powtórzenia ostatniego wariantu. Kontynuacja zachowuje rozpoczęty wariant, ale nie niezatwierdzone odpowiedzi. Gwiazdki przypisane są do etapów, nie do wariantów, więc wcześniejszy postęp nie przepada i nie można mnożyć nagród przez powtarzanie.
+`learningPlan` definiuje kolejność i pule sześciu kroków każdej lekcji: Odkryj, Zapamiętaj, Rozpoznaj, Połącz, Zastosuj, Utrwal. Wszystkie 143 aktywności nauki są przypisane do rozłącznych pul. „Zastosuj” ćwiczy umiejętność właściwą tematowi, a „Utrwal” używa odrębnych przykładów bez panelu podpowiedzi przed odpowiedzią. Każda lekcja ma etap fiszek i odkrywania kart. Pokrycie dziewięciu typów jest gwarancją całego planu 42 aktywności, nie każdej lekcji. Przygotowanie wyborów nie oznacza ich jako wyświetlonych. Kontynuacja zachowuje wariant i postęp, a powtórne przejście losuje tylko wybrany temat; gwiazdki dotyczą stabilnych miejsc, nie wariantów. Wcześniejsze gwiazdki dziewięciu etapów są zachowane osobno, bez automatycznego zaliczenia nowych tematów.
+
+Po poprawieniu błędu może pojawić się jeden dodatkowy, wolny przykład z tej samej puli — bez gwiazdki i bez dalszego łańcucha ćwiczeń. Powtórka mieszana domyślnie wybiera do siedmiu ocenianych aktywności, preferując różne tematy; „Poćwicz moje błędy” zawęża zakres do odpowiednich lekcji. Nie używa banku sprawdzianu i nie jest harmonogramem. Zasady nadpisywania liczby, kolejności, pul i opcji w JSON opisuje [organizacja nauki](learning-organization.md).
+
+Paczki bez `learningPlan` zachowują dotychczasowy przebieg: `learningPath` i `learningVariants`, maksymalna różnorodność typów, kontynuacja bez ponownego losowania oraz gwiazdki przypisane do kotwic. Te pola nadal definiują bank nauki.
 
 ## Umiejętności i powtórka
 

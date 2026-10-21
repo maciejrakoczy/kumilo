@@ -38,7 +38,7 @@ export function mountTask(container, task, {mode = 'learn', answer: initialAnswe
       : task.type === 'multiple-choice' ? count === 1 ? 'Wybrano 1 odpowiedź' : `Wybrano ${count} odpowiedzi`
       : task.type === 'ordering' ? solved ? 'Kolejność sprawdzona' : `${total} elementów do uporządkowania`
       : solved ? 'Zadanie ukończone' : count ? task.type === 'single-choice' ? 'Wybrano odpowiedź' : 'Wpisano odpowiedź' : 'Czekamy na Twoją odpowiedź';
-    return {solved, count, total, progressText, checkable, canCheck: study && checkable && !solved && (task.type === 'sorting' ? count === total : count > 0)};
+    return {solved, incorrect: study && incorrect, count, total, progressText, checkable, canCheck: study && checkable && !solved && (task.type === 'sorting' ? count === total : count > 0)};
   }
 
   function changed() {

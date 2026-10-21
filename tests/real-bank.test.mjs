@@ -35,7 +35,7 @@ test('500 real attempts retain quotas and avoid all immediately previous questio
 
 test('all practice variants are reachable, with distinct slot selections on consecutive runs', () => {
   const seen = new Set(); let history = {}, last = {};
-  for (let i = 1; i <= 100; i++) {
+  for (let i = 1; i <= 500; i++) {
     const next = drawLearning(topic, topic.learningPath, history, seed(i));
     for (const [anchor, id] of Object.entries(next.selected)) {
       assert.notEqual(id, last[anchor]); seen.add(id);
