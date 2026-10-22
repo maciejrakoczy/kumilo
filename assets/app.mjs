@@ -5,7 +5,7 @@ import {learningRewards, rewardShelf, celebrate} from './rewards.mjs';
 import {drawTest, drawLearning, testSummary} from './selection.mjs';
 import {activityScreen, journeyTrack} from './activity-view.mjs';
 import {learningLessons, learningSlots} from './learning-plan.mjs';
-import {startLearningSession, learningEntries, completeLearningEntry, markLearningSeen, mixedLearningReview} from './learning-session.mjs';
+import {startLearningSession, startLearningExpedition, expeditionEntries, learningEntries, completeLearningEntry, markLearningSeen, mixedLearningReview} from './learning-session.mjs';
 import {learningHome, learningTopics, planRewardShelf} from './learning-view.mjs';
 
 const app = document.getElementById('app');
@@ -17,7 +17,7 @@ let catalog, entries = [], selected, topic, progress;
 let view = 'loading', requestId = 0, taskView = null, queue = [], position = 0, reviewing = false;
 let exam = null, student = '', report = null, timer = null, retry = null, reviewLessonIds = [];
 let stopCelebration = () => {};
-let planEntries = [], planLessonId = null;
+let planEntries = [], planLessonId = null, fullExpedition = false;
 const taskById = id => topic.tasks.find(task => task.id === id);
 const currentTask = () => {
   if (view === 'exam') return taskById(exam.questions[position].taskId);
@@ -160,7 +160,7 @@ function renderFinish() {
   stopCelebration = celebrate(app.querySelector('.celebrate'));
 }
 function beginPlannedLesson(lessonId, replay = false) {
-  stopTimer(); exam = null; reviewing = false;
+  stopTimer(); exam = null; reviewing = false; fullExpedition = false;
   try {
     const session = startLearningSession(topic, progress, {lessonId, replay});
     planLessonId = lessonId; planEntries = session.entries;
@@ -168,30 +168,44 @@ function beginPlannedLesson(lessonId, replay = false) {
     save(); go(position < 0 ? 'finish' : 'learn');
   } catch (error) { showError(error); }
 }
+function beginExpedition() {
+  stopTimer(); exam = null; reviewing = false; fullExpedition = true; planLessonId = null;
+  try {
+    const session = startLearningExpedition(topic, progress);
+    planEntries = session.entries; position = session.position;
+    queue = planEntries.map(entry => entry.id);
+    save(); go('learn');
+  } catch (error) { showError(error); }
+}
 function beginPlannedReview(lessonIds = null) {
-  stopTimer(); exam = null; reviewing = true; planLessonId = null;
+  stopTimer(); exam = null; reviewing = true; planLessonId = null; fullExpedition = false;
   try {
     planEntries = mixedLearningReview(topic, progress.learning, lessonIds);
     queue = planEntries.map(entry => entry.id); position = 0;
     go(queue.length ? 'learn' : 'lessons');
   } catch (error) { showError(error); }
 }
+function plannedTrack() {
+  if (!fullExpedition) return {index: position + 1, total: queue.length};
+  const lessons = learningLessons(topic);
+  return {index: lessons.findIndex(lesson => lesson.lessonId === planEntries[position].lessonId) + 1, total: lessons.length};
+}
 function renderPlannedLearn() {
   const entry = planEntries[position], task = taskById(entry.taskId);
   markLearningSeen(topic, progress.learning, entry); save();
   const path = learningSlots(topic).map(slot => slot.id);
   const before = learningRewards(path, progress.learning.completedSlotIds);
-  app.innerHTML = activityScreen({task, index: position + 1, total: queue.length, reviewing, hints: entry.hints, stageTitle: entry.title, notes: lessonDetails(task), stars: `${before.stars} / ${before.total}`});
+  app.innerHTML = activityScreen({task, ...plannedTrack(), reviewing, hints: entry.hints, stageTitle: entry.title, notes: lessonDetails(task), stars: `${before.stars} / ${before.total}`});
   let hadMistake = false;
   taskView = mountTask(document.getElementById('task-area'), task, {controls: false,
     onStateChange: state => { hadMistake ||= state.incorrect; updateTaskFooter(task, state); },
     onComplete: () => {
       completeLearningEntry(topic, progress.learning, entry, hadMistake);
       if (!reviewing) {
-        planEntries = learningEntries(topic, progress.learning, planLessonId);
+        planEntries = fullExpedition ? expeditionEntries(topic, progress.learning) : learningEntries(topic, progress.learning, planLessonId);
         queue = planEntries.map(item => item.id);
         position = planEntries.findIndex(item => item.id === entry.id);
-        progress.learning.lastSlotId = planEntries[position + 1]?.slotId || null;
+        progress.learning[fullExpedition ? 'expeditionSlotId' : 'lastSlotId'] = planEntries[position + 1]?.slotId || null;
       }
       save();
       const after = learningRewards(path, progress.learning.completedSlotIds);
@@ -201,7 +215,7 @@ function renderPlannedLearn() {
       reward.innerHTML = `${owl('mini-owl')}<div><strong>${after.stars > before.stars ? '+1 gwiazdka!' : entry.extra ? 'Dodatkowy trop odkryty!' : 'Trop odświeżony!'}</strong></div><span class="reward-token" aria-hidden="true">★</span>`;
       stopCelebration = celebrate(reward);
       document.getElementById('session-count').textContent = `Zadanie ${position + 1} z ${queue.length}`;
-      app.querySelector('.journey-track').outerHTML = journeyTrack({index: position + 1, total: queue.length, label: reviewing ? 'Powtórka' : 'Postęp nauki'});
+      app.querySelector('.journey-track').outerHTML = journeyTrack({...plannedTrack(), label: reviewing ? 'Powtórka' : fullExpedition ? 'Postęp tematów' : 'Postęp nauki'});
       const next = app.querySelector('.task-primary-group .primary');
       next.disabled = false; next.classList.add('ready-next'); next.focus({preventScroll: true});
     },
@@ -209,10 +223,15 @@ function renderPlannedLearn() {
 }
 function advancePlannedLearning() {
   position++;
-  if (!reviewing) { progress.learning.lastSlotId = planEntries[position]?.slotId || null; save(); }
+  if (!reviewing) { progress.learning[fullExpedition ? 'expeditionSlotId' : 'lastSlotId'] = planEntries[position]?.slotId || null; save(); }
   go(position < queue.length ? 'learn' : 'finish');
 }
 function renderPlannedFinish() {
+  if (fullExpedition) {
+    app.innerHTML = frame(`<div class="stage"><div class="celebrate">${owl('award-owl')}<p class="eyebrow">WYPRAWA UKOŃCZONA</p><h1>Cały dział odkryty!</h1><p>Wszystkie tematy tej wyprawy masz już za sobą.</p></div>${planRewardShelf(topic, progress)}<div class="footer-actions">${button('Sprawdź się →', 'test-intro')}${button('Na start', 'home', 'secondary')}</div></div>`, 'Aktywności', queue.length, queue.length);
+    stopCelebration = celebrate(app.querySelector('.celebrate'));
+    return;
+  }
   const lessons = learningLessons(topic), lesson = lessons.find(item => item.lessonId === planLessonId);
   const next = lesson ? lessons[lessons.indexOf(lesson) + 1] : null;
   const nextButton = next ? `<button class="primary" data-action="learn-lesson" data-lesson="${h(next.lessonId)}">Kolejny temat →</button>` : button('Wybierz temat', 'topics');
@@ -339,6 +358,7 @@ app.addEventListener('click', event => {
   if (action === 'home') leaveForHome();
   if (action === 'picker') openPicker();
   if (action === 'learn') beginLearning();
+  if (action === 'expedition') beginExpedition();
   if (action === 'topics') go('topics');
   if (action === 'learn-lesson' || action === 'replay-lesson') beginPlannedLesson(target.dataset.lesson, action === 'replay-lesson');
   if (action === 'mixed-review') beginPlannedReview();

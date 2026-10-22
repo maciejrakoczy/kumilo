@@ -20,7 +20,7 @@ Powyższe polecenie udostępnia wyłącznie `dist/`. Jeśli na stanowisku masz p
 „Detektywi przeszłości” korzystają z wdrożonego `learningPlan`: siedem krótkich wypraw po sześć aktywności. Kolejność, pule i ustawienia pochodzą z JSON. Kontrakt i zasady opisuje [organizacja nauki według tematów](learning-organization.md).
 
 1. Wybierz klasę, przedmiot i temat przyciskiem „Zmień”. Dostępne pozycje pochodzą wyłącznie z `data/catalog.json`.
-2. Wybierz „Ucz się tematami”, a następnie jedną z siedmiu lekcji. „Kontynuuj” zachowuje wylosowane zadanie i miejsce przerwania, również po zmianie tematu.
+2. Wybierz „Rozpocznij wyprawę”, aby przejść cały dział w kolejności planu JSON, bez podsumowań między lekcjami, albo „Ucz się tematami”, aby wybrać jedną lekcję. Pełna wyprawa ma własną kontynuację, niezależną od kursorów pojedynczych tematów, ale korzysta z tych samych zadań i gwiazdek. Nagłówek liczy wszystkie aktywności, a kropki wskazują kolejne tematy. Po ukończeniu wszystkich kroków można rozpocząć nową wyprawę z ponownym losowaniem, bez dodatkowych gwiazdek.
 3. Rozwiązuj zadania. Błąd nie odbiera gwiazdek; po jego poprawieniu może pojawić się jeden dodatkowy przykład z tej samej puli, bez łańcucha kolejnych zadań.
 4. Przy potrzebie użyj przycisku „Podpowiedź” w stopce karty i rozwiń objaśnienie lekcji. W sekcji „Lekcje i mapa myśli” dostępny jest cały zakres.
 5. Po ukończeniu aktywności przejdź do kolejnej. Temat kończy się własnym podsumowaniem z sową. „Powtórka mieszana” na starcie lub w wyborze tematów pozwala ręcznie wrócić do zadań z różnych lekcji; nie ma harmonogramu powtórek.

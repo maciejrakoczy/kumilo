@@ -225,6 +225,7 @@ function learningProgress(raw, topic) {
     selected: Object.fromEntries(selected), seen: Object.fromEntries(seen),
     activeLessonId: lessonIds.has(value.activeLessonId) ? value.activeLessonId : null,
     lastSlotId: slots.some(slot => slot.id === value.lastSlotId && slot.lessonId === value.activeLessonId) ? value.lastSlotId : null,
+    expeditionSlotId: ids.has(value.expeditionSlotId) ? value.expeditionSlotId : null,
     extraPractice: Object.fromEntries(extraPractice),
     cursors: Object.fromEntries(object(value.cursors) ? Object.entries(value.cursors).filter(([lessonId, slotId]) => lessonIds.has(lessonId) && (slotId === null || slots.some(slot => slot.id === slotId && slot.lessonId === lessonId))) : []),
   }};

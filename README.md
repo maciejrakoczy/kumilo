@@ -47,7 +47,12 @@ Za ukończone aktywności uczeń zbiera gwiazdki i trzy odznaki wyprawy. Karty i
 
 ### Dostępny materiał
 
-Wersja **0.1.0** zawiera dział **„Detektywi przeszłości”** dla klasy IV z historii: siedem lekcji i bank 260 aktywności — 127 do nauki oraz 133 do testów. Wśród nich są 42 pytania wielokrotnego wyboru ze zmienną liczbą poprawnych odpowiedzi, a także pary, sortowanie, kolejność i odpowiedzi wpisywane. Wyprawa ma dziewięć etapów z losowanymi wariantami. Każdy test losuje 16 pytań z zachowaniem pokrycia wszystkich siedmiu lekcji i omija pytania z poprzedniego zatwierdzonego podejścia. Zakres obejmuje podstawy poznawania przeszłości, źródła historyczne, rodzinę i porządek czasu. Szczegóły: [bank i zasady losowania](docs/question-bank.md).
+Materiały dla klasy IV:
+
+- **Historia — „Detektywi przeszłości”**: siedem lekcji, 42 podstawowe kroki wyprawy i bank 276 aktywności — 143 do nauki oraz 133 do testów. Zakres obejmuje poznawanie przeszłości, źródła historyczne, rodzinę i porządek czasu. Szczegóły: [bank i zasady losowania](docs/question-bank.md).
+- **Język polski — „Akademia pana Kleksa”**: osiem lekcji i 48 podstawowych kroków wyprawy. Szkoła, narrator, bohaterowie, niezwykłe lekcje, plan wydarzeń, baśniowość i wybrane zagadnienia językowe. Szczegóły: [zakres i opracowanie](docs/akademia-pana-kleksa.md).
+
+Oba działy mają odrębne banki nauki i sprawdzianu. Każdy sprawdzian losuje 16 pytań, zachowując pokrycie lekcji. Warianty nauki, powtórki i postęp są przypisane do wybranego materiału.
 
 System obsługuje kolejne klasy, przedmioty i tematy przez wspólny format JSON. Nowe treści nie wymagają tworzenia osobnego interfejsu dla każdego działu.
 

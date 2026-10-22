@@ -100,18 +100,24 @@ export async function runLearningPlanChecks() {
       assert(saved().learning.completedSlotIds.length === 6, 'Topic completion did not award six distinct milestones');
       assert(document.querySelector('.celebrate'), 'Topic summary missing');
     });
-    await check('A topic replay and mixed review cannot increase milestone stars', async () => {
-      click('#brand'); click('[data-action="learn"]'); click(`[data-action="replay-lesson"][data-lesson="${lessonId}"]`);
-      solveTask(shownTask(topic)); click('[data-action="next-learn"]');
-      const current = shownTask(topic).id;
-      await reload(); click('[data-action="learn"]'); click(`[data-action="learn-lesson"][data-lesson="${lessonId}"]`);
-      assert(shownTask(topic).id === current, 'Replay continuation skipped or rerolled an earned step');
+    await check('Completed topics retain their summary; unfinished topics resume and mixed review cannot increase stars', async () => {
       click('#brand'); click('[data-action="learn"]');
-      click(`[data-action="learn-lesson"][data-lesson="${topic.learningPlan.lessons[1].lessonId}"]`);
-      await reload(); click('[data-action="learn"]');
-      assert(document.querySelector(`[data-action="learn-lesson"][data-lesson="${lessonId}"]`).textContent.includes('Kontynuuj'), 'Paused topic lost its continuation label');
+      assert(!document.querySelector('[data-action="replay-lesson"]'), 'Topic menu restored a removed replay control');
+      const selected = JSON.stringify(saved().learning.selected);
       click(`[data-action="learn-lesson"][data-lesson="${lessonId}"]`);
-      assert(shownTask(topic).id === current, 'Switching topics lost an unfinished replay');
+      assert(document.querySelector('.celebrate') && !document.querySelector('#task-area'), 'Completed topic did not open its summary');
+      assert(JSON.stringify(saved().learning.selected) === selected, 'Opening a completed topic rerolled the plan');
+      const unfinishedId = topic.learningPlan.lessons[1].lessonId;
+      click('#brand'); click('[data-action="learn"]');
+      click(`[data-action="learn-lesson"][data-lesson="${unfinishedId}"]`);
+      const current = shownTask(topic).id;
+      await reload(); click('[data-action="learn"]');
+      assert(document.querySelector(`[data-action="learn-lesson"][data-lesson="${unfinishedId}"]`).textContent.includes('Kontynuuj'), 'Paused topic lost its continuation label');
+      click(`[data-action="learn-lesson"][data-lesson="${lessonId}"]`);
+      assert(document.querySelector('.celebrate'), 'Completed topic lost its summary after switching');
+      click('#brand'); click('[data-action="learn"]');
+      click(`[data-action="learn-lesson"][data-lesson="${unfinishedId}"]`);
+      assert(shownTask(topic).id === current, 'Switching topics rerolled the unfinished activity');
       click('#brand'); click('[data-action="mixed-review"]');
       const lessons = new Set(); let count = 0;
       while (document.querySelector('#task-area') && count++ < 20) {
@@ -121,7 +127,7 @@ export async function runLearningPlanChecks() {
       }
       assert(count === topic.learningPlan.defaults.reviewCount, 'Mixed review ignored configured count');
       assert(lessons.size === topic.lessons.length, 'Mixed review omitted a topic despite sufficient capacity');
-      assert(saved().learning.completedSlotIds.length === 6, 'Replay or review farmed stars');
+      assert(saved().learning.completedSlotIds.length === 6, 'Opening a summary or mixed review farmed stars');
     });
     await check('Legacy stars and badges remain visible without completing new topic milestones', async () => {
       const value = saved(); value.completedTaskIds = [...topic.learningPath]; delete value.learning;

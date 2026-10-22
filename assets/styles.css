@@ -93,4 +93,6 @@
 @media(max-width:650px){.feedback.retry{gap:10px;padding:14px}.feedback.retry .owl-reaction{width:66px}.feedback.retry strong{font-size:15px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.star-burst{display:none}}
 .lesson-choices>div{min-width:0}.lesson-choices .choice{width:100%}
+.expedition-choices{grid-template-columns:repeat(3,minmax(0,1fr))}.expedition-choices .choice{min-width:0}
+@media(max-width:900px){.expedition-choices{grid-template-columns:1fr}}
 @media print{.reward-toast,.star-burst,.learning-loot{display:none!important}}

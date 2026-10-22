@@ -22,3 +22,12 @@ test('home preserves legacy rewards separately and provides manual mixed review'
   assert.ok(html.includes('data-legacy-rewards'));
   assert.ok(html.includes('data-action="mixed-review"'));
 });
+
+test('home offers a full expedition alongside topic learning and the exam', () => {
+  const html = learningHome(topic, progress);
+  assert.ok(html.includes('data-action="expedition"'));
+  assert.ok(html.includes('Rozpocznij wyprawę'));
+  assert.ok(html.includes('Ucz się tematami'));
+  assert.ok(html.includes('Sprawdź się'));
+  assert.ok(learningHome(topic, {...progress, learning: {...progress.learning, expeditionSlotId: 'one-open-1'}}).includes('Kontynuuj wyprawę'));
+});

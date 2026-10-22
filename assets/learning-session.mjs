@@ -2,7 +2,7 @@ import {learningLessons, learningSlots, drawPlanLearning} from './learning-plan.
 import {shuffled} from './ui.mjs';
 
 const scored = task => !['discovery', 'flashcards'].includes(task.type);
-const emptyLearning = () => ({completedSlotIds: [], selected: {}, seen: {}, activeLessonId: null, lastSlotId: null, extraPractice: {}, cursors: {}});
+const emptyLearning = () => ({completedSlotIds: [], selected: {}, seen: {}, activeLessonId: null, lastSlotId: null, expeditionSlotId: null, extraPractice: {}, cursors: {}});
 
 export function learningEntries(topic, learning, lessonId) {
   const lesson = learningLessons(topic).find(item => item.lessonId === lessonId);
@@ -14,6 +14,39 @@ export function learningEntries(topic, learning, lessonId) {
   });
 }
 
+export function expeditionEntries(topic, learning) {
+  return learningLessons(topic).flatMap(lesson => learningEntries(topic, learning, lesson.lessonId));
+}
+
+function prepareLearning(topic, learning, random, replayLessonIds = []) {
+  const slots = learningSlots(topic);
+  const missing = slots.filter(slot => !Object.hasOwn(learning.selected, slot.id) || replayLessonIds.includes(slot.lessonId));
+  const retainedIds = slots.filter(slot => !missing.includes(slot)).map(slot => learning.selected[slot.id]);
+  const retained = retainedIds.map(id => topic.tasks.find(task => task.id === id).type);
+  const extraIds = slots.filter(slot => !replayLessonIds.includes(slot.lessonId)).flatMap(slot => learning.extraPractice[slot.id] ? [learning.extraPractice[slot.id].taskId] : []);
+  const reserved = [...new Set([...retainedIds, ...extraIds])];
+  const requiredTypes = topic.learningPlan.requiredTypes.filter(type => !retained.includes(type));
+  const drawn = drawPlanLearning(topic, missing.map(slot => slot.id), learning.seen, random, retained, reserved, {requiredTypes});
+  Object.assign(learning.selected, drawn.selected);
+  for (const slot of slots) if (replayLessonIds.includes(slot.lessonId)) delete learning.extraPractice[slot.id];
+}
+
+export function startLearningExpedition(topic, progress, {random = Math.random} = {}) {
+  const learning = progress.learning ||= emptyLearning();
+  prepareLearning(topic, learning, random);
+  let entries = expeditionEntries(topic, learning);
+  let position = learning.expeditionSlotId ? entries.findIndex(entry => entry.slotId === learning.expeditionSlotId) : -1;
+  if (position >= 0 && learning.extraPractice[entries[position].slotId]?.done === false) position++;
+  if (position < 0) position = entries.findIndex(entry => entry.extra ? !learning.extraPractice[entry.slotId].done : !learning.completedSlotIds.includes(entry.slotId));
+  if (position < 0) {
+    prepareLearning(topic, learning, random, learningLessons(topic).map(lesson => lesson.lessonId));
+    entries = expeditionEntries(topic, learning);
+    position = 0;
+  }
+  learning.expeditionSlotId = entries[position]?.slotId || null;
+  return {entries, position};
+}
+
 export function startLearningSession(topic, progress, {lessonId, replay = false, random = Math.random} = {}) {
   const learning = progress.learning ||= emptyLearning();
   const lessons = learningLessons(topic), lesson = lessons.find(item => item.lessonId === lessonId);
@@ -21,16 +54,7 @@ export function startLearningSession(topic, progress, {lessonId, replay = false,
   learning.cursors ||= {};
   const active = lessons.find(item => item.lessonId === learning.activeLessonId);
   if (active && (learning.lastSlotId === null || active.slots.some(slot => slot.id === learning.lastSlotId))) learning.cursors[active.lessonId] = learning.lastSlotId;
-  const slots = learningSlots(topic);
-  const missing = slots.filter(slot => !Object.hasOwn(learning.selected, slot.id) || replay && slot.lessonId === lessonId);
-  const retainedIds = slots.filter(slot => !missing.includes(slot)).map(slot => learning.selected[slot.id]);
-  const retained = retainedIds.map(id => topic.tasks.find(task => task.id === id).type);
-  const extraIds = slots.filter(slot => !(replay && slot.lessonId === lessonId)).flatMap(slot => learning.extraPractice[slot.id] ? [learning.extraPractice[slot.id].taskId] : []);
-  const reserved = [...new Set([...retainedIds, ...extraIds])];
-  const requiredTypes = topic.learningPlan.requiredTypes.filter(type => !retained.includes(type));
-  const drawn = drawPlanLearning(topic, missing.map(slot => slot.id), learning.seen, random, retained, reserved, {requiredTypes});
-  Object.assign(learning.selected, drawn.selected);
-  if (replay) for (const slot of lesson.slots) delete learning.extraPractice[slot.id];
+  prepareLearning(topic, learning, random, replay ? [lessonId] : []);
   const entries = learningEntries(topic, learning, lessonId);
   let position;
   const cursor = Object.hasOwn(learning.cursors, lessonId) ? learning.cursors[lessonId] : null;

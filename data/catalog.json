@@ -18,6 +18,17 @@
               "path": "klasa-4/historia/detektywi-przeszlosci/topic.json"
             }
           ]
+        },
+        {
+          "id": "jezyk-polski",
+          "title": "Język polski",
+          "topics": [
+            {
+              "id": "akademia-pana-kleksa",
+              "title": "Akademia pana Kleksa",
+              "path": "klasa-4/jezyk-polski/akademia-pana-kleksa/topic.json"
+            }
+          ]
         }
       ]
     }

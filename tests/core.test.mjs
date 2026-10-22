@@ -8,7 +8,7 @@ const catalog = JSON.parse(await readFile(new URL('../data/catalog.json', import
 const topic = JSON.parse(await readFile(new URL('../data/klasa-4/historia/detektywi-przeszlosci/topic.json', import.meta.url)));
 const task = type => topic.tasks.find(t => t.type === type);
 const clone = value => structuredClone(value);
-const defaultProgress = () => ({ completedTaskIds: [], readLessonIds: [], lastTaskId: null, lastResult: null, ...(topic.learningPlan ? {learning: {completedSlotIds: [], selected: {}, seen: {}, activeLessonId: null, lastSlotId: null, extraPractice: {}, cursors: {}}} : {}) });
+const defaultProgress = () => ({ completedTaskIds: [], readLessonIds: [], lastTaskId: null, lastResult: null, ...(topic.learningPlan ? {learning: {completedSlotIds: [], selected: {}, seen: {}, activeLessonId: null, lastSlotId: null, expeditionSlotId: null, extraPractice: {}, cursors: {}}} : {}) });
 function memoryStorage() {
   const data = new Map();
   return { data, getItem: key => data.get(key) ?? null, setItem: (key, value) => data.set(key, value), removeItem: key => data.delete(key) };
@@ -17,7 +17,11 @@ function memoryStorage() {
 test('real documents validate without mutation and catalog flattens', () => {
   assert.equal(validateCatalog(catalog), catalog);
   assert.equal(validateTopic(topic), topic);
-  assert.deepEqual(catalogEntries(catalog), [{ gradeId: 'klasa-4', gradeTitle: 'Klasa IV', grade: 4, subjectId: 'historia', subjectTitle: 'Historia', id: topic.id, title: topic.title, path: catalog.classes[0].subjects[0].topics[0].path }]);
+  const expected = catalog.classes.flatMap(grade => grade.subjects.flatMap(subject => subject.topics.map(entry => ({
+    gradeId: grade.id, gradeTitle: grade.title, grade: grade.grade,
+    subjectId: subject.id, subjectTitle: subject.title, ...entry,
+  }))));
+  assert.deepEqual(catalogEntries(catalog), expected);
 });
 
 for (const [name, change] of [

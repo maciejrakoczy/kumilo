@@ -1,5 +1,6 @@
 import {solveTask, shownTask} from './browser-helpers.mjs';
 import {runLearningPlanChecks, checkLearningPlanConfiguration} from './learning-plan-browser.mjs';
+import {checkExpedition} from './expedition-browser.mjs';
 
 export async function runBankChecks() {
   const key = 'kumilo.progress.v1', old = localStorage.getItem(key), results = [];
@@ -64,6 +65,9 @@ export async function runBankChecks() {
         const checks = [...await runLearningPlanChecks(), await checkLearningPlanConfiguration()];
         results.push(...checks);
         assert(checks.every(result => result.status === 'PASS'), 'Planned learning checks failed');
+        const expedition = await checkExpedition();
+        results.push(expedition);
+        assert(expedition.status === 'PASS', expedition.reason);
         return;
       }
       click('[data-action="learn"]'); const first = shownTask(topic).id;
