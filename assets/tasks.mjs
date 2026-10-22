@@ -1,5 +1,5 @@
 import {evaluateTask} from './core.mjs';
-import {escapeHtml as h, shuffled, sadOwl} from './ui.mjs';
+import {escapeHtml as h, shuffled, sadOwl, owl} from './ui.mjs';
 import {attachReordering} from './reorder.mjs';
 import {illustration} from './illustrations.mjs';
 import {attachPairLines} from './pair-lines.mjs';
@@ -12,6 +12,7 @@ export function mountTask(container, task, {mode = 'learn', answer: initialAnswe
   let answer = initialAnswer == null ? defaultAnswer(task) : structuredClone(initialAnswer);
   let selected = null;
   let message = '';
+  let feedbackKey = '';
   let incorrect = false;
   let solved = false;
   let cardIndex = 0;
@@ -44,7 +45,8 @@ export function mountTask(container, task, {mode = 'learn', answer: initialAnswe
   function changed() {
     message = ''; incorrect = false;
     const feedback = container.querySelector('.feedback');
-    if (feedback) { feedback.hidden = true; feedback.classList.remove('retry'); feedback.innerHTML = ''; }
+    if (feedback) { feedback.hidden = true; feedback.classList.remove('retry', 'success'); feedback.innerHTML = ''; }
+    feedbackKey = '';
     onAnswer(structuredClone(answer));
     onStateChange(getState());
   }
@@ -93,8 +95,9 @@ export function mountTask(container, task, {mode = 'learn', answer: initialAnswe
     if (['short-answer', 'number-answer'].includes(task.type)) html = `<label class="field">${task.type === 'number-answer' ? `Twoja odpowiedź (${h(task.unit)})` : 'Twoja odpowiedź'}<input data-text-answer type="text" ${task.type === 'number-answer' ? 'inputmode="decimal"' : ''} autocomplete="off" maxlength="250" value="${h(answer)}" ${study && solved ? 'disabled' : ''}></label>`;
     if (controls && study && !solved && checkable) html += '<div class="footer-actions"><button class="primary" data-check>Sprawdź</button></div>';
     const retry = study && incorrect && !solved;
-    html += `<div class="feedback ${solved ? 'success' : retry ? 'retry' : ''}" role="status" ${message ? '' : 'hidden'}>${retry ? `${sadOwl()}<div><strong>Spróbujmy jeszcze raz!</strong><span>${h(message)}</span></div>` : h(message)}</div>`;
-    container.innerHTML = illustration(task.icon, 'question-illustration') + html;
+    const showFeedback = study && (solved || Boolean(message));
+    const feedback = `<div class="feedback coach ${showFeedback ? retry ? 'retry' : 'success' : ''}" role="status" aria-live="polite" aria-atomic="true" ${showFeedback ? '' : 'hidden'}>${showFeedback ? `${retry ? sadOwl() : owl('coach-owl')}<div class="coach-bubble"><strong>${retry ? 'Spróbujmy jeszcze raz!' : solved ? 'Świetna robota!' : 'Dobra para!'}</strong>${message ? `<p>${h(message)}</p>` : ''}</div>` : ''}</div>`;
+    container.innerHTML = feedback + illustration(task.icon, 'question-illustration') + html;
     if (task.type === 'ordering' && (!study || !solved)) disposeDrag = attachReordering(container, move);
     if (task.type === 'matching') disposeLinks = attachPairLines(container, answer);
     onStateChange(getState());
@@ -103,6 +106,13 @@ export function mountTask(container, task, {mode = 'learn', answer: initialAnswe
       if (!focus || focus.disabled) focus = container.closest('.question-card')?.querySelector('[data-check], [data-action="next-learn"]:not(:disabled)');
       focus?.focus({preventScroll: true});
     }
+    const nextFeedbackKey = showFeedback ? `${retry}:${solved}:${message}` : '';
+    if (nextFeedbackKey && nextFeedbackKey !== feedbackKey) {
+      const coach = container.querySelector('.coach');
+      const bounds = coach.getBoundingClientRect();
+      if (bounds.top < 8 || bounds.bottom > window.innerHeight - 8) coach.scrollIntoView({block: 'nearest', behavior: 'instant'});
+    }
+    feedbackKey = nextFeedbackKey;
   }
   function move(from, to) {
     if (study && solved || to < 0 || to >= answer.length) return;
@@ -158,7 +168,10 @@ export function mountTask(container, task, {mode = 'learn', answer: initialAnswe
           render(`[data-side="${side}"][data-pair="${id}"]`);
         } else {
           answer[left] = right; selected = null; changed();
-          if (study && Object.keys(answer).length === task.pairs.length) finish();
+          if (study) {
+            if (Object.keys(answer).length === task.pairs.length) finish();
+            else message = 'Te karty do siebie pasują. Poszukaj kolejnej pary.';
+          }
           render('.pair:not(:disabled)');
         }
       }

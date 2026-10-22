@@ -42,7 +42,9 @@
 .task-hint-panel{padding:20px 24px;border-radius:17px;background:#f8f5ff;border:1px solid #e5dcf7;margin:0 0 24px;font-size:16px;color:#51476e}
 .task-hint-panel>.lesson-notes{background:white;margin:16px 0 0;border-color:#e8e0f4}
 .work-activity .feedback{margin:24px 0 0;font-size:17px;border-radius:16px}
+.work-activity .feedback.coach{margin:0 0 22px;border-radius:0}
 .work-activity .reward-toast{margin:0 0 24px}
+.work-activity .coach .reward-toast{margin:10px 0 0}
 .work-activity .reward-toast strong{font-size:17px}
 .work-activity .question-illustration{width:88px;height:88px;margin:0 auto 20px}
 .work-activity .options{display:grid;grid-template-columns:1fr;gap:14px}

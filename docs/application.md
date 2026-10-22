@@ -49,6 +49,8 @@ Animacje respektują systemowe ustawienie ograniczenia ruchu (`prefers-reduced-m
 
 Przy błędnej odpowiedzi w nauce sówka ma smutne oczy i opuszczone skrzydełka, krótko wzdycha i uroni łezkę. Obok pozostaje wskazówka i zachęta do kolejnej próby, bez odbierania nagród. Reakcja znika przy zmianie odpowiedzi; po poprawnym rozwiązaniu wracają efekty sukcesu. Dotyczy to pytań wyboru, par, sortowania, kolejności i odpowiedzi wpisywanych. W teście smutna sówka pojawia się dopiero w podsumowaniu zawierającym błędy. Przy ograniczeniu ruchu zostaje nieruchoma ilustracja.
 
+W nauce sówka mówi z dymka nad odpowiedziami. Komunikat pozostaje przy górnej krawędzi podczas przewijania obszaru odpowiedzi; nowa reakcja spoza ekranu jest przewijana do widoku bez animacji i bez przejmowania fokusu. Przy parach pochwała pojawia się po każdym poprawnym połączeniu, ale nie kończy zadania przed połączeniem wszystkich par. Po ukończeniu aktywności gwiazdka i odznaka trafiają do tego samego dymka, bez drugiej sówki. W odkrywaniu kart jest to tylko pochwała i nagroda — objaśnienia nadal pozostają wewnątrz kart. W teście dymek z oceną pozostaje ukryty do zatwierdzenia całości.
+
 Kolejność można zmieniać przeciąganiem karty myszą, uchwytem przy dotyku albo przyciskami strzałek. Escape i przerwanie ruchu anulują przeciąganie. Strzałki są alternatywą dla klawiatury i osób, którym przeciąganie sprawia trudność.
 
 ## Test

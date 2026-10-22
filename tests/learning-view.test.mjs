@@ -31,3 +31,17 @@ test('home offers a full expedition alongside topic learning and the exam', () =
   assert.ok(html.includes('Sprawdź się'));
   assert.ok(learningHome(topic, {...progress, learning: {...progress.learning, expeditionSlotId: 'one-open-1'}}).includes('Kontynuuj wyprawę'));
 });
+
+test('home explains learning choices and separates activity progress from their descriptions', () => {
+  const html = learningHome(topic, progress);
+  assert.ok(html.includes('<small>Wszystkie tematy po kolei</small>'));
+  assert.ok(html.includes('<small>Wybierz jeden temat</small>'));
+  assert.ok(html.includes('<small>Test z całego działu</small>'));
+  assert.ok(html.includes('Twój postęp'));
+  assert.ok(html.includes('0 z 1 ukończonych aktywności'));
+  assert.ok(html.includes('aria-label="Ukończone aktywności w dziale"'));
+  assert.ok(html.includes('value="0" max="1"'));
+  const completed = learningHome(topic, {...progress, learning: {...progress.learning, completedSlotIds: ['one-open-1']}});
+  assert.ok(completed.includes('1 z 1 ukończonych aktywności'));
+  assert.ok(completed.includes('value="1" max="1"'));
+});

@@ -21,11 +21,12 @@ export async function runDiscoveryChecks() {
     click('pot'); click('story');
     for (const item of task.items) assert(host.querySelector(`[data-reveal="${item.id}"] small`).textContent === item.explanation, `Content vanished from ${item.id}`);
     assert(!host.querySelector('img[src="x"]'), 'Explanation was interpreted as HTML');
-    assert(!host.querySelector('.feedback:not([hidden])'), 'Completion restored a separate discovery bubble');
+    assert(host.firstElementChild.matches('.feedback.success'), 'Completion lacks a top success message');
+    assert(!host.querySelector('.feedback').textContent.includes(task.explanation), 'Completion duplicated the discovery explanation outside the cards');
     assert(state.solved && state.count === 3 && completions === 1, 'Full discovery did not complete exactly once');
     click('letter');
     assert(completions === 1 && state.count === 3, 'Repeated reveal added progress or another reward');
-    return [{name: 'Discovery content stays in each card, safely escaped, without a bubble or duplicate rewards', status: 'PASS'}];
+    return [{name: 'Discovery explanations stay in each card; top completion praise does not duplicate content or rewards', status: 'PASS'}];
   } catch (error) { return [{status: 'FAIL', reason: error.message}]; }
   finally { mounted?.destroy(); host.remove(); }
 }

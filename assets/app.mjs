@@ -44,7 +44,7 @@ function leaveForHome() {
 }
 function stopTimer() { clearInterval(timer); timer = null; }
 function contextual() {
-  return `<div class="context"><span>${h(selected.gradeTitle)} · ${h(selected.subjectTitle)} · ${h(topic.title)}</span>${button('Zmień', 'picker', 'text-button')}</div>`;
+  return `<div class="context"><span>${h(selected.gradeTitle)} · ${h(selected.subjectTitle)} · ${h(topic.title)}</span>${button('Zmień przedmiot lub dział', 'picker', 'scope-button')}</div>`;
 }
 function frame(content, label, index, total) {
   return `<section class="activity"><div class="activity-top"><button class="back" data-action="home" aria-label="Wróć na start">←</button><div class="meter" role="progressbar" aria-label="${h(label)}" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${index}"><span style="width:${total ? index / total * 100 : 0}%"></span></div><span class="step-label">${h(label)} ${index}/${total}</span></div>${content}</section>`;
@@ -84,7 +84,7 @@ function renderHome() {
   if (topic.learningPlan) { app.innerHTML = `${contextual()}${learningHome(topic, progress)}`; return; }
   const count = progress.completedTaskIds.filter(id => topic.learningPath.includes(id)).length;
   const inProgress = count > 0 && count < topic.learningPath.length;
-  app.innerHTML = `${contextual()}<section class="hero"><div class="hero-copy"><p class="eyebrow">TWOJA WYPRAWA Z KUMILO</p><h1>${h(topic.title)}</h1><p>${h(topic.summary)}</p></div>${owl('mascot', 'Sowa Kumilo — Twoja towarzyszka odkryć')}</section><div class="choice-grid"><button class="choice learn" data-action="learn"><span class="choice-icon" aria-hidden="true">✦</span><span><b>${inProgress ? 'Kontynuuj wyprawę' : count === topic.learningPath.length ? 'Wyprawa ukończona!' : 'Ucz się przez zabawę'}</b><small>${count ? `${count} z ${topic.learningPath.length} aktywności ukończonych` : 'Odkrywaj, łącz tropy i próbuj.'}</small></span><span class="arrow" aria-hidden="true">→</span></button><button class="choice" data-action="test-intro"><span class="choice-icon" aria-hidden="true">✓</span><span><b>Sprawdź się</b><small>Pełny test z wybranego tematu</small></span><span class="arrow" aria-hidden="true">→</span></button></div><div class="home-links">${button('Lekcje i mapa myśli', 'lessons', 'text-button')}${progress.lastResult ? button('Ostatni wynik', 'last-result', 'text-button') : ''}${count ? button('Przejdź wyprawę od początku', 'replay', 'text-button') : ''}</div>`;
+  app.innerHTML = `${contextual()}<section class="hero"><div class="hero-copy"><p class="eyebrow">TWOJA WYPRAWA Z KUMILO</p><h1>${h(topic.title)}</h1><p>${h(topic.summary)}</p></div>${owl('mascot', 'Sowa Kumilo — Twoja towarzyszka odkryć')}</section><div class="choice-grid"><button class="choice learn" data-action="learn"><span class="choice-icon" aria-hidden="true">✦</span><span><b>${inProgress ? 'Kontynuuj wyprawę' : count === topic.learningPath.length ? 'Wyprawa ukończona!' : 'Ucz się przez zabawę'}</b><small>${count ? `${count} z ${topic.learningPath.length} aktywności ukończonych` : 'Odkrywaj, łącz tropy i próbuj.'}</small></span><span class="arrow" aria-hidden="true">→</span></button><button class="choice" data-action="test-intro"><span class="choice-icon" aria-hidden="true">✓</span><span><b>Sprawdź się</b><small>Test z całego działu</small></span><span class="arrow" aria-hidden="true">→</span></button></div><div class="home-links">${button('Lekcje i mapa myśli', 'lessons', 'text-button')}${progress.lastResult ? button('Ostatni wynik', 'last-result', 'text-button') : ''}${count ? button('Przejdź wyprawę od początku', 'replay', 'text-button') : ''}</div>`;
   app.insertAdjacentHTML('beforeend', rewardShelf(topic.learningPath, progress.completedTaskIds, topic.tasks));
 }
 function mapNode(node) {
@@ -123,7 +123,8 @@ function renderLearn() {
   }
   const before = learningRewards(topic.learningPath, progress.completedTaskIds);
   app.innerHTML = activityScreen({task, index: position + 1, total: queue.length, reviewing, notes: lessonDetails(task), stars: `${before.stars} / ${before.total}`});
-  taskView = mountTask(document.getElementById('task-area'), task, {controls: false, onStateChange: state => updateTaskFooter(task, state), onComplete: () => {
+  const reward = document.getElementById('reward-area');
+  taskView = mountTask(document.getElementById('task-area'), task, {controls: false, onStateChange: state => updateLearningTask(task, state, reward), onComplete: () => {
     const anchor = queue[position];
     if (!progress.completedTaskIds.includes(anchor)) progress.completedTaskIds.push(anchor);
     save();
@@ -131,13 +132,16 @@ function renderLearn() {
     const badge = after.badges.filter(item => item.earned && !before.badges.find(previous => previous.id === item.id)?.earned).at(-1);
     const earnedStar = after.stars > before.stars;
     document.getElementById('learn-stars').textContent = `${after.stars} / ${after.total}`;
-    const reward = document.getElementById('reward-area');
     reward.hidden = false;
-    reward.innerHTML = `${owl('mini-owl')}<div><strong>${earnedStar ? '+1 gwiazdka!' : 'Trop odświeżony!'}</strong>${badge ? `<span>Nowa odznaka: ${h(badge.title)}</span>` : ''}</div><span class="reward-token" aria-hidden="true">${badge ? badge.icon : '★'}</span>`;
+    reward.innerHTML = `<div><strong>${earnedStar ? '+1 gwiazdka!' : 'Trop odświeżony!'}</strong>${badge ? `<span>Nowa odznaka: ${h(badge.title)}</span>` : ''}</div><span class="reward-token" aria-hidden="true">${badge ? badge.icon : '★'}</span>`;
     stopCelebration = celebrate(reward);
     const next = app.querySelector('.task-primary-group .primary');
     next.disabled = false; next.classList.add('ready-next'); next.focus({preventScroll: true});
   }});
+}
+function updateLearningTask(task, state, reward) {
+  updateTaskFooter(task, state);
+  if (state.solved) document.querySelector('#task-area .coach-bubble')?.append(reward);
 }
 function updateTaskFooter(task, state) {
   const status = document.getElementById('task-progress');
@@ -196,9 +200,10 @@ function renderPlannedLearn() {
   const path = learningSlots(topic).map(slot => slot.id);
   const before = learningRewards(path, progress.learning.completedSlotIds);
   app.innerHTML = activityScreen({task, ...plannedTrack(), reviewing, hints: entry.hints, stageTitle: entry.title, notes: lessonDetails(task), stars: `${before.stars} / ${before.total}`});
+  const reward = document.getElementById('reward-area');
   let hadMistake = false;
   taskView = mountTask(document.getElementById('task-area'), task, {controls: false,
-    onStateChange: state => { hadMistake ||= state.incorrect; updateTaskFooter(task, state); },
+    onStateChange: state => { hadMistake ||= state.incorrect; updateLearningTask(task, state, reward); },
     onComplete: () => {
       completeLearningEntry(topic, progress.learning, entry, hadMistake);
       if (!reviewing) {
@@ -210,9 +215,8 @@ function renderPlannedLearn() {
       save();
       const after = learningRewards(path, progress.learning.completedSlotIds);
       document.getElementById('learn-stars').textContent = `${after.stars} / ${after.total}`;
-      const reward = document.getElementById('reward-area');
       reward.hidden = false;
-      reward.innerHTML = `${owl('mini-owl')}<div><strong>${after.stars > before.stars ? '+1 gwiazdka!' : entry.extra ? 'Dodatkowy trop odkryty!' : 'Trop odświeżony!'}</strong></div><span class="reward-token" aria-hidden="true">★</span>`;
+      reward.innerHTML = `<div><strong>${after.stars > before.stars ? '+1 gwiazdka!' : entry.extra ? 'Dodatkowy trop odkryty!' : 'Trop odświeżony!'}</strong></div><span class="reward-token" aria-hidden="true">★</span>`;
       stopCelebration = celebrate(reward);
       document.getElementById('session-count').textContent = `Zadanie ${position + 1} z ${queue.length}`;
       app.querySelector('.journey-track').outerHTML = journeyTrack({...plannedTrack(), label: reviewing ? 'Powtórka' : fullExpedition ? 'Postęp tematów' : 'Postęp nauki'});

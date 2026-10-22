@@ -44,7 +44,17 @@ export async function checkExpedition() {
         visited.push(task.id);
         continue;
       }
-      solveTask(task); visited.push(task.id); click('[data-action="next-learn"]');
+      solveTask(task);
+      assert(document.querySelector('#task-area>.feedback.success .coach-bubble>#reward-area'), 'Reward is not inside the top speech bubble');
+      assert(document.querySelectorAll('#task-area .coach-owl').length === 1, 'Completion has duplicate or missing owls');
+      if (task.type === 'discovery' || task.type === 'flashcards') {
+        const stars = document.querySelector('#learn-stars').textContent;
+        click(task.type === 'discovery' ? '[data-reveal]' : '[data-flip]');
+        assert(document.querySelectorAll('#reward-area').length === 1 && document.querySelector('.coach-bubble>#reward-area'), 'Remount lost or duplicated the reward');
+        assert(document.querySelector('#learn-stars').textContent === stars, 'Reopening content awarded extra stars');
+      }
+      visited.push(task.id); click('[data-action="next-learn"]');
+      if (document.querySelector('#task-area')) assert(document.querySelector('.feedback').hidden && document.querySelector('#reward-area').hidden, 'Previous owl or reward leaked into the next task');
     }
     assert(visited.length === total + 1 && new Set(visited).size === visited.length, 'Expedition skipped or repeated an activity');
     assert(themes.size === topic.learningPlan.lessons.length, 'Expedition stopped before covering every topic');
