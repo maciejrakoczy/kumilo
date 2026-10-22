@@ -15,6 +15,16 @@ export async function runWorkspaceChecks() {
       mounted = mountTask(host, task, {controls: false, onStateChange: value => { state = value; }, onComplete: () => completions++});
       assert(!host.querySelector('[data-check]'), `Duplicated shared-footer control: ${type}`);
       assert(state && !state.solved && state.progressText, `Missing initial state: ${type}`);
+      if (type === 'multiple-choice') {
+        assert([...host.querySelectorAll('.letter')].every(marker => marker.textContent === ''), 'Unchecked choice contains an extra square glyph');
+        const option = host.querySelector('[data-option]');
+        option.focus();
+        option.click();
+        assert(host.querySelector('.option.selected .letter')?.textContent === '✓', 'Selected choice lacks a checkmark');
+        assert(host.querySelector('.option.selected')?.getAttribute('aria-pressed') === 'true', 'Selected choice lacks accessible state');
+        host.querySelector('.option.selected').click();
+        assert([...host.querySelectorAll('.letter')].every(marker => marker.textContent === ''), 'Deselected choice is not empty');
+      }
       if (type === 'number-answer' || type === 'short-answer') {
         assert(!state.canCheck, `Empty input checkable: ${type}`);
         const input = host.querySelector('input'); input.value = type === 'number-answer' ? String(task.answer) : task.acceptedAnswers[0]; input.dispatchEvent(new Event('input', {bubbles: true}));

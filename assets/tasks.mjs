@@ -75,7 +75,7 @@ export function mountTask(container, task, {mode = 'learn', answer: initialAnswe
     }
     if (['single-choice', 'multiple-choice'].includes(task.type)) html = `<div class="options">${choices.map(option => {
       const chosen = task.type === 'single-choice' ? answer === option.id : answer.includes(option.id);
-      return `<button class="option ${chosen ? 'selected' : ''}" data-option="${option.id}" aria-pressed="${chosen}" ${study && solved ? 'disabled' : ''}>${task.type === 'multiple-choice' ? `<span class="letter" aria-hidden="true">${chosen ? '✓' : '□'}</span>` : ''}${illustration(option.icon)}<span>${h(option.text)}</span></button>`;
+      return `<button class="option ${chosen ? 'selected' : ''}" data-option="${option.id}" aria-pressed="${chosen}" ${study && solved ? 'disabled' : ''}>${task.type === 'multiple-choice' ? `<span class="letter" aria-hidden="true">${chosen ? '✓' : ''}</span>` : ''}${illustration(option.icon)}<span>${h(option.text)}</span></button>`;
     }).join('')}</div>`;
     if (task.type === 'matching') {
       const connected = Object.keys(answer).map(id => task.pairs.find(pair => pair.id === id)).filter(Boolean);
